@@ -1,0 +1,17 @@
+@import "../global/global.css";
+
+h2{
+    color: #7C7A7A;
+    text-align: center;
+}
+
+
+.block-test1 {
+    background-color: white;
+    height: auto;
+}
+
+.block-test2 {
+    background-color: white;
+    height: auto;
+}

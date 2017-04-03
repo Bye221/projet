@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head> 
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+        <title> Bienvenue sur le site du club d'athletisme de Marquise </title>
+
+        
+        <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/page/calendrier.css" rel="stylesheet">
+
+    </head>
+
+
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+
+        <nav class="navbar navbar-inverse" th:insert="~{users/common ::entete}">
+  
+</nav>
+        <div class="container-fluid">
+            <div class="row head">
+                <div class="col-sm-12 col-md-12">
+
+                    <h1>Entente Maritime Athlétique 62</h1>
+                </div>
+
+
+
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row section1">
+                <div class="col-md-8">
+                    <div class="block-test1">
+                        <h2 class="titre-agenda">Retrouvez ici, les prochains cours, et évenements du club.</h2>
+                        <iframe src="https://calendar.google.com/calendar/embed?mode=WEEK&amp;height=600&amp;wkst=2&amp;bgcolor=%23FFFFFF&amp;src=marquise.athletisme%40gmail.com&amp;color=%231B887A&amp;src=e_2_fr%23weeknum%40group.v.calendar.google.com&amp;color=%23B1440E&amp;ctz=Europe%2FParis" style="border-width:0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                    <div class="block-test2">
+                       <h4>Avant de participer à l’une de ces compétitions renseignez vous auprès de Régis ou Fred M.</h4>
+                        <p>
+                            Exemples :
+                            Les engagements des athlètes doivent parvenir 1 semaine avant la date de la compétition.
+                            Les frais de déplacement ne sont pas toujours pris en charge par le club ! et à certaines conditions !
+                            Des cautions peuvent être demandées !
+                            …
+                            Régis R (Président M.A) et Fred M (Président EMA62)</p>
+                    </div>
+
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+
+                    <!-- Formulaire d'inscription à la newsletter -->
+
+
+                    <h1> Restez informés !</h1>
+                    <form class="inscription">
+                        <p> Inscrivez vous à la newsletter</p>
+                        <input class="email-news" id="email" placeholder="Email" type="email"> 
+                        <p> J'accepte de recevoir regulierement des informations de la part du club</p>
+                        <input id="ok" type="checkbox">
+                        <button type="submit">Valider</button>
+
+
+
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p>
+                    Hello world !
+                </p>
+            </div>
+        </footer>
+
+
+
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="../../bootstrap/js/photo-gallery.js"></script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="../../bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+            </body>
+</html>

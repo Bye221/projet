@@ -1,0 +1,52 @@
+@import "../global/global.css";
+body {
+    position: relative;
+}
+
+#section1 {
+    padding-top: 50px;
+    height:auto;
+    color: rgb(25, 38, 33);
+    text-align: center;
+    background-image:url("../../img/piste.jpeg");
+    background-size: cover;
+    background-repeat:no-repeat;
+
+   
+    
+}
+
+#section2 {
+    padding-top: 50px;
+    height: auto;
+    color: #fff;
+    background-image: url(../../img/city_woman.jpg);
+    background-size: cover;
+    background-repeat:no-repeat;
+    
+    
+}
+
+#section3 {
+    padding-top: 50px;
+    height: 500px;
+    color: #fff;
+    background-color: #ff9800;
+}
+
+#section4 {
+    padding-top: 50px;
+    height: auto;
+    color: #fff;
+    background-image: url(../../img/competition_start.jpg);
+    background-size: cover;
+}
+
+#section5 {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    
+    color: #fff;
+    background-color: #009688;
+    text-align: center;
+}

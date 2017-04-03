@@ -1,0 +1,18 @@
+@import "../global/global.css";
+
+.team {
+    text-align: center;
+    color: #7C7A7A;
+}
+
+.photo1 {
+    
+    max-width: 0.33;
+
+}
+
+.photos {
+    max-height: 350px;
+    max-width: inherit;
+    padding: 20px;
+}

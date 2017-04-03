@@ -1,0 +1,32 @@
+@import "../global/global.css";
+/*.categorie1{
+    text-align: center;
+    min-height: 300px;
+
+    
+}*/
+
+
+/*Je defini avec la classe "categorie2" les cases de ma page qui vont changer de background au survol afin de laisser apparaitre la description*/
+.categorie2 {
+    text-align: center;
+    min-height: 300px;
+    background-image: url(../../img/piste.jpeg);
+    background-size: contain;
+    z-index: 1;
+    color: transparent;
+    
+}
+.categorie2:hover {
+    text-align: center;
+    min-height: 300px;
+    background-color: beige;
+    
+    color: black;
+    background-image: none;
+    
+}
+
+.description-categorie {
+    z-index: -5;
+}

@@ -1,0 +1,35 @@
+@import "../global/global.css";
+
+
+
+.formulaire-perso li{
+    list-style-type: none;
+
+}
+
+
+input{
+    border: none;
+    border-bottom: solid 0.10em;
+    outline: none;
+    min-width: 150px;
+    vertical-align:middle;
+}
+
+    
+
+.formulaire-box {
+
+    text-align: center;
+}
+
+
+.formulaire-perso li{
+    display: block;
+    text-align: center;
+}
+.formulaire-perso input{
+
+
+}
+

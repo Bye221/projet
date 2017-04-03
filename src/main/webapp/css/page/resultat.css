@@ -1,0 +1,12 @@
+@import "../global/global.css";
+
+.resultats {
+    text-align: center;
+}
+
+
+
+iframe {
+    min-width: 600px;
+    min-height: 800px;
+}
