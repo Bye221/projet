@@ -27,7 +27,7 @@ public class indexServlet extends HttpServlet {
 		
 		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
 		templateResolver.setTemplateMode(TemplateMode.HTML);
-		templateResolver.setPrefix("/WEB-INF/templates/");
+		templateResolver.setPrefix("/WEB-INF/templates/users/");
 		templateResolver.setSuffix(".html");
 		
 		TemplateEngine templateEngine = new TemplateEngine();
@@ -35,7 +35,7 @@ public class indexServlet extends HttpServlet {
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
-		templateEngine.process("/users/index", context, resp.getWriter());
+		templateEngine.process("index", context, resp.getWriter());
 	}
 	
 	
