@@ -7,7 +7,7 @@
     <link href="css/page/index.css" rel="stylesheet">
 	</head>
 	<body data-spy="scroll" data-target=".navbar" data-offset="50">
-	<nav th:fragment="entete">
+	<nav th:fragment="entete(selectedMenu)">
   <div class="container-fluid">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -15,29 +15,29 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
-      <a class="active navbar-brand" href="index.html">Acceuil</a>
+     <div th:class="${selectedMenu == 'home' } ? 'active'"> <a class="active navbar-brand" href="index.html">Acceuil</a></div>
     </div>
     <div class="navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
-        <li><a href="club.html">Club</a></li>
+        <li th:class="${selectedMenu == 'club' } ? 'active'"><a href="club.html">Club</a></li>
         
-        <li><a href="staff.html">Staff</a></li>
+        <li th:class="${selectedMenu == 'equipe' } ? 'active'"><a href="staff.html">Staff</a></li>
         
-        <li><a href="cours.html">Cours et Stages</a></li>
+        <li th:class="${selectedMenu == 'cours' } ? 'active'"><a href="cours.html">Cours et Stages</a></li>
         
-        <li><a href="calendrier.html">Caledrier</a></li>
+        <li th:class="${selectedMenu == 'calendrier' } ? 'active'"><a href="calendrier.html">Caledrier</a></li>
         
-        <li><a href="categorie.html">Categories</a></li>
+        <li th:class="${selectedMenu == 'categorie' } ? 'active'"><a href="categorie.html">Categories</a></li>
         
-        <li><a href="resultats.html">Résultats</a></li>
+        <li th:class="${selectedMenu == 'resultats' } ? 'active'"><a href="resultats.html">Résultats</a></li>
         
-        <li><a href="inscription.html">Inscriptions</a></li>
+        <li th:class="${selectedMenu == 'inscriptions' } ? 'active'"><a href="inscription.html">Inscriptions</a></li>
         
-        <li><a href="contact.html">Contact</a></li>
+        <li th:class="${selectedMenu == 'contact' } ? 'active'"><a href="contact.html">Contact</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+        <li th:class="${selectedMenu == 'signup' } ? 'active'"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li th:class="${selectedMenu == 'connexion' } ? 'active'"><a href="connexion.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
       </ul>
     </div>
   </div>

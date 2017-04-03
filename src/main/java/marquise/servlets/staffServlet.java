@@ -1,3 +1,4 @@
+
 package marquise.servlets;
 
 import java.io.IOException;
@@ -27,7 +28,7 @@ public class staffServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());
 		templateResolver.setTemplateMode(TemplateMode.HTML);
-		templateResolver.setPrefix("/WEB-INF/templates/");
+		templateResolver.setPrefix("/WEB-INF/templates/users/");
 		templateResolver.setSuffix(".html");
 		
 		TemplateEngine templateEngine = new TemplateEngine();
@@ -35,7 +36,7 @@ public class staffServlet extends HttpServlet {
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
-		templateEngine.process("/users/staff", context, resp.getWriter());
+		templateEngine.process("staff", context, resp.getWriter());
 	}
 	
 	
