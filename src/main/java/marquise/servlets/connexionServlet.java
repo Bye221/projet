@@ -14,7 +14,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @WebServlet("/connexion")
-public class connexionServlet extends HttpServlet {
+public class connexionServlet extends AbstractGenericServlet {
 
 	/**
 	 * 
@@ -24,13 +24,7 @@ public class connexionServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 	
-	ServletContextTemplateResolver templateResolver = new ServletContextTemplateResolver(req.getServletContext());	
-	templateResolver.setTemplateMode(TemplateMode.HTML);
-	templateResolver.setPrefix("/WEB-INF/templates/users/");
-	templateResolver.setSuffix(".html");
-	
-	TemplateEngine templateEngine = new TemplateEngine();
-	templateEngine.setTemplateResolver(templateResolver);
+	TemplateEngine templateEngine = this.createTemplateEngine(req);
 	
 	
 	
