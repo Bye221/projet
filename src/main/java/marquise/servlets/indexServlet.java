@@ -29,7 +29,7 @@ public class indexServlet extends AbstractGenericServlet {
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
-		templateEngine.process("index", context, resp.getWriter());
+		templateEngine.process("users/index", context, resp.getWriter());
 	}
 	
 	
