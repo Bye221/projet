@@ -32,7 +32,7 @@ public class connexionServlet extends AbstractGenericServlet {
 	
 	
 	
-	templateEngine.process("connexion", context, resp.getWriter());
+	templateEngine.process("users/connexion", context, resp.getWriter());
 	
 		
 	}
