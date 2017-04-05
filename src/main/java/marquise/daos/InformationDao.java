@@ -1,5 +1,9 @@
 package marquise.daos;
 
-public class InformationDao {
+import marquise.projos.Information;
+
+public interface InformationDao {
+	
+	public Information getCotisation(int utilisateurs_idUtilisateurs);
 
 }
