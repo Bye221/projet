@@ -1,4 +1,4 @@
-package marquise.daos.mock.impl;
+/*package marquise.daos.mock.impl;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,11 +32,12 @@ public class UtilisateurDaoMockImpl implements UtilisateurDao {
 	}
 
 	@Override
-	public Utilisateur addUtilisateur(Integer id, String nom, String Prenom) {
+	public void addUtilisateur(Integer id, String nom, String Prenom) {
 		// TODO Auto-generated method stub
-		return null;
+		return;
 	}
 	
 	
 
 }
+*/
