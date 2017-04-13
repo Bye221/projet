@@ -15,13 +15,13 @@ public class GenreDaoImpl implements GenreDao {
 
 	@Override
 	public List<Genre> listGenres() {
-		String query = "SELECT * FROM genre ORDER BY name";
+		String query = "SELECT * FROM utilisateur ORDER BY nom";
 		List<Genre> genres = new ArrayList<>(); 
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try (Statement statement = connection.createStatement()) {
 				try (ResultSet resultSet = statement.executeQuery(query)) {
 					while(resultSet.next()) {
-						Genre genre = new Genre(resultSet.getInt("genre_id"), resultSet.getString("name"));
+						Genre genre = new Genre(resultSet.getInt("genre_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
 						genres.add(genre);
 					}
 				}
@@ -34,15 +34,42 @@ public class GenreDaoImpl implements GenreDao {
 
 	@Override
 	public Genre getGenre(Integer id) {
-		// TODO Auto-generated method stub
+		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateur WHERE genre_id = ?")) {
+				statement.setInt(1, id);
+				try (ResultSet resultSet = statement.executeQuery()) {
+					if(resultSet.next()) {
+						return new Genre(resultSet.getInt("genre_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
+					}
+				}
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
 
 	@Override
-	public Genre addGenre(String nom) {
-		// TODO Auto-generated method stub
+	public Genre addGenre(String nom, String prenom) {
+		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
+			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO utilisateur(nom, prenom) VALUES(?,?)", Statement.RETURN_GENERATED_KEYS)) {
+				statement.setString(1, nom);
+				statement.setString(2, prenom);
+				statement.executeUpdate();
+				
+				try (ResultSet resultSet = statement.getGeneratedKeys()) {
+					if(resultSet.next()) {
+						return new Genre(resultSet.getInt(1), nom, prenom);
+					}
+				}
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
 		return null;
 	}
+
+	
 	
 	
 

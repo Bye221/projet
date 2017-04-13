@@ -3,13 +3,16 @@ package marquise.projos;
 public class Genre {
 	
 	private Integer id;
-	private String name;
+	private String nom;
+	private String prenom;
 	
 	
-	public Genre(Integer id, String name) {
+	
+	public Genre(Integer id, String nom, String prenom) {
 		super();
 		this.id = id;
-		this.name = name;
+		this.nom = nom;
+		this.prenom = prenom;
 	}
 	public Integer getId() {
 		return id;
@@ -17,11 +20,22 @@ public class Genre {
 	public void setId(Integer id) {
 		this.id = id;
 	}
-	public String getName() {
-		return name;
+	public String getNom() {
+		return nom;
 	}
-	public void setName(String name) {
-		this.name = name;
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
+	
+	
+	public String getPrenom() {
+		return prenom;
+	}
+	public void setPrenom(String prenom) {
+		this.prenom = prenom;
+	}
+	
+	
+	
 
 }

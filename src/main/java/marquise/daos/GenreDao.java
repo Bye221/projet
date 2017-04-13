@@ -9,6 +9,6 @@ public interface GenreDao {
 	
 	public Genre getGenre(Integer id);
 
-	public Genre addGenre(String nom);
+	public Genre addGenre(String nom, String prenom);
 
 }
