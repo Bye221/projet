@@ -7,10 +7,10 @@ public interface UtilisateurDao {
 	
 	
 	
-	public List<Utilisateur> listeUtilisateurs();
+	public List<Utilisateur> listUtilisateurs();
 	
 	public Utilisateur getUtilisateur(String nom);
 	
-	public Utilisateur addUtilisateur(Integer id, String nom, String Prenom);
+	public Utilisateur addUtilisateur(String nom);
 
 }
