@@ -5,10 +5,10 @@ import marquise.projos.Utilisateur;
 
 public interface UtilisateurDao {
 	
-	public List<Utilisateur> listGenres();
+	public List<Utilisateur> listUtilisateurs();
 	
-	public Utilisateur getGenre(Integer id);
+	public Utilisateur getUtilisateur(Integer id);
 
-	public Utilisateur addGenre(String nom, String prenom);
+	public Utilisateur addUtilisateur(String nom, String prenom);
 
 }

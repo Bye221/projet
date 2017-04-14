@@ -18,7 +18,7 @@ import marquise.projos.Utilisateur;
 
 public class UtilisateurDaoTestCase {
 
-	private UtilisateurDao genreDao = new UtilisateurDaoImpl();
+	private UtilisateurDao utilisateurDao = new UtilisateurDaoImpl();
 
 	@Before
 	public void initDb() throws Exception {
@@ -32,41 +32,41 @@ public class UtilisateurDaoTestCase {
 		}
 	}
 	@Test
-	public void shouldListGenres() {
+	public void shouldListUtilisateurs() {
 		// WHEN
-		List<Utilisateur> genres = genreDao.listGenres();
+		List<Utilisateur> utilisateurs = utilisateurDao.listUtilisateurs();
 		// THEN
-		assertThat(genres).hasSize(3);
-		assertThat(genres).extracting("id", "nom", "prenom").containsOnly(tuple(3, "Action", "Action"), tuple(2, "Comedy","Comedy"),
+		assertThat(utilisateurs).hasSize(3);
+		assertThat(utilisateurs).extracting("id", "nom", "prenom").containsOnly(tuple(3, "Action", "Action"), tuple(2, "Comedy","Comedy"),
 				tuple(1, "Drama","Drama"));
 	}
 	
 	@Test
-	public void shouldGetGenre() {
+	public void shouldGetUtilisateur() {
 		// WHEN
-		Utilisateur genre = genreDao.getGenre(1);
+		Utilisateur utilisateur = utilisateurDao.getUtilisateur(1);
 		// THEN
-		assertThat(genre).isNotNull();
-		assertThat(genre.getId()).isEqualTo(1);
-		assertThat(genre.getNom()).isEqualTo("Drama");
-		assertThat(genre.getPrenom()).isEqualTo("Drama");
+		assertThat(utilisateur).isNotNull();
+		assertThat(utilisateur.getId()).isEqualTo(1);
+		assertThat(utilisateur.getNom()).isEqualTo("Drama");
+		assertThat(utilisateur.getPrenom()).isEqualTo("Drama");
 	}
 
 	@Test
-	public void shouldAddGenre() throws Exception {
+	public void shouldAddUtilisateur() throws Exception {
 		// WHEN
-		Utilisateur genre = genreDao.addGenre("test", "test");
+		Utilisateur utilisateur = utilisateurDao.addUtilisateur("test", "test");
 		// THEN
-		assertThat(genre.getId()).isNotNull();
-		assertThat(genre.getNom()).isEqualTo("test");
-		assertThat(genre.getPrenom()).isEqualTo("test");
+		assertThat(utilisateur.getId()).isNotNull();
+		assertThat(utilisateur.getNom()).isEqualTo("test");
+		assertThat(utilisateur.getPrenom()).isEqualTo("test");
 
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
 				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM utilisateur WHERE utilisateur_id = ?")) {
-			stmt.setInt(1, genre.getId());
+			stmt.setInt(1, utilisateur.getId());
 			try (ResultSet rs = stmt.executeQuery()) {
 				assertThat(rs.next()).isTrue();
-				assertThat(rs.getInt("utilisateur_id")).isEqualTo(genre.getId());
+				assertThat(rs.getInt("utilisateur_id")).isEqualTo(utilisateur.getId());
 				assertThat(rs.getString("nom")).isEqualTo("test");
 				assertThat(rs.getString("prenom")).isEqualTo("test");
 				assertThat(rs.next()).isFalse();

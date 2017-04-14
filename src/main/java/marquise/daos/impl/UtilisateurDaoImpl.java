@@ -14,26 +14,26 @@ import marquise.projos.Utilisateur;
 public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	@Override
-	public List<Utilisateur> listGenres() {
+	public List<Utilisateur> listUtilisateurs() {
 		String query = "SELECT * FROM utilisateur ORDER BY nom";
-		List<Utilisateur> genres = new ArrayList<>(); 
+		List<Utilisateur> utilisateurs = new ArrayList<>(); 
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try (Statement statement = connection.createStatement()) {
 				try (ResultSet resultSet = statement.executeQuery(query)) {
 					while(resultSet.next()) {
-						Utilisateur genre = new Utilisateur(resultSet.getInt("utilisateur_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
-						genres.add(genre);
+						Utilisateur utilisateur = new Utilisateur(resultSet.getInt("utilisateur_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
+						utilisateurs.add(utilisateur);
 					}
 				}
 			}			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		return genres;
+		return utilisateurs;
 	}
 
 	@Override
-	public Utilisateur getGenre(Integer id) {
+	public Utilisateur getUtilisateur(Integer id) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateur WHERE utilisateur_id = ?")) {
 				statement.setInt(1, id);
@@ -50,7 +50,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	}
 
 	@Override
-	public Utilisateur addGenre(String nom, String prenom) {
+	public Utilisateur addUtilisateur(String nom, String prenom) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO utilisateur(nom, prenom) VALUES(?,?)", Statement.RETURN_GENERATED_KEYS)) {
 				statement.setString(1, nom);

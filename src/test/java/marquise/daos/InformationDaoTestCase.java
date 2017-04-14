@@ -21,7 +21,7 @@ import marquise.projos.Utilisateur;
 
 public class InformationDaoTestCase {
 	
-	private InformationDao filmDao = new InformationDaoImpl();
+	private InformationDao informationDao = new InformationDaoImpl();
 
 	@Before
 	public void initDb() throws Exception {
@@ -41,9 +41,9 @@ public class InformationDaoTestCase {
 	}
 
 	@Test
-	public void shouldListFilm() {
+	public void shouldListInformation() {
 		// WHEN
-		List<Information> films = filmDao.listFilms();
+		List<Information> films = informationDao.listInformations();
 		// THEN
 		Assertions.assertThat(films).hasSize(2);
 		Assertions.assertThat(films).extracting("id", "sexe", "dateNaissance", "utilisateur.id", "utilisateur.nom", "utilisateur.prenom", "tarif", "numSecu", "adresse").containsOnly(
@@ -54,9 +54,9 @@ public class InformationDaoTestCase {
 	}
 	
 	@Test
-	public void shouldGetFilm() {
+	public void shouldGetInformation() {
 		// WHEN
-		Information film = filmDao.getFilm(1);
+		Information film = informationDao.getInformation(1);
 		// THEN
 		Assertions.assertThat(film).isNotNull();
 		Assertions.assertThat(film.getId()).isEqualTo(1);
@@ -71,19 +71,19 @@ public class InformationDaoTestCase {
 	}
 	
 	@Test
-	public void shouldNotGetFilm() {
+	public void shouldNotGetInformation() {
 		// WHEN
-		Information film = filmDao.getFilm(0);
+		Information film = informationDao.getInformation(0);
 		// THEN
 		Assertions.assertThat(film).isNull();
 	}
 
 	@Test
-	public void shouldAddFilm() throws Exception {
+	public void shouldAddInformation() throws Exception {
 		// GIVEN
 		Information filmToAdd = new Information(null, "New title", LocalDate.of(2016, 11, 16), new Utilisateur(1, "Drama", "Drama"), 123, "New director", "New summary");
 		// WHEN
-		Information filmAdded = filmDao.addFilm(filmToAdd);
+		Information filmAdded = informationDao.addInformation(filmToAdd);
 		// THEN
 		Assertions.assertThat(filmAdded).isNotNull();
 		Assertions.assertThat(filmAdded.getId()).isNotNull();

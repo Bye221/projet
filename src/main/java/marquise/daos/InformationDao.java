@@ -6,11 +6,11 @@ import marquise.projos.Information;
 
 public interface InformationDao {
 	
-	public List<Information> listFilms();
+	public List<Information> listInformations();
 	
-	public Information getFilm(Integer id);
+	public Information getInformation(Integer id);
 	
-	public Information addFilm(Information film);
+	public Information addInformation(Information film);
 	
 	
 

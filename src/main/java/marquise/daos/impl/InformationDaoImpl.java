@@ -16,7 +16,7 @@ import marquise.projos.Utilisateur;
 public class InformationDaoImpl implements InformationDao {
 
 	@Override
-	public List<Information> listFilms() {
+	public List<Information> listInformations() {
 		
 		String query = "SELECT * FROM information JOIN utilisateur ON information.utilisateur_id = utilisateur.utilisateur_id ORDER BY sexe";
 		List<Information> films = new ArrayList<>();
@@ -46,7 +46,7 @@ public class InformationDaoImpl implements InformationDao {
 	}
 
 	@Override
-	public Information getFilm(Integer id) {
+	public Information getInformation(Integer id) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM information JOIN utilisateur ON information.utilisateur_id = utilisateur.utilisateur_id WHERE information_id = ?")) {
 				statement.setInt(1, id);
@@ -74,7 +74,7 @@ public class InformationDaoImpl implements InformationDao {
 	}
 
 	@Override
-	public Information addFilm(Information film) {
+	public Information addInformation(Information film) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO information(sexe, date_naissance, utilisateur_id, prix, numSecu, adresse) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
 				statement.setString(1, film.getSexe());
