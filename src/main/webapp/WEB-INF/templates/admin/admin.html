@@ -9,8 +9,8 @@
     
     <title> Bienvenue sur le site du club d'athletisme de Marquise </title>
     
-    <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="../../css/page/indexAdmin.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/page/indexAdmin.css" rel="stylesheet">
     
 </head>
 
@@ -69,6 +69,7 @@
         <div class="col-md-6">
             <div class="block-test1">
                 <h2 class="titre-section-admin">Rechercher la liste de tout les inscrits au club: </h2>
+                
             </div>
             <div class="block-test2">
                <h2 class="titre-section-admin">Rechercher un licencié du club par son nom de famille </h2>
@@ -82,7 +83,24 @@
                 
             </div>
             <div class="block-test2">
-               <h2 class="titre-section-admin">Rechercher la liste de tout les inscrits au club: </h2>
+               <h2 class="titre-section-admin">Liste de tout les inscrits au club: </h2>
+               <table class="liste-inscrits">
+               <tr>
+               <td>id</td>
+               <td>nom</td>
+               <td>prenom</td>
+               </tr>
+               
+               <div class="utilisateur" th:each="utilisateur : ${utilisateurs}">
+               
+               
+               <tr>
+               <td th:text="${utilisateur.id}"></td>
+               <td th:text="${utilisateur.nom}"></td>
+               <td th:text="${utilisateur.prenom}"></td>
+               </tr>
+               </table>
+                </div>
                 
             </div>
 

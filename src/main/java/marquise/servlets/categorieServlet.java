@@ -25,7 +25,7 @@ public class categorieServlet extends AbstractGenericServlet {
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
-		templateEngine.process("categorie", context, resp.getWriter());
+		templateEngine.process("users/categorie", context, resp.getWriter());
 	}
 	
 	

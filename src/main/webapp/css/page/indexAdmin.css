@@ -3,6 +3,12 @@ body {
     position: relative;
 }
 
+#liste-inscrits{
+	
+	min-width: 80px;
+	
+}
+
 #section1 {
     padding-top: 50px;
     height: 800px;
