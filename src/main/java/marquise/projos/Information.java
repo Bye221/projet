@@ -1,123 +1,105 @@
 package marquise.projos;
 
+import java.time.LocalDate;
+
 public class Information {
 	
-
-	
-	private char numeroSecu;
-	private Integer jours; 
-	private Integer mois;
-	private double annees;
-	private double numRue;
-	private char rue;
-	private double codePostal;
-	private char ville;
-	private String complements;
-	private Boolean cotisation;
-	private Boolean certificat;
-	private double tarif;
-	private Integer utilisateurs_idUtilisateurs;
+	private Integer id;
+	private String sexe;
+	private LocalDate dateNaissance;
+	private Utilisateur utilisateur;
+	private Integer tarif;
+	private String numSecu;
+	private String adresse;
 	
 	
-	
-	public Information(char numeroSecu, Integer jours, Integer mois, double annees, double numRue, char rue,
-			double codePostal, char ville, String complements, Boolean cotisation, Boolean certificat, double tarif,
-			Integer utilisateurs_idUtilisateurs) {
+	public Information(Integer id, String sexe, LocalDate dateNaissance, Utilisateur utilisateur, Integer tarif, String numSecu,
+			String adresse) {
 		super();
-		this.numeroSecu = numeroSecu;
-		this.jours = jours;
-		this.mois = mois;
-		this.annees = annees;
-		this.numRue = numRue;
-		this.rue = rue;
-		this.codePostal = codePostal;
-		this.ville = ville;
-		this.complements = complements;
-		this.cotisation = cotisation;
-		this.certificat = certificat;
+		this.id = id;
+		this.sexe = sexe;
+		this.dateNaissance = dateNaissance;
+		this.utilisateur = utilisateur;
 		this.tarif = tarif;
-		this.utilisateurs_idUtilisateurs = utilisateurs_idUtilisateurs;
+		this.numSecu = numSecu;
+		this.adresse = adresse;
 	}
-	public char getNumeroSecu() {
-		return numeroSecu;
+
+
+	public Integer getId() {
+		return id;
 	}
-	public void setNumeroSecu(char numeroSecu) {
-		this.numeroSecu = numeroSecu;
+
+
+	public void setId(Integer id) {
+		this.id = id;
 	}
-	public Integer getJours() {
-		return jours;
+
+
+	public String getSexe() {
+		return sexe;
 	}
-	public void setJours(Integer jours) {
-		this.jours = jours;
+
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
 	}
-	public Integer getMois() {
-		return mois;
+
+
+	public LocalDate getDateNaissance() {
+		return dateNaissance;
 	}
-	public void setMois(Integer mois) {
-		this.mois = mois;
+
+
+	public void setDateNaissance(LocalDate dateNaissance) {
+		this.dateNaissance = dateNaissance;
 	}
-	public double getAnnees() {
-		return annees;
+
+
+	public Utilisateur getUtilisateur() {
+		return utilisateur;
 	}
-	public void setAnnees(double annees) {
-		this.annees = annees;
+
+
+	public void setUtilisateur(Utilisateur utilisateur) {
+		this.utilisateur = utilisateur;
 	}
-	public double getNumRue() {
-		return numRue;
-	}
-	public void setNumRue(double numRue) {
-		this.numRue = numRue;
-	}
-	public char getRue() {
-		return rue;
-	}
-	public void setRue(char rue) {
-		this.rue = rue;
-	}
-	public double getCodePostal() {
-		return codePostal;
-	}
-	public void setCodePostal(double codePostal) {
-		this.codePostal = codePostal;
-	}
-	public char getVille() {
-		return ville;
-	}
-	public void setVille(char ville) {
-		this.ville = ville;
-	}
-	public String getComplements() {
-		return complements;
-	}
-	public void setComplements(String complements) {
-		this.complements = complements;
-	}
-	public Boolean getCotisation() {
-		return cotisation;
-	}
-	public void setCotisation(Boolean cotisation) {
-		this.cotisation = cotisation;
-	}
-	public Boolean getCertificat() {
-		return certificat;
-	}
-	public void setCertificat(Boolean certificat) {
-		this.certificat = certificat;
-	}
-	public double getTarif() {
+
+
+	public Integer getTarif() {
 		return tarif;
 	}
-	public void setTarif(double tarif) {
+
+
+	public void setTarif(Integer tarif) {
 		this.tarif = tarif;
 	}
-	public Integer getUtilisateurs_idUtilisateurs() {
-		return utilisateurs_idUtilisateurs;
-	}
-	public void setUtilisateurs_idUtilisateurs(Integer utilisateurs_idUtilisateurs) {
-		this.utilisateurs_idUtilisateurs = utilisateurs_idUtilisateurs;
-	}
-	
-	
 
+
+	public String getNumSecu() {
+		return numSecu;
+	}
+
+
+	public void setNumSecu(String numSecu) {
+		this.numSecu = numSecu;
+	}
+
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	
+	
+	
+	
+	
+	
+	
 
 }

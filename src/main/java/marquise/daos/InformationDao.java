@@ -1,9 +1,17 @@
 package marquise.daos;
 
+import java.util.List;
+
 import marquise.projos.Information;
 
 public interface InformationDao {
 	
-	public Information getCotisation(int utilisateurs_idUtilisateurs);
+	public List<Information> listInformations();
+	
+	public Information getInformation(Integer id);
+	
+	public Information addInformation(Information information);
+	
+	
 
 }
