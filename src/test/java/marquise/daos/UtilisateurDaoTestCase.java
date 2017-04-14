@@ -13,12 +13,12 @@ import org.junit.Before;
 import org.junit.Test;
 
 import marquise.daos.impl.DataSourceProvider;
-import marquise.daos.impl.GenreDaoImpl;
+import marquise.daos.impl.UtilisateurDaoImpl;
 import marquise.projos.Utilisateur;
 
-public class GenreDaoTestCase {
+public class UtilisateurDaoTestCase {
 
-	private UtilisateurDao genreDao = new GenreDaoImpl();
+	private UtilisateurDao genreDao = new UtilisateurDaoImpl();
 
 	@Before
 	public void initDb() throws Exception {

@@ -9,24 +9,24 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import marquise.daos.FilmDao;
-import marquise.projos.Film;
+import marquise.daos.InformationDao;
+import marquise.projos.Information;
 import marquise.projos.Utilisateur;
 
-public class FilmDaoImpl implements FilmDao {
+public class InformationDaoImpl implements InformationDao {
 
 	@Override
-	public List<Film> listFilms() {
+	public List<Information> listFilms() {
 		
 		String query = "SELECT * FROM information JOIN utilisateur ON information.utilisateur_id = utilisateur.utilisateur_id ORDER BY sexe";
-		List<Film> films = new ArrayList<>();
+		List<Information> films = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()){
 			try (Statement statement = connection.createStatement()){
 				try (ResultSet resultSet = statement.executeQuery(query)){
 					while(resultSet.next()){
 						Utilisateur genre = new Utilisateur(resultSet.getInt("utilisateur_id"),
 								resultSet.getString("nom"), resultSet.getString("prenom"));
-						Film film = new Film(resultSet.getInt("information_id"),
+						Information film = new Information(resultSet.getInt("information_id"),
 								resultSet.getString("sexe"), 
 								resultSet.getDate("date_naissance").toLocalDate(), genre, 
 								resultSet.getInt("prix"), 
@@ -46,7 +46,7 @@ public class FilmDaoImpl implements FilmDao {
 	}
 
 	@Override
-	public Film getFilm(Integer id) {
+	public Information getFilm(Integer id) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM information JOIN utilisateur ON information.utilisateur_id = utilisateur.utilisateur_id WHERE information_id = ?")) {
 				statement.setInt(1, id);
@@ -56,7 +56,7 @@ public class FilmDaoImpl implements FilmDao {
 								resultSet.getString("nom"), 
 								resultSet.getString("prenom"));
 						
-						return  new Film(
+						return  new Information(
 								resultSet.getInt("information_id"), 
 								resultSet.getString("sexe"), 
 								resultSet.getDate("date_naissance").toLocalDate(), 
@@ -74,7 +74,7 @@ public class FilmDaoImpl implements FilmDao {
 	}
 
 	@Override
-	public Film addFilm(Film film) {
+	public Information addFilm(Information film) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO information(sexe, date_naissance, utilisateur_id, prix, numSecu, adresse) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
 				statement.setString(1, film.getSexe());

@@ -15,13 +15,13 @@ import org.junit.Before;
 import org.junit.Test;
 
 import marquise.daos.impl.DataSourceProvider;
-import marquise.daos.impl.FilmDaoImpl;
-import marquise.projos.Film;
+import marquise.daos.impl.InformationDaoImpl;
+import marquise.projos.Information;
 import marquise.projos.Utilisateur;
 
-public class FilmDaoTestCase {
+public class InformationDaoTestCase {
 	
-	private FilmDao filmDao = new FilmDaoImpl();
+	private InformationDao filmDao = new InformationDaoImpl();
 
 	@Before
 	public void initDb() throws Exception {
@@ -43,7 +43,7 @@ public class FilmDaoTestCase {
 	@Test
 	public void shouldListFilm() {
 		// WHEN
-		List<Film> films = filmDao.listFilms();
+		List<Information> films = filmDao.listFilms();
 		// THEN
 		Assertions.assertThat(films).hasSize(2);
 		Assertions.assertThat(films).extracting("id", "sexe", "dateNaissance", "utilisateur.id", "utilisateur.nom", "utilisateur.prenom", "tarif", "numSecu", "adresse").containsOnly(
@@ -56,7 +56,7 @@ public class FilmDaoTestCase {
 	@Test
 	public void shouldGetFilm() {
 		// WHEN
-		Film film = filmDao.getFilm(1);
+		Information film = filmDao.getFilm(1);
 		// THEN
 		Assertions.assertThat(film).isNotNull();
 		Assertions.assertThat(film.getId()).isEqualTo(1);
@@ -73,7 +73,7 @@ public class FilmDaoTestCase {
 	@Test
 	public void shouldNotGetFilm() {
 		// WHEN
-		Film film = filmDao.getFilm(0);
+		Information film = filmDao.getFilm(0);
 		// THEN
 		Assertions.assertThat(film).isNull();
 	}
@@ -81,9 +81,9 @@ public class FilmDaoTestCase {
 	@Test
 	public void shouldAddFilm() throws Exception {
 		// GIVEN
-		Film filmToAdd = new Film(null, "New title", LocalDate.of(2016, 11, 16), new Utilisateur(1, "Drama", "Drama"), 123, "New director", "New summary");
+		Information filmToAdd = new Information(null, "New title", LocalDate.of(2016, 11, 16), new Utilisateur(1, "Drama", "Drama"), 123, "New director", "New summary");
 		// WHEN
-		Film filmAdded = filmDao.addFilm(filmToAdd);
+		Information filmAdded = filmDao.addFilm(filmToAdd);
 		// THEN
 		Assertions.assertThat(filmAdded).isNotNull();
 		Assertions.assertThat(filmAdded.getId()).isNotNull();

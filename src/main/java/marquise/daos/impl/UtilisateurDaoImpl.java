@@ -11,7 +11,7 @@ import java.util.List;
 import marquise.daos.UtilisateurDao;
 import marquise.projos.Utilisateur;
 
-public class GenreDaoImpl implements UtilisateurDao {
+public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	@Override
 	public List<Utilisateur> listGenres() {

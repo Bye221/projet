@@ -2,7 +2,7 @@ package marquise.projos;
 
 import java.time.LocalDate;
 
-public class Film {
+public class Information {
 	
 	private Integer id;
 	private String sexe;
@@ -13,7 +13,7 @@ public class Film {
 	private String adresse;
 	
 	
-	public Film(Integer id, String sexe, LocalDate dateNaissance, Utilisateur utilisateur, Integer tarif, String numSecu,
+	public Information(Integer id, String sexe, LocalDate dateNaissance, Utilisateur utilisateur, Integer tarif, String numSecu,
 			String adresse) {
 		super();
 		this.id = id;
