@@ -10,7 +10,7 @@ public interface InformationDao {
 	
 	public Information getInformation(Integer id);
 	
-	public Information addInformation(Information film);
+	public Information addInformation(Information information);
 	
 	
 

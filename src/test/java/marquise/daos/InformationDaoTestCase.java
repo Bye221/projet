@@ -29,7 +29,7 @@ public class InformationDaoTestCase {
 				Statement stmt = connection.createStatement()) {
 			stmt.executeUpdate("DELETE FROM information");
 			stmt.executeUpdate("DELETE FROM utilisateur");
-			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (1,'Drama','Drama')");
+			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (1,'Auvray','Drama')");
 			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (2,'Comedy','Comedy')");
 			stmt.executeUpdate(
 					"INSERT INTO `information`(`information_id`,`sexe`, date_naissance, utilisateur_id, prix, numSecu, adresse) "
@@ -43,11 +43,11 @@ public class InformationDaoTestCase {
 	@Test
 	public void shouldListInformation() {
 		// WHEN
-		List<Information> films = informationDao.listInformations();
+		List<Information> informations = informationDao.listInformations();
 		// THEN
-		Assertions.assertThat(films).hasSize(2);
-		Assertions.assertThat(films).extracting("id", "sexe", "dateNaissance", "utilisateur.id", "utilisateur.nom", "utilisateur.prenom", "tarif", "numSecu", "adresse").containsOnly(
-			Assertions.tuple(1, "my title 1", LocalDate.of(2014, 11, 26), 1, "Drama", "Drama", 120, "director #1", "summary"),
+		Assertions.assertThat(informations).hasSize(2);
+		Assertions.assertThat(informations).extracting("id", "sexe", "dateNaissance", "utilisateur.id", "utilisateur.nom", "utilisateur.prenom", "tarif", "numSecu", "adresse").containsOnly(
+			Assertions.tuple(1, "my title 1", LocalDate.of(2014, 11, 26), 1, "Auvray", "Drama", 120, "director #1", "summary"),
 			Assertions.tuple(2, "my title 2", LocalDate.of(2014, 10, 26), 2, "Comedy","Comedy", 165, "director #2", "summary")
 		);
 
@@ -56,52 +56,52 @@ public class InformationDaoTestCase {
 	@Test
 	public void shouldGetInformation() {
 		// WHEN
-		Information film = informationDao.getInformation(1);
+		Information information = informationDao.getInformation(1);
 		// THEN
-		Assertions.assertThat(film).isNotNull();
-		Assertions.assertThat(film.getId()).isEqualTo(1);
-		Assertions.assertThat(film.getSexe()).isEqualTo("my title 1");
-		Assertions.assertThat(film.getDateNaissance()).isEqualTo(LocalDate.of(2014, 11, 26));
-		Assertions.assertThat(film.getUtilisateur().getId()).isEqualTo(1);
-		Assertions.assertThat(film.getUtilisateur().getNom()).isEqualTo("Drama");
-		Assertions.assertThat(film.getUtilisateur().getPrenom()).isEqualTo("Drama");
-		Assertions.assertThat(film.getTarif()).isEqualTo(120);
-		Assertions.assertThat(film.getNumSecu()).isEqualTo("director #1");
-		Assertions.assertThat(film.getAdresse()).isEqualTo("summary");
+		Assertions.assertThat(information).isNotNull();
+		Assertions.assertThat(information.getId()).isEqualTo(1);
+		Assertions.assertThat(information.getSexe()).isEqualTo("my title 1");
+		Assertions.assertThat(information.getDateNaissance()).isEqualTo(LocalDate.of(2014, 11, 26));
+		Assertions.assertThat(information.getUtilisateur().getId()).isEqualTo(1);
+		Assertions.assertThat(information.getUtilisateur().getNom()).isEqualTo("Auvray");
+		Assertions.assertThat(information.getUtilisateur().getPrenom()).isEqualTo("Drama");
+		Assertions.assertThat(information.getTarif()).isEqualTo(120);
+		Assertions.assertThat(information.getNumSecu()).isEqualTo("director #1");
+		Assertions.assertThat(information.getAdresse()).isEqualTo("summary");
 	}
 	
 	@Test
 	public void shouldNotGetInformation() {
 		// WHEN
-		Information film = informationDao.getInformation(0);
+		Information information = informationDao.getInformation(0);
 		// THEN
-		Assertions.assertThat(film).isNull();
+		Assertions.assertThat(information).isNull();
 	}
 
 	@Test
 	public void shouldAddInformation() throws Exception {
 		// GIVEN
-		Information filmToAdd = new Information(null, "New title", LocalDate.of(2016, 11, 16), new Utilisateur(1, "Drama", "Drama"), 123, "New director", "New summary");
+		Information informationToAdd = new Information(null, "New title", LocalDate.of(2016, 11, 16), new Utilisateur(1, "Auvray", "Drama"), 123, "New director", "New summary");
 		// WHEN
-		Information filmAdded = informationDao.addInformation(filmToAdd);
+		Information informationAdded = informationDao.addInformation(informationToAdd);
 		// THEN
-		Assertions.assertThat(filmAdded).isNotNull();
-		Assertions.assertThat(filmAdded.getId()).isNotNull();
-		Assertions.assertThat(filmAdded.getSexe()).isEqualTo("New title");
-		Assertions.assertThat(filmAdded.getDateNaissance()).isEqualTo(LocalDate.of(2016, 11, 16));
-		Assertions.assertThat(filmAdded.getUtilisateur().getId()).isEqualTo(1);
-		Assertions.assertThat(filmAdded.getUtilisateur().getNom()).isEqualTo("Drama");
-		Assertions.assertThat(filmAdded.getUtilisateur().getPrenom()).isEqualTo("Drama");
-		Assertions.assertThat(filmAdded.getTarif()).isEqualTo(123);
-		Assertions.assertThat(filmAdded.getNumSecu()).isEqualTo("New director");
-		Assertions.assertThat(filmAdded.getAdresse()).isEqualTo("New summary");
+		Assertions.assertThat(informationAdded).isNotNull();
+		Assertions.assertThat(informationAdded.getId()).isNotNull();
+		Assertions.assertThat(informationAdded.getSexe()).isEqualTo("New title");
+		Assertions.assertThat(informationAdded.getDateNaissance()).isEqualTo(LocalDate.of(2016, 11, 16));
+		Assertions.assertThat(informationAdded.getUtilisateur().getId()).isEqualTo(1);
+		Assertions.assertThat(informationAdded.getUtilisateur().getNom()).isEqualTo("Auvray");
+		Assertions.assertThat(informationAdded.getUtilisateur().getPrenom()).isEqualTo("Drama");
+		Assertions.assertThat(informationAdded.getTarif()).isEqualTo(123);
+		Assertions.assertThat(informationAdded.getNumSecu()).isEqualTo("New director");
+		Assertions.assertThat(informationAdded.getAdresse()).isEqualTo("New summary");
 		
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
 				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM information WHERE information_id = ?")) {
-			stmt.setInt(1, filmAdded.getId());
+			stmt.setInt(1, informationAdded.getId());
 			try (ResultSet rs = stmt.executeQuery()) {
 				assertThat(rs.next()).isTrue();
-				assertThat(rs.getInt("information_id")).isEqualTo(filmAdded.getId());
+				assertThat(rs.getInt("information_id")).isEqualTo(informationAdded.getId());
 				assertThat(rs.getString("sexe")).isEqualTo("New title");
 				assertThat(rs.getDate("date_naissance").toLocalDate()).isEqualTo(LocalDate.of(2016, 11, 16));
 				assertThat(rs.getInt("utilisateur_id")).isEqualTo(1);

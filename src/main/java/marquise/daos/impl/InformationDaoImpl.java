@@ -19,20 +19,21 @@ public class InformationDaoImpl implements InformationDao {
 	public List<Information> listInformations() {
 		
 		String query = "SELECT * FROM information JOIN utilisateur ON information.utilisateur_id = utilisateur.utilisateur_id ORDER BY sexe";
-		List<Information> films = new ArrayList<>();
+		List<Information> informations = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()){
 			try (Statement statement = connection.createStatement()){
 				try (ResultSet resultSet = statement.executeQuery(query)){
 					while(resultSet.next()){
-						Utilisateur genre = new Utilisateur(resultSet.getInt("utilisateur_id"),
+						Utilisateur utilisateur = new Utilisateur(resultSet.getInt("utilisateur_id"),
 								resultSet.getString("nom"), resultSet.getString("prenom"));
-						Information film = new Information(resultSet.getInt("information_id"),
+						Information information = new Information(resultSet.getInt("information_id"),
 								resultSet.getString("sexe"), 
-								resultSet.getDate("date_naissance").toLocalDate(), genre, 
+								resultSet.getDate("date_naissance").toLocalDate(), 
+								utilisateur, 
 								resultSet.getInt("prix"), 
 								resultSet.getString("numSecu"), 
 								resultSet.getString("adresse"));
-						films.add(film);
+						informations.add(information);
 					}
 				}
 			}
@@ -42,7 +43,7 @@ public class InformationDaoImpl implements InformationDao {
 		}
 		
 		
-		return films;
+		return informations;
 	}
 
 	@Override
@@ -52,7 +53,7 @@ public class InformationDaoImpl implements InformationDao {
 				statement.setInt(1, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
 					if(resultSet.next()) {
-						Utilisateur genre = new Utilisateur(resultSet.getInt("utilisateur_id"), 
+						Utilisateur utilisateur = new Utilisateur(resultSet.getInt("utilisateur_id"), 
 								resultSet.getString("nom"), 
 								resultSet.getString("prenom"));
 						
@@ -60,7 +61,7 @@ public class InformationDaoImpl implements InformationDao {
 								resultSet.getInt("information_id"), 
 								resultSet.getString("sexe"), 
 								resultSet.getDate("date_naissance").toLocalDate(), 
-								genre, 
+								utilisateur, 
 								resultSet.getInt("prix"), 
 								resultSet.getString("numSecu"), 
 								resultSet.getString("adresse"));
@@ -74,21 +75,21 @@ public class InformationDaoImpl implements InformationDao {
 	}
 
 	@Override
-	public Information addInformation(Information film) {
+	public Information addInformation(Information information) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO information(sexe, date_naissance, utilisateur_id, prix, numSecu, adresse) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
-				statement.setString(1, film.getSexe());
-				statement.setDate(2, Date.valueOf(film.getDateNaissance()));
-				statement.setInt(3, film.getUtilisateur().getId());
-				statement.setInt(4, film.getTarif());
-				statement.setString(5, film.getNumSecu());
-				statement.setString(6, film.getAdresse());
+				statement.setString(1, information.getSexe());
+				statement.setDate(2, Date.valueOf(information.getDateNaissance()));
+				statement.setInt(3, information.getUtilisateur().getId());
+				statement.setInt(4, information.getTarif());
+				statement.setString(5, information.getNumSecu());
+				statement.setString(6, information.getAdresse());
 				statement.executeUpdate();
 				
 				try (ResultSet resultSet = statement.getGeneratedKeys()) {
 					if(resultSet.next()) {
-						film.setId(resultSet.getInt(1));
-						return film;
+						information.setId(resultSet.getInt(1));
+						return information;
 					}
 				}
 			}
