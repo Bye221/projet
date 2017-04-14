@@ -26,12 +26,12 @@ public class FilmDaoImpl implements FilmDao {
 					while(resultSet.next()){
 						Genre genre = new Genre(resultSet.getInt("utilisateur_id"),
 								resultSet.getString("nom"), resultSet.getString("prenom"));
-						Film film = new Film(resultSet.getInt("film_id"),
+						Film film = new Film(resultSet.getInt("information_id"),
 								resultSet.getString("sexe"), 
-								resultSet.getDate("release_date").toLocalDate(), genre, 
-								resultSet.getInt("duration"), 
-								resultSet.getString("director"), 
-								resultSet.getString("summary"));
+								resultSet.getDate("date_naissance").toLocalDate(), genre, 
+								resultSet.getInt("prix"), 
+								resultSet.getString("numSecu"), 
+								resultSet.getString("adresse"));
 						films.add(film);
 					}
 				}
@@ -48,18 +48,22 @@ public class FilmDaoImpl implements FilmDao {
 	@Override
 	public Film getFilm(Integer id) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM information JOIN utilisateur ON information.utilisateur_id = utilisateur.utilisateur_id WHERE film_id = ?")) {
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM information JOIN utilisateur ON information.utilisateur_id = utilisateur.utilisateur_id WHERE information_id = ?")) {
 				statement.setInt(1, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
 					if(resultSet.next()) {
-						Genre genre = new Genre(resultSet.getInt("utilisateur_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
-						return  new Film(resultSet.getInt("film_id"), 
+						Genre genre = new Genre(resultSet.getInt("utilisateur_id"), 
+								resultSet.getString("nom"), 
+								resultSet.getString("prenom"));
+						
+						return  new Film(
+								resultSet.getInt("information_id"), 
 								resultSet.getString("sexe"), 
-								resultSet.getDate("release_date").toLocalDate(), 
+								resultSet.getDate("date_naissance").toLocalDate(), 
 								genre, 
-								resultSet.getInt("duration"), 
-								resultSet.getString("director"), 
-								resultSet.getString("summary"));
+								resultSet.getInt("prix"), 
+								resultSet.getString("numSecu"), 
+								resultSet.getString("adresse"));
 					}
 				}
 			}
@@ -72,13 +76,13 @@ public class FilmDaoImpl implements FilmDao {
 	@Override
 	public Film addFilm(Film film) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
-			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO information(sexe, release_date, utilisateur_id, duration, director, summary) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
+			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO information(sexe, date_naissance, utilisateur_id, prix, numSecu, adresse) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
 				statement.setString(1, film.getSexe());
-				statement.setDate(2, Date.valueOf(film.getReleaseDate()));
-				statement.setInt(3, film.getGenre().getId());
-				statement.setInt(4, film.getDuration());
-				statement.setString(5, film.getDirector());
-				statement.setString(6, film.getSummary());
+				statement.setDate(2, Date.valueOf(film.getDateNaissance()));
+				statement.setInt(3, film.getUtilisateur().getId());
+				statement.setInt(4, film.getTarif());
+				statement.setString(5, film.getNumSecu());
+				statement.setString(6, film.getAdresse());
 				statement.executeUpdate();
 				
 				try (ResultSet resultSet = statement.getGeneratedKeys()) {

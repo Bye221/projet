@@ -21,7 +21,7 @@ public class GenreDaoImpl implements GenreDao {
 			try (Statement statement = connection.createStatement()) {
 				try (ResultSet resultSet = statement.executeQuery(query)) {
 					while(resultSet.next()) {
-						Genre genre = new Genre(resultSet.getInt("genre_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
+						Genre genre = new Genre(resultSet.getInt("utilisateur_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
 						genres.add(genre);
 					}
 				}
@@ -35,11 +35,11 @@ public class GenreDaoImpl implements GenreDao {
 	@Override
 	public Genre getGenre(Integer id) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateur WHERE genre_id = ?")) {
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateur WHERE utilisateur_id = ?")) {
 				statement.setInt(1, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
 					if(resultSet.next()) {
-						return new Genre(resultSet.getInt("genre_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
+						return new Genre(resultSet.getInt("utilisateur_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
 					}
 				}
 			}

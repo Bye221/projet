@@ -26,9 +26,9 @@ public class GenreDaoTestCase {
 				Statement stmt = connection.createStatement()) {
 			stmt.executeUpdate("DELETE FROM information");
 			stmt.executeUpdate("DELETE FROM utilisateur");
-			stmt.executeUpdate("INSERT INTO `utilisateur`(`genre_id`,`nom`,`prenom`) VALUES (1,'Drama','Drama')");
-			stmt.executeUpdate("INSERT INTO `utilisateur`(`genre_id`,`nom`,`prenom`) VALUES (2,'Comedy','Comedy')");
-			stmt.executeUpdate("INSERT INTO `utilisateur`(`genre_id`,`nom`,`prenom`) VALUES (3,'Action','Action')");
+			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (1,'Drama','Drama')");
+			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (2,'Comedy','Comedy')");
+			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (3,'Action','Action')");
 		}
 	}
 	@Test
@@ -62,11 +62,11 @@ public class GenreDaoTestCase {
 		assertThat(genre.getPrenom()).isEqualTo("test");
 
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
-				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM utilisateur WHERE genre_id = ?")) {
+				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM utilisateur WHERE utilisateur_id = ?")) {
 			stmt.setInt(1, genre.getId());
 			try (ResultSet rs = stmt.executeQuery()) {
 				assertThat(rs.next()).isTrue();
-				assertThat(rs.getInt("genre_id")).isEqualTo(genre.getId());
+				assertThat(rs.getInt("utilisateur_id")).isEqualTo(genre.getId());
 				assertThat(rs.getString("nom")).isEqualTo("test");
 				assertThat(rs.getString("prenom")).isEqualTo("test");
 				assertThat(rs.next()).isFalse();

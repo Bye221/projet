@@ -32,10 +32,10 @@ public class FilmDaoTestCase {
 			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (1,'Drama','Drama')");
 			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (2,'Comedy','Comedy')");
 			stmt.executeUpdate(
-					"INSERT INTO `information`(`film_id`,`sexe`, release_date, utilisateur_id, duration, director, summary) "
+					"INSERT INTO `information`(`information_id`,`sexe`, date_naissance, utilisateur_id, prix, numSecu, adresse) "
 							+ "VALUES (1, 'my title 1', '2014-11-26', 1, 120, 'director #1', 'summary')");
 			stmt.executeUpdate(
-					"INSERT INTO `information`(`film_id`,`sexe`, release_date, utilisateur_id, duration, director, summary) "
+					"INSERT INTO `information`(`information_id`,`sexe`, date_naissance, utilisateur_id, prix, numSecu, adresse) "
 							+ "VALUES (2, 'my title 2', '2014-10-26', 2, 165, 'director #2', 'summary')");
 		}
 	}
@@ -46,7 +46,7 @@ public class FilmDaoTestCase {
 		List<Film> films = filmDao.listFilms();
 		// THEN
 		Assertions.assertThat(films).hasSize(2);
-		Assertions.assertThat(films).extracting("id", "sexe", "releaseDate", "genre.id", "genre.nom", "genre.prenom", "duration", "director", "summary").containsOnly(
+		Assertions.assertThat(films).extracting("id", "sexe", "dateNaissance", "utilisateur.id", "utilisateur.nom", "utilisateur.prenom", "tarif", "numSecu", "adresse").containsOnly(
 			Assertions.tuple(1, "my title 1", LocalDate.of(2014, 11, 26), 1, "Drama", "Drama", 120, "director #1", "summary"),
 			Assertions.tuple(2, "my title 2", LocalDate.of(2014, 10, 26), 2, "Comedy","Comedy", 165, "director #2", "summary")
 		);
@@ -61,13 +61,13 @@ public class FilmDaoTestCase {
 		Assertions.assertThat(film).isNotNull();
 		Assertions.assertThat(film.getId()).isEqualTo(1);
 		Assertions.assertThat(film.getSexe()).isEqualTo("my title 1");
-		Assertions.assertThat(film.getReleaseDate()).isEqualTo(LocalDate.of(2014, 11, 26));
-		Assertions.assertThat(film.getGenre().getId()).isEqualTo(1);
-		Assertions.assertThat(film.getGenre().getNom()).isEqualTo("Drama");
-		Assertions.assertThat(film.getGenre().getPrenom()).isEqualTo("Drama");
-		Assertions.assertThat(film.getDuration()).isEqualTo(120);
-		Assertions.assertThat(film.getDirector()).isEqualTo("director #1");
-		Assertions.assertThat(film.getSummary()).isEqualTo("summary");
+		Assertions.assertThat(film.getDateNaissance()).isEqualTo(LocalDate.of(2014, 11, 26));
+		Assertions.assertThat(film.getUtilisateur().getId()).isEqualTo(1);
+		Assertions.assertThat(film.getUtilisateur().getNom()).isEqualTo("Drama");
+		Assertions.assertThat(film.getUtilisateur().getPrenom()).isEqualTo("Drama");
+		Assertions.assertThat(film.getTarif()).isEqualTo(120);
+		Assertions.assertThat(film.getNumSecu()).isEqualTo("director #1");
+		Assertions.assertThat(film.getAdresse()).isEqualTo("summary");
 	}
 	
 	@Test
@@ -88,26 +88,26 @@ public class FilmDaoTestCase {
 		Assertions.assertThat(filmAdded).isNotNull();
 		Assertions.assertThat(filmAdded.getId()).isNotNull();
 		Assertions.assertThat(filmAdded.getSexe()).isEqualTo("New title");
-		Assertions.assertThat(filmAdded.getReleaseDate()).isEqualTo(LocalDate.of(2016, 11, 16));
-		Assertions.assertThat(filmAdded.getGenre().getId()).isEqualTo(1);
-		Assertions.assertThat(filmAdded.getGenre().getNom()).isEqualTo("Drama");
-		Assertions.assertThat(filmAdded.getGenre().getPrenom()).isEqualTo("Drama");
-		Assertions.assertThat(filmAdded.getDuration()).isEqualTo(123);
-		Assertions.assertThat(filmAdded.getDirector()).isEqualTo("New director");
-		Assertions.assertThat(filmAdded.getSummary()).isEqualTo("New summary");
+		Assertions.assertThat(filmAdded.getDateNaissance()).isEqualTo(LocalDate.of(2016, 11, 16));
+		Assertions.assertThat(filmAdded.getUtilisateur().getId()).isEqualTo(1);
+		Assertions.assertThat(filmAdded.getUtilisateur().getNom()).isEqualTo("Drama");
+		Assertions.assertThat(filmAdded.getUtilisateur().getPrenom()).isEqualTo("Drama");
+		Assertions.assertThat(filmAdded.getTarif()).isEqualTo(123);
+		Assertions.assertThat(filmAdded.getNumSecu()).isEqualTo("New director");
+		Assertions.assertThat(filmAdded.getAdresse()).isEqualTo("New summary");
 		
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
-				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM information WHERE film_id = ?")) {
+				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM information WHERE information_id = ?")) {
 			stmt.setInt(1, filmAdded.getId());
 			try (ResultSet rs = stmt.executeQuery()) {
 				assertThat(rs.next()).isTrue();
-				assertThat(rs.getInt("film_id")).isEqualTo(filmAdded.getId());
+				assertThat(rs.getInt("information_id")).isEqualTo(filmAdded.getId());
 				assertThat(rs.getString("sexe")).isEqualTo("New title");
-				assertThat(rs.getDate("release_date").toLocalDate()).isEqualTo(LocalDate.of(2016, 11, 16));
+				assertThat(rs.getDate("date_naissance").toLocalDate()).isEqualTo(LocalDate.of(2016, 11, 16));
 				assertThat(rs.getInt("utilisateur_id")).isEqualTo(1);
-				assertThat(rs.getInt("duration")).isEqualTo(123);
-				assertThat(rs.getString("director")).isEqualTo("New director");
-				assertThat(rs.getString("summary")).isEqualTo("New summary");
+				assertThat(rs.getInt("prix")).isEqualTo(123);
+				assertThat(rs.getString("numSecu")).isEqualTo("New director");
+				assertThat(rs.getString("adresse")).isEqualTo("New summary");
 				assertThat(rs.next()).isFalse();
 			}
 		}

@@ -6,64 +6,99 @@ public class Film {
 	
 	private Integer id;
 	private String sexe;
-	private LocalDate releaseDate;
-	private Genre genre;
-	private Integer duration;
-	private String director;
-	private String summary;
-	public Integer getId() {
-		return id;
-	}
-	public void setId(Integer id) {
-		this.id = id;
-	}
-	public String getSexe() {
-		return sexe;
-	}
-	public void setSexe(String title) {
-		this.sexe = sexe;
-	}
-	public LocalDate getReleaseDate() {
-		return releaseDate;
-	}
-	public void setReleaseDate(LocalDate releaseDate) {
-		this.releaseDate = releaseDate;
-	}
-	public Genre getGenre() {
-		return genre;
-	}
-	public void setGenre(Genre genre) {
-		this.genre = genre;
-	}
-	public Integer getDuration() {
-		return duration;
-	}
-	public void setDuration(Integer duration) {
-		this.duration = duration;
-	}
-	public String getDirector() {
-		return director;
-	}
-	public void setDirector(String director) {
-		this.director = director;
-	}
-	public String getSummary() {
-		return summary;
-	}
-	public void setSummary(String summary) {
-		this.summary = summary;
-	}
-	public Film(Integer id, String sexe, LocalDate releaseDate, Genre genre, Integer duration, String director,
-			String summary) {
+	private LocalDate dateNaissance;
+	private Genre utilisateur;
+	private Integer tarif;
+	private String numSecu;
+	private String adresse;
+	
+	
+	public Film(Integer id, String sexe, LocalDate dateNaissance, Genre utilisateur, Integer tarif, String numSecu,
+			String adresse) {
 		super();
 		this.id = id;
 		this.sexe = sexe;
-		this.releaseDate = releaseDate;
-		this.genre = genre;
-		this.duration = duration;
-		this.director = director;
-		this.summary = summary;
+		this.dateNaissance = dateNaissance;
+		this.utilisateur = utilisateur;
+		this.tarif = tarif;
+		this.numSecu = numSecu;
+		this.adresse = adresse;
 	}
+
+
+	public Integer getId() {
+		return id;
+	}
+
+
+	public void setId(Integer id) {
+		this.id = id;
+	}
+
+
+	public String getSexe() {
+		return sexe;
+	}
+
+
+	public void setSexe(String sexe) {
+		this.sexe = sexe;
+	}
+
+
+	public LocalDate getDateNaissance() {
+		return dateNaissance;
+	}
+
+
+	public void setDateNaissance(LocalDate dateNaissance) {
+		this.dateNaissance = dateNaissance;
+	}
+
+
+	public Genre getUtilisateur() {
+		return utilisateur;
+	}
+
+
+	public void setUtilisateur(Genre utilisateur) {
+		this.utilisateur = utilisateur;
+	}
+
+
+	public Integer getTarif() {
+		return tarif;
+	}
+
+
+	public void setTarif(Integer tarif) {
+		this.tarif = tarif;
+	}
+
+
+	public String getNumSecu() {
+		return numSecu;
+	}
+
+
+	public void setNumSecu(String numSecu) {
+		this.numSecu = numSecu;
+	}
+
+
+	public String getAdresse() {
+		return adresse;
+	}
+
+
+	public void setAdresse(String adresse) {
+		this.adresse = adresse;
+	}
+	
+	
+	
+	
+	
 	
 	
 
