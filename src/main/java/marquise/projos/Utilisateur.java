@@ -1,6 +1,6 @@
 package marquise.projos;
 
-public class Genre {
+public class Utilisateur {
 	
 	private Integer id;
 	private String nom;
@@ -8,7 +8,7 @@ public class Genre {
 	
 	
 	
-	public Genre(Integer id, String nom, String prenom) {
+	public Utilisateur(Integer id, String nom, String prenom) {
 		super();
 		this.id = id;
 		this.nom = nom;

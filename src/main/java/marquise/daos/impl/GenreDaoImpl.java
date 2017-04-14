@@ -8,20 +8,20 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import marquise.daos.GenreDao;
-import marquise.projos.Genre;
+import marquise.daos.UtilisateurDao;
+import marquise.projos.Utilisateur;
 
-public class GenreDaoImpl implements GenreDao {
+public class GenreDaoImpl implements UtilisateurDao {
 
 	@Override
-	public List<Genre> listGenres() {
+	public List<Utilisateur> listGenres() {
 		String query = "SELECT * FROM utilisateur ORDER BY nom";
-		List<Genre> genres = new ArrayList<>(); 
+		List<Utilisateur> genres = new ArrayList<>(); 
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try (Statement statement = connection.createStatement()) {
 				try (ResultSet resultSet = statement.executeQuery(query)) {
 					while(resultSet.next()) {
-						Genre genre = new Genre(resultSet.getInt("utilisateur_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
+						Utilisateur genre = new Utilisateur(resultSet.getInt("utilisateur_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
 						genres.add(genre);
 					}
 				}
@@ -33,13 +33,13 @@ public class GenreDaoImpl implements GenreDao {
 	}
 
 	@Override
-	public Genre getGenre(Integer id) {
+	public Utilisateur getGenre(Integer id) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateur WHERE utilisateur_id = ?")) {
 				statement.setInt(1, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
 					if(resultSet.next()) {
-						return new Genre(resultSet.getInt("utilisateur_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
+						return new Utilisateur(resultSet.getInt("utilisateur_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
 					}
 				}
 			}
@@ -50,7 +50,7 @@ public class GenreDaoImpl implements GenreDao {
 	}
 
 	@Override
-	public Genre addGenre(String nom, String prenom) {
+	public Utilisateur addGenre(String nom, String prenom) {
 		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO utilisateur(nom, prenom) VALUES(?,?)", Statement.RETURN_GENERATED_KEYS)) {
 				statement.setString(1, nom);
@@ -59,7 +59,7 @@ public class GenreDaoImpl implements GenreDao {
 				
 				try (ResultSet resultSet = statement.getGeneratedKeys()) {
 					if(resultSet.next()) {
-						return new Genre(resultSet.getInt(1), nom, prenom);
+						return new Utilisateur(resultSet.getInt(1), nom, prenom);
 					}
 				}
 			}

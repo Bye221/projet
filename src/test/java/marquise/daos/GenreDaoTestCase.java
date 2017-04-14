@@ -14,11 +14,11 @@ import org.junit.Test;
 
 import marquise.daos.impl.DataSourceProvider;
 import marquise.daos.impl.GenreDaoImpl;
-import marquise.projos.Genre;
+import marquise.projos.Utilisateur;
 
 public class GenreDaoTestCase {
 
-	private GenreDao genreDao = new GenreDaoImpl();
+	private UtilisateurDao genreDao = new GenreDaoImpl();
 
 	@Before
 	public void initDb() throws Exception {
@@ -34,7 +34,7 @@ public class GenreDaoTestCase {
 	@Test
 	public void shouldListGenres() {
 		// WHEN
-		List<Genre> genres = genreDao.listGenres();
+		List<Utilisateur> genres = genreDao.listGenres();
 		// THEN
 		assertThat(genres).hasSize(3);
 		assertThat(genres).extracting("id", "nom", "prenom").containsOnly(tuple(3, "Action", "Action"), tuple(2, "Comedy","Comedy"),
@@ -44,7 +44,7 @@ public class GenreDaoTestCase {
 	@Test
 	public void shouldGetGenre() {
 		// WHEN
-		Genre genre = genreDao.getGenre(1);
+		Utilisateur genre = genreDao.getGenre(1);
 		// THEN
 		assertThat(genre).isNotNull();
 		assertThat(genre.getId()).isEqualTo(1);
@@ -55,7 +55,7 @@ public class GenreDaoTestCase {
 	@Test
 	public void shouldAddGenre() throws Exception {
 		// WHEN
-		Genre genre = genreDao.addGenre("test", "test");
+		Utilisateur genre = genreDao.addGenre("test", "test");
 		// THEN
 		assertThat(genre.getId()).isNotNull();
 		assertThat(genre.getNom()).isEqualTo("test");

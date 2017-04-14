@@ -17,7 +17,7 @@ import org.junit.Test;
 import marquise.daos.impl.DataSourceProvider;
 import marquise.daos.impl.FilmDaoImpl;
 import marquise.projos.Film;
-import marquise.projos.Genre;
+import marquise.projos.Utilisateur;
 
 public class FilmDaoTestCase {
 	
@@ -81,7 +81,7 @@ public class FilmDaoTestCase {
 	@Test
 	public void shouldAddFilm() throws Exception {
 		// GIVEN
-		Film filmToAdd = new Film(null, "New title", LocalDate.of(2016, 11, 16), new Genre(1, "Drama", "Drama"), 123, "New director", "New summary");
+		Film filmToAdd = new Film(null, "New title", LocalDate.of(2016, 11, 16), new Utilisateur(1, "Drama", "Drama"), 123, "New director", "New summary");
 		// WHEN
 		Film filmAdded = filmDao.addFilm(filmToAdd);
 		// THEN

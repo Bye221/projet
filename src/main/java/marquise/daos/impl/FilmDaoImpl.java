@@ -11,7 +11,7 @@ import java.util.List;
 
 import marquise.daos.FilmDao;
 import marquise.projos.Film;
-import marquise.projos.Genre;
+import marquise.projos.Utilisateur;
 
 public class FilmDaoImpl implements FilmDao {
 
@@ -24,7 +24,7 @@ public class FilmDaoImpl implements FilmDao {
 			try (Statement statement = connection.createStatement()){
 				try (ResultSet resultSet = statement.executeQuery(query)){
 					while(resultSet.next()){
-						Genre genre = new Genre(resultSet.getInt("utilisateur_id"),
+						Utilisateur genre = new Utilisateur(resultSet.getInt("utilisateur_id"),
 								resultSet.getString("nom"), resultSet.getString("prenom"));
 						Film film = new Film(resultSet.getInt("information_id"),
 								resultSet.getString("sexe"), 
@@ -52,7 +52,7 @@ public class FilmDaoImpl implements FilmDao {
 				statement.setInt(1, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
 					if(resultSet.next()) {
-						Genre genre = new Genre(resultSet.getInt("utilisateur_id"), 
+						Utilisateur genre = new Utilisateur(resultSet.getInt("utilisateur_id"), 
 								resultSet.getString("nom"), 
 								resultSet.getString("prenom"));
 						

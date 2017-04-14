@@ -7,13 +7,13 @@ public class Film {
 	private Integer id;
 	private String sexe;
 	private LocalDate dateNaissance;
-	private Genre utilisateur;
+	private Utilisateur utilisateur;
 	private Integer tarif;
 	private String numSecu;
 	private String adresse;
 	
 	
-	public Film(Integer id, String sexe, LocalDate dateNaissance, Genre utilisateur, Integer tarif, String numSecu,
+	public Film(Integer id, String sexe, LocalDate dateNaissance, Utilisateur utilisateur, Integer tarif, String numSecu,
 			String adresse) {
 		super();
 		this.id = id;
@@ -56,12 +56,12 @@ public class Film {
 	}
 
 
-	public Genre getUtilisateur() {
+	public Utilisateur getUtilisateur() {
 		return utilisateur;
 	}
 
 
-	public void setUtilisateur(Genre utilisateur) {
+	public void setUtilisateur(Utilisateur utilisateur) {
 		this.utilisateur = utilisateur;
 	}
 
