@@ -33,10 +33,23 @@ public class adminServlet extends AbstractGenericServlet {
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
 		context.setVariable("utilisateurs", InformationLibrary.getInstance().listUtilisateurs());
-		
+		Integer idUtilisateur = (Integer) req.getSession().getAttribute("idUtilisat");
+		if(idUtilisateur != null){
+			context.setVariable("idUtil", InformationLibrary.getInstance().getUtilisateur(idUtilisateur));
+		}
 
 		templateEngine.process("admin/admin", context, resp.getWriter());
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		req.getSession().setAttribute("idUtilisat", req.getParameter("identifiant"));
+		resp.sendRedirect("admin");
+	
+	}
+	
+	
 
 
 	
