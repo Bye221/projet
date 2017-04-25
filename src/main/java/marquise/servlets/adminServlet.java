@@ -17,7 +17,7 @@ import marquise.services.InformationLibrary;
 @WebServlet("/admin")
 public class adminServlet extends AbstractGenericServlet {
 	
-	
+	private int idRecherche;
 
 	/**
 	 * 
@@ -34,9 +34,24 @@ public class adminServlet extends AbstractGenericServlet {
 		
 		context.setVariable("utilisateurs", InformationLibrary.getInstance().listUtilisateurs());
 		
+		
+		if(idRecherche != 0){
+			context.setVariable("idUtils", InformationLibrary.getInstance().getUtilisateur(idRecherche));
+		}
 
 		templateEngine.process("admin/admin", context, resp.getWriter());
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		idRecherche = Integer.parseInt(req.getParameter("identifiant"));
+		
+		resp.sendRedirect("admin");
+	
+	}
+	
+	
 
 
 	

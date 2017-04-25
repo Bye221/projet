@@ -26,9 +26,9 @@ public class UtilisateurDaoTestCase {
 				Statement stmt = connection.createStatement()) {
 			stmt.executeUpdate("DELETE FROM information");
 			stmt.executeUpdate("DELETE FROM utilisateur");
-			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (1,'Drama','Drama')");
-			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (2,'Comedy','Comedy')");
-			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (3,'Action','Action')");
+			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (1,'Martin','Pierre')");
+			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (2,'Toulemonde','Julien')");
+			stmt.executeUpdate("INSERT INTO `utilisateur`(`utilisateur_id`,`nom`,`prenom`) VALUES (3,'Chirac','Jacque')");
 		}
 	}
 	@Test
@@ -37,8 +37,8 @@ public class UtilisateurDaoTestCase {
 		List<Utilisateur> utilisateurs = utilisateurDao.listUtilisateurs();
 		// THEN
 		assertThat(utilisateurs).hasSize(3);
-		assertThat(utilisateurs).extracting("id", "nom", "prenom").containsOnly(tuple(3, "Action", "Action"), tuple(2, "Comedy","Comedy"),
-				tuple(1, "Drama","Drama"));
+		assertThat(utilisateurs).extracting("id", "nom", "prenom").containsOnly(tuple(3, "Chirac", "Jacque"), tuple(2, "Toulemonde","Julien"),
+				tuple(1, "Martin","Pierre"));
 	}
 	
 	@Test
@@ -48,8 +48,8 @@ public class UtilisateurDaoTestCase {
 		// THEN
 		assertThat(utilisateur).isNotNull();
 		assertThat(utilisateur.getId()).isEqualTo(1);
-		assertThat(utilisateur.getNom()).isEqualTo("Drama");
-		assertThat(utilisateur.getPrenom()).isEqualTo("Drama");
+		assertThat(utilisateur.getNom()).isEqualTo("Martin");
+		assertThat(utilisateur.getPrenom()).isEqualTo("Pierre");
 	}
 
 	@Test
