@@ -25,7 +25,7 @@ public class InformationDaoTestCase {
 
 	@Before
 	public void initDb() throws Exception {
-		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
 				Statement stmt = connection.createStatement()) {
 			stmt.executeUpdate("DELETE FROM information");
 			stmt.executeUpdate("DELETE FROM utilisateur");
@@ -96,7 +96,7 @@ public class InformationDaoTestCase {
 		Assertions.assertThat(informationAdded.getNumSecu()).isEqualTo("1234567890");
 		Assertions.assertThat(informationAdded.getAdresse()).isEqualTo("New summary");
 		
-		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
 				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM information WHERE information_id = ?")) {
 			stmt.setInt(1, informationAdded.getId());
 			try (ResultSet rs = stmt.executeQuery()) {

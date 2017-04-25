@@ -17,7 +17,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	public List<Utilisateur> listUtilisateurs() {
 		String query = "SELECT * FROM utilisateur ORDER BY nom";
 		List<Utilisateur> utilisateurs = new ArrayList<>(); 
-		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
 			try (Statement statement = connection.createStatement()) {
 				try (ResultSet resultSet = statement.executeQuery(query)) {
 					while(resultSet.next()) {
@@ -34,7 +34,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	@Override
 	public Utilisateur getUtilisateur(Integer id) {
-		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateur WHERE utilisateur_id = ?")) {
 				statement.setInt(1, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
@@ -51,7 +51,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 
 	@Override
 	public Utilisateur addUtilisateur(String nom, String prenom) {
-		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO utilisateur(nom, prenom) VALUES(?,?)", Statement.RETURN_GENERATED_KEYS)) {
 				statement.setString(1, nom);
 				statement.setString(2, prenom);
