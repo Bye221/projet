@@ -68,7 +68,7 @@
     <div class="row section1">
         <div class="col-md-6">
             <div class="block-test1">
-                <h2 class="titre-section-admin">Rechercher la liste de tout les inscrits au club: </h2>
+                <h2 class="titre-section-admin">Rechercher un licencié par son id dans la liste de tout les inscrits au club: </h2>
                 <form class="form-inline" method="post">
                     <div class="form-group">
                         <label for="idInput">Id</label>
@@ -77,6 +77,11 @@
                     </div>
                     <input type="submit" class="btn btn-default" value="Filter">
                 </form>
+                <div th:each="idUtil : ${idUtils}">
+                <p>[[${idUtil.nom}]]</p>
+                <p>[[${idUtil.prenom}]]</p>
+                
+                </div>
                 
             </div>
             <div class="block-test2">
