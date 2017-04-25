@@ -1,10 +1,11 @@
 package marquise.daos.impl;
 
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
+import javax.sql.DataSource;
 
 public class DataSourceProvider {
 	
-	protected static MysqlDataSource dataSource;
+	public static MysqlDataSource dataSource;
 
 	public static MysqlDataSource getDataSource() {
 		
