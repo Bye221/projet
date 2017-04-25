@@ -10,11 +10,11 @@ public class DataSourceProvider {
 		
 		if (dataSource == null){
 			dataSource = new MysqlDataSource();
-			dataSource.setServerName("localhost");
+			dataSource.setServerName("zwgaqwfn759tj79r.chr7pe7iynqr.eu-west-1.rds.amazonaws.com");
 			dataSource.setPort(3306);
-			dataSource.setDatabaseName("marquiseBase");
-			dataSource.setUser("root");
-			dataSource.setPassword("mylove");
+			dataSource.setDatabaseName("jyz1vhfvffbmzqa3");
+			dataSource.setUser("xyb3xc48u2c8jbo9");
+			dataSource.setPassword("mkl926vwmgtc8rfq");
 		}
 		return dataSource;
 	}
