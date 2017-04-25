@@ -22,7 +22,7 @@ public class UtilisateurDaoTestCase {
 
 	@Before
 	public void initDb() throws Exception {
-		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
 				Statement stmt = connection.createStatement()) {
 			stmt.executeUpdate("DELETE FROM information");
 			stmt.executeUpdate("DELETE FROM utilisateur");
@@ -61,7 +61,7 @@ public class UtilisateurDaoTestCase {
 		assertThat(utilisateur.getNom()).isEqualTo("test");
 		assertThat(utilisateur.getPrenom()).isEqualTo("test");
 
-		try (Connection connection = DataSourceProvider.getDataSource().getConnection();
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
 				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM utilisateur WHERE utilisateur_id = ?")) {
 			stmt.setInt(1, utilisateur.getId());
 			try (ResultSet rs = stmt.executeQuery()) {

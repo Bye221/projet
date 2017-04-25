@@ -20,7 +20,7 @@ public class InformationDaoImpl implements InformationDao {
 		
 		String query = "SELECT * FROM information JOIN utilisateur ON information.utilisateur_id = utilisateur.utilisateur_id ORDER BY sexe";
 		List<Information> informations = new ArrayList<>();
-		try (Connection connection = DataSourceProvider.getDataSource().getConnection()){
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try (Statement statement = connection.createStatement()){
 				try (ResultSet resultSet = statement.executeQuery(query)){
 					while(resultSet.next()){
@@ -48,7 +48,7 @@ public class InformationDaoImpl implements InformationDao {
 
 	@Override
 	public Information getInformation(Integer id) {
-		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM information JOIN utilisateur ON information.utilisateur_id = utilisateur.utilisateur_id WHERE information_id = ?")) {
 				statement.setInt(1, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
@@ -76,7 +76,7 @@ public class InformationDaoImpl implements InformationDao {
 
 	@Override
 	public Information addInformation(Information information) {
-		try (Connection connection = DataSourceProvider.getDataSource().getConnection()) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
 			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO information(sexe, date_naissance, utilisateur_id, prix, numSecu, adresse) VALUES(?,?,?,?,?,?)", Statement.RETURN_GENERATED_KEYS)) {
 				statement.setString(1, information.getSexe());
 				statement.setDate(2, Date.valueOf(information.getDateNaissance()));
