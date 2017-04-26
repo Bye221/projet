@@ -49,7 +49,7 @@ public class InformationDaoImpl implements InformationDao {
 	@Override
 	public Information getInformation(Integer id) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM information JOIN utilisateur ON information.utilisateur_id = utilisateur.utilisateur_id WHERE information_id = ?")) {
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM jyz1vhfvffbmzqa3.information JOIN jyz1vhfvffbmzqa3.utilisateur ON jyz1vhfvffbmzqa3.information.utilisateur_id = jyz1vhfvffbmzqa3.utilisateur.utilisateur_id WHERE information_id = ?")) {
 				statement.setInt(1, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
 					if(resultSet.next()) {
