@@ -35,7 +35,7 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 	@Override
 	public Utilisateur getUtilisateur(Integer id) {
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
-			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM jyz1vhfvffbmzqa3.utilisateur WHERE jyz1vhfvffbmzqa3.utilisateur_id = ?")) {
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM jyz1vhfvffbmzqa3.utilisateur WHERE utilisateur_id = ?")) {
 				statement.setInt(1, id);
 				try (ResultSet resultSet = statement.executeQuery()) {
 					if(resultSet.next()) {
