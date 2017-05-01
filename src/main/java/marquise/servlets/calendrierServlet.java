@@ -16,7 +16,9 @@ import org.thymeleaf.templateresolver.ITemplateResolver;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 @WebServlet("/calendrier")
+
 public class calendrierServlet extends AbstractGenericServlet {
+	
 	private static final long serialVersionUID = 1L;
 
 	@Override
