@@ -16,6 +16,7 @@ public class AbstractGenericServlet extends HttpServlet {
 		templateResolver.setPrefix("/WEB-INF/templates/");
 		templateResolver.setSuffix(".html");
 		
+		
 		TemplateEngine templateEngine = new TemplateEngine();
 		templateEngine.setTemplateResolver(templateResolver);
 		return templateEngine;

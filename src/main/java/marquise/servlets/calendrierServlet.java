@@ -25,6 +25,8 @@ public class calendrierServlet extends AbstractGenericServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
+		//Important pour generer un encodage en UTF-8
+		resp.setCharacterEncoding("UTF-8");
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
