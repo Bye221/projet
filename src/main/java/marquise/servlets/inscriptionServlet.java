@@ -34,6 +34,7 @@ public class inscriptionServlet extends HttpServlet {
 		templateResolver.setTemplateMode(TemplateMode.HTML);
 		templateResolver.setPrefix("/WEB-INF/templates/");
 		templateResolver.setSuffix(".html");
+		resp.setCharacterEncoding("UTF-8");
 		
 		TemplateEngine templateEngine = new TemplateEngine();
 		templateEngine.setTemplateResolver(templateResolver);
