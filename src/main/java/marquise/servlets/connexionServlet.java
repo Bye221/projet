@@ -32,6 +32,14 @@ public class connexionServlet extends AbstractGenericServlet {
 
 		templateEngine.process("users/connexion", context, resp.getWriter());
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		req.getSession().setAttribute("utilisateurConnecteLogin", req.getParameter("identifiant"));
+		req.getSession().setAttribute("utilisateurConnecteMdp", req.getParameter("mdp"));
+		resp.sendRedirect("/connexion");
+	}
 	
 	
 
