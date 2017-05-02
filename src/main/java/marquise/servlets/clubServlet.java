@@ -13,6 +13,8 @@ import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+import marquise.services.InformationLibrary;
+
 
 @WebServlet("/club")
 public class clubServlet extends AbstractGenericServlet {
@@ -31,6 +33,8 @@ public class clubServlet extends AbstractGenericServlet {
 		
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
+		
+		context.setVariable("articles", InformationLibrary.getInstance().listArticles());
 
 		templateEngine.process("users/club", context, resp.getWriter());
 	}
