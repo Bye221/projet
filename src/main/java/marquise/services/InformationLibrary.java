@@ -1,12 +1,16 @@
 package marquise.services;
+import java.time.LocalDate;
 import java.util.List;
 
+import marquise.daos.ArticleDao;
 import marquise.daos.CommentaireDao;
 import marquise.daos.InformationDao;
 import marquise.daos.UtilisateurDao;
+import marquise.daos.impl.ArticleDaoImpl;
 import marquise.daos.impl.CommentaireDaoImpl;
 import marquise.daos.impl.InformationDaoImpl;
 import marquise.daos.impl.UtilisateurDaoImpl;
+import marquise.projos.Article;
 import marquise.projos.Commentaire;
 import marquise.projos.Information;
 import marquise.projos.Utilisateur;
@@ -26,6 +30,7 @@ public class InformationLibrary {
 	private InformationDao informationDao = new InformationDaoImpl();
 	private UtilisateurDao utilisateurDao = new UtilisateurDaoImpl();
 	private CommentaireDao commentaireDao = new CommentaireDaoImpl();
+	private ArticleDao articleDao = new ArticleDaoImpl();
 
 	private InformationLibrary() {
 	}
@@ -60,6 +65,15 @@ public class InformationLibrary {
 
 	public Commentaire addCommentaire(String commentaire){
 		return commentaireDao.addCommentaire(commentaire);
+	}
+
+	public List<Article> listArticles(){
+		return articleDao.listArticles();
+		
+	}
+
+	public Article addArticle(String title, String texte, LocalDate datePublication, String auteur) {
+		return articleDao.addArticle(title, texte, datePublication, auteur);
 	}
 	
 }
