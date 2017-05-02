@@ -26,7 +26,7 @@ public class connexionServlet extends AbstractGenericServlet {
 		
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
-		resp.setCharacterEncoding("UTF-8");
+		//resp.setCharacterEncoding("UTF-8");
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
