@@ -28,6 +28,8 @@ public class staffServlet extends AbstractGenericServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
+		resp.setCharacterEncoding("UTF-8");
+		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
 		templateEngine.process("users/staff", context, resp.getWriter());

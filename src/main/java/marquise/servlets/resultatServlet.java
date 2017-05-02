@@ -27,6 +27,9 @@ public class resultatServlet extends AbstractGenericServlet {
 		
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
+		resp.setCharacterEncoding("UTF-8");
+		
+		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 
 		templateEngine.process("users/resultats", context, resp.getWriter());

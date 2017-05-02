@@ -12,28 +12,9 @@
     </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-    <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar"> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="index.html">Acceuil</a> </div>
-            <div class="navbar-collapse" id="myNavbar">
-                <ul class="nav navbar-nav">
-                    <li><a href="club.html">Club</a></li>
-                    <li><a href="staff.html">Staff</a></li>
-                    <li><a href="cours.html">Cours et Stages</a></li>
-                    <li><a href="calendrier.html">Caledrier</a></li>
-                    <li class="active"><a href="categorie.html">Categories</a></li>
-                    <li><a href="resultats.html">Résultats</a></li>
-                    <li><a href="inscription.html">Inscriptions</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                    <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <nav class="navbar navbar-inverse" th:insert="~{users/common ::entete('categorie')}">
+  
+</nav>
     <!-- Il y a 2 colonnes de 4 cases, une colonne vide puis les 3 colonnes pour la newsletter, les descriptions apparaissent au survol de la sourie 
  La class categorie1 a servie au debut pour definir la taille des cases !-->
     <div class="container-fluid">
@@ -85,10 +66,10 @@
         </div>
     </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="../../bootstrap/js/photo-gallery.js"></script>
+    <script src="bootstrap/js/photo-gallery.js"></script>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../../bootstrap/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 

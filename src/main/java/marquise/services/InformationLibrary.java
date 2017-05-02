@@ -1,10 +1,13 @@
 package marquise.services;
 import java.util.List;
 
+import marquise.daos.CommentaireDao;
 import marquise.daos.InformationDao;
 import marquise.daos.UtilisateurDao;
+import marquise.daos.impl.CommentaireDaoImpl;
 import marquise.daos.impl.InformationDaoImpl;
 import marquise.daos.impl.UtilisateurDaoImpl;
+import marquise.projos.Commentaire;
 import marquise.projos.Information;
 import marquise.projos.Utilisateur;
 
@@ -21,7 +24,8 @@ public class InformationLibrary {
 	}
 	
 	private InformationDao informationDao = new InformationDaoImpl();
-	private UtilisateurDao utilisateurDao = new UtilisateurDaoImpl();	
+	private UtilisateurDao utilisateurDao = new UtilisateurDaoImpl();
+	private CommentaireDao commentaireDao = new CommentaireDaoImpl();
 
 	private InformationLibrary() {
 	}
@@ -50,5 +54,12 @@ public class InformationLibrary {
 		return utilisateurDao.addUtilisateur(nom, prenom);
 	}
 	
+	public List<Commentaire> listCommentaires(){
+		return commentaireDao.listCommentaires();
+	}
+
+	public Commentaire addCommentaire(String commentaire){
+		return commentaireDao.addCommentaire(commentaire);
+	}
 	
 }
