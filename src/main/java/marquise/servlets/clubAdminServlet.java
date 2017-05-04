@@ -17,8 +17,8 @@ import marquise.projos.Article;
 import marquise.projos.Utilisateur;
 import marquise.services.InformationLibrary;
 
-@WebServlet("/admin")
-public class adminServlet extends AbstractGenericServlet {
+@WebServlet("/clubAdmin")
+public class clubAdminServlet extends AbstractGenericServlet {
 	
 	private int idRecherche;
 	private int idInformation;
@@ -31,21 +31,14 @@ public class adminServlet extends AbstractGenericServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		resp.setCharacterEncoding("UTF-8");
+		
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
 		resp.setCharacterEncoding("UTF-8");
-		
-		context.setVariable("utilisateurs", InformationLibrary.getInstance().listUtilisateurs());
-		
-		
-		if(idRecherche != 0){
-			context.setVariable("idUtils", InformationLibrary.getInstance().getUtilisateur(idRecherche));
-		}
 
-		templateEngine.process("admin/admin", context, resp.getWriter());
+		templateEngine.process("admin/clubAdmin", context, resp.getWriter());
 	}
 	
 	@Override
@@ -61,10 +54,9 @@ public class adminServlet extends AbstractGenericServlet {
 		Article newArticle = new Article(null, title, null, null, null);
 		Article addedArticle = InformationLibrary.getInstance().addArticle(title, text , releaseDate, title);
 		
-		idRecherche = Integer.parseInt(req.getParameter("identifiant"));
-		//idInformation = Integer.parseInt(req.getParameter("identifiantInformation"));
 		
-		resp.sendRedirect("admin");
+		
+		resp.sendRedirect("clubAdmin");
 	
 	}
 	
