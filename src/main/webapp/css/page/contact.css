@@ -23,3 +23,14 @@ body {
     border-radius: 0px;
     min-width: 80px;
 }
+
+.plan {
+    text-align: center;
+    padding-top: 30px;
+}
+
+.coordonees {
+    text-align: center;
+    padding-top: 50px;
+    padding-bottom: 30px;
+}
