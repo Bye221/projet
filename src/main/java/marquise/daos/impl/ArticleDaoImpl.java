@@ -21,7 +21,7 @@ public class ArticleDaoImpl implements ArticleDao {
 	@Override
 	public List<Article> listArticles() {
 		
-		String query = "SELECT * FROM article ORDER BY idArticle";
+		String query = "SELECT * FROM article ORDER BY idArticle DESC";
 		List<Article> articles = new ArrayList<>();
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()){
 			try (Statement statement = connection.createStatement()){

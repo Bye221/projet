@@ -44,15 +44,15 @@ public class clubAdminServlet extends AbstractGenericServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		String text=" Hello le test";
-		String auteur ="L-C";
+		String texte = req.getParameter("texte");
+		String auteur =req.getParameter("auteur");
 		
 		String releaseDateAsString = req.getParameter("releaseDate");
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate releaseDate = LocalDate.parse(releaseDateAsString, formatter);
 		String title = req.getParameter("title");
-		Article newArticle = new Article(null, title, null, null, null);
-		Article addedArticle = InformationLibrary.getInstance().addArticle(title, text , releaseDate, title);
+		Article newArticle = new Article(null, title, texte, null, auteur);
+		Article addedArticle = InformationLibrary.getInstance().addArticle(title, texte , releaseDate, auteur);
 		
 		
 		

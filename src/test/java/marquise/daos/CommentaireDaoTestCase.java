@@ -28,9 +28,9 @@ public class CommentaireDaoTestCase {
 				Statement stmt = connection.createStatement()) {
 			stmt.executeUpdate("DELETE FROM commentaires");
 			
-			stmt.executeUpdate("INSERT INTO `commentaires`(`idcommentaires`,`commentaireColonne`) VALUES (1,'Commentaire n° 1')");
-			stmt.executeUpdate("INSERT INTO `commentaires`(`idcommentaires`,`commentaireColonne`) VALUES (2,'Commentaire n° 2')");
-			stmt.executeUpdate("INSERT INTO `commentaires`(`idcommentaires`,`commentaireColonne`) VALUES (3,'Commentaire n° 3')");
+			stmt.executeUpdate("INSERT INTO `commentaires`(`idcommentaires`,`email`,`commentaireColonne`) VALUES (1,'email1','Commentaire n° 1')");
+			stmt.executeUpdate("INSERT INTO `commentaires`(`idcommentaires`,`email`,`commentaireColonne`) VALUES (2,'email2','Commentaire n° 2')");
+			stmt.executeUpdate("INSERT INTO `commentaires`(`idcommentaires`,`email`,`commentaireColonne`) VALUES (3,'email3','Commentaire n° 3')");
 		}
 	}
 	@Test
@@ -39,8 +39,8 @@ public class CommentaireDaoTestCase {
 		List<Commentaire> commentaires = commentaireDao.listCommentaires();
 		// THEN
 		assertThat(commentaires).hasSize(3);
-		assertThat(commentaires).extracting("id", "commentaire").containsOnly(tuple(3, "Commentaire n° 3"), tuple(2, "Commentaire n° 2"),
-				tuple(1, "Commentaire n° 1"));
+		assertThat(commentaires).extracting("id","email", "commentaire").containsOnly(tuple(3,"email3" ,"Commentaire n° 3"), tuple(2,"email2", "Commentaire n° 2"),
+				tuple(1,"email1", "Commentaire n° 1"));
 	}
 	
 	/*@Test
@@ -57,9 +57,10 @@ public class CommentaireDaoTestCase {
 	@Test
 	public void shouldAddCommentaire() throws Exception {
 		// WHEN
-		Commentaire commentaire = commentaireDao.addCommentaire("test");
+		Commentaire commentaire = commentaireDao.addCommentaire("test", "test");
 		// THEN
 		assertThat(commentaire.getId()).isNotNull();
+		assertThat(commentaire.getEmail()).isEqualTo("test");
 		assertThat(commentaire.getCommentaire()).isEqualTo("test");
 		
 
@@ -70,6 +71,7 @@ public class CommentaireDaoTestCase {
 			try (ResultSet rs = stmt.executeQuery()) {
 				assertThat(rs.next()).isTrue();
 				assertThat(rs.getInt("idcommentaires")).isEqualTo(commentaire.getId());
+				assertThat(rs.getString("email")).isEqualTo("test");
 				assertThat(rs.getString("commentaireColonne")).isEqualTo("test");
 				assertThat(rs.next()).isFalse();
 			}

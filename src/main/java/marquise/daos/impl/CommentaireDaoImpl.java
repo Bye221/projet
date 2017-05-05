@@ -23,7 +23,7 @@ public class CommentaireDaoImpl implements CommentaireDao {
 			try (Statement statement = connection.createStatement()) {
 				try (ResultSet resultSet = statement.executeQuery(query)) {
 					while(resultSet.next()) {
-						Commentaire commentaire = new Commentaire(resultSet.getInt("idcommentaires"), resultSet.getString("commentaireColonne"));
+						Commentaire commentaire = new Commentaire(resultSet.getInt("idcommentaires"), resultSet.getString("email"),  resultSet.getString("commentaireColonne"));
 						commentaires.add(commentaire);
 					}
 				}
@@ -58,17 +58,18 @@ public class CommentaireDaoImpl implements CommentaireDao {
 	}*/
 
 	@Override
-	public Commentaire addCommentaire(String commentaire) {
+	public Commentaire addCommentaire(String email, String commentaire) {
 
 		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
-			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO jyz1vhfvffbmzqa3.commentaires(commentaireColonne) VALUES(?)", Statement.RETURN_GENERATED_KEYS)) {
+			try(PreparedStatement statement = connection.prepareStatement("INSERT INTO jyz1vhfvffbmzqa3.commentaires(email,commentaireColonne) VALUES(?,?)", Statement.RETURN_GENERATED_KEYS)) {
 
-				statement.setString(1, commentaire);
+				statement.setString(1, email);
+				statement.setString(2, commentaire);
 				statement.executeUpdate();
 
 				try (ResultSet resultSet = statement.getGeneratedKeys()) {
 					if(resultSet.next()) {
-						return new Commentaire(resultSet.getInt(1), commentaire);
+						return new Commentaire(resultSet.getInt(1), email, commentaire);
 					}				}
 			}
 		}catch (SQLException e) {

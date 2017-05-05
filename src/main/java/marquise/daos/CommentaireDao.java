@@ -8,6 +8,6 @@ public interface CommentaireDao {
 	
 	public List<Commentaire> listCommentaires();
 
-	public Commentaire addCommentaire(String commentaire);
+	public Commentaire addCommentaire(String email, String commentaire);
 
 }

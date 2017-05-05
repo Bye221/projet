@@ -63,8 +63,8 @@ public class InformationLibrary {
 		return commentaireDao.listCommentaires();
 	}
 
-	public Commentaire addCommentaire(String commentaire){
-		return commentaireDao.addCommentaire(commentaire);
+	public Commentaire addCommentaire(String email ,String commentaire){
+		return commentaireDao.addCommentaire(email, commentaire);
 	}
 
 	public List<Article> listArticles(){

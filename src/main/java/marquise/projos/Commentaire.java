@@ -5,13 +5,15 @@ import java.time.LocalDate;
 public class Commentaire {
 	
 	private Integer id;
+	private String email;
 	private String commentaire;
 	
 	
 	
-	public Commentaire(Integer id, String commentaire) {
+	public Commentaire(Integer id, String email, String commentaire) {
 		super();
 		this.id = id;
+		this.email = email;
 		this.commentaire = commentaire;
 	}
 	public Integer getId() {
@@ -20,6 +22,12 @@ public class Commentaire {
 	public void setId(Integer id) {
 		this.id = id;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getCommentaire() {
 		return commentaire;
 	}
@@ -27,6 +35,7 @@ public class Commentaire {
 		this.commentaire = commentaire;
 	}
 	
+
 	
 	
 	
