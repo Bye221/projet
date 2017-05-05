@@ -1,0 +1,25 @@
+@import "../global/global.css";
+body {
+    position: relative;
+}
+
+
+.section-contact {
+    text-align: center;
+
+}
+
+.entreTexte {
+    border-style: none none solid none;
+    min-width: 180px;
+}
+
+.commentaire {
+    min-height: 200px;
+    width:400px;
+}
+
+.bouton-contact {
+    border-radius: 0px;
+    min-width: 80px;
+}
