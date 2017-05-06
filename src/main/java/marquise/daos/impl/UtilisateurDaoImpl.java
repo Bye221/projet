@@ -69,6 +69,25 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		return null;
 	}
 
+	@Override
+	public void deleteUtilisateur(String nom, String prenom) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
+			try(PreparedStatement statement = connection.prepareStatement("DELETE FROM jyz1vhfvffbmzqa3.utilisateur where nom = '?' and prenom='?';")) 
+					{
+				statement.setString(1, nom);
+				statement.setString(2, prenom);
+				statement.executeUpdate();
+				
+				
+				
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		
+	}
+
 	
 	
 	

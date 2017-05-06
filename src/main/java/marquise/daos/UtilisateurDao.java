@@ -10,5 +10,7 @@ public interface UtilisateurDao {
 	public Utilisateur getUtilisateur(Integer id);
 
 	public Utilisateur addUtilisateur(String nom, String prenom);
+	
+	public void deleteUtilisateur(String nom, String prenom);
 
 }
