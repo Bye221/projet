@@ -8,11 +8,10 @@ body {
     height:auto;
     color: rgb(25, 38, 33);
     text-align: center;
-    background-image:url("../../img/piste.jpeg");
+    background-image:url("../../img/piste.png");
     background-size: cover;
     background-repeat:no-repeat;
-
-   
+    min-height: 300px;
     
 }
 
@@ -23,15 +22,17 @@ body {
     background-image: url(../../img/city_woman.jpg);
     background-size: cover;
     background-repeat:no-repeat;
-    
+    text-align: center;
+    min-height: 300px;
     
 }
 
 #section3 {
     padding-top: 50px;
-    height: 500px;
+    min-height: 300px;
     color: #fff;
     background-color: #ff9800;
+    text-align: center;
 }
 
 #section4 {
@@ -40,6 +41,7 @@ body {
     color: #fff;
     background-image: url(../../img/competition_start.jpg);
     background-size: cover;
+    text-align: center;
 }
 
 #section5 {
@@ -49,4 +51,5 @@ body {
     color: #fff;
     background-color: #009688;
     text-align: center;
+    min-height: 300px;
 }
