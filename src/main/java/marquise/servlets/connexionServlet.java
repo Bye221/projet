@@ -7,6 +7,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -20,6 +21,10 @@ public class connexionServlet extends AbstractGenericServlet {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private Map<String, String> utilisateursAutorises;
+	
+	
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,7 +41,10 @@ public class connexionServlet extends AbstractGenericServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
+		String identifiant=req.getParameter("identifiant");
+		String password=req.getParameter("mdp");
+		if( identifiant== )
+		HttpSession session=req.getSession();
 		req.getSession().setAttribute("utilisateurConnecteLogin", req.getParameter("identifiant"));
 		req.getSession().setAttribute("utilisateurConnecteMdp", req.getParameter("mdp"));
 		resp.sendRedirect("/connexion");
