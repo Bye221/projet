@@ -17,16 +17,7 @@
 
 <body>
   
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="navbar-brand" href="index.html">Acceuil</a>
-    </div>
+
     <nav class="navbar navbar-inverse" th:insert="~{users/common ::entete('inscription')}">
   
 </nav>
@@ -39,7 +30,7 @@
   
 <div class="container-fluid">
  <div class="formulaire-box">
-  <h3 class="titre-formulaire">Remplissez vos informations ici</h3>
+  <h3 class="titre-formulaire">Formulaire d'inscription</h3>
   
   
   <form class="formulaire-perso">
@@ -71,10 +62,13 @@
   </form>
 </div>
    </div>
-    
-
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="../bootstrap/js/bootstrap.min.js"></script>
+   
+   <footer class="footer">
+    <div class="container">
+        <p>
+            Hello world !
+        </p>
+    </div>
+</footer>
 </body>
 </html>

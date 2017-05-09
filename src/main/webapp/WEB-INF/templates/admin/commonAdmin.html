@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>fragment</title>
+		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+   <link href="css/page/index.css" rel="stylesheet">
+	</head>
+	<body data-spy="scroll" data-target=".navbar" data-offset="50">
+	<nav th:fragment="entete(selectedMenu)">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+     <div th:class="${selectedMenu == 'admin' } ? 'active'"> <a class="active navbar-brand" href="admin">Acceuil admin</a></div>
+    </div>
+    <div class="navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li th:class="${selectedMenu == 'clubAdmin' } ? 'active'"><a href="clubAdmin">Club admin</a></li>
+        
+        <li th:class="${selectedMenu == 'equipeAdmin' } ? 'active'"><a href="equipeAdmin">Staff admin</a></li>
+        
+        <li th:class="${selectedMenu == 'coursAdmin' } ? 'active'"><a href="coursAdmin">Cours et Stages admin</a></li>
+        
+        <li th:class="${selectedMenu == 'calendrierAdmin' } ? 'active'"><a href="calendrierAdmin">Caledrier admin</a></li>
+        
+        <li th:class="${selectedMenu == 'categorieAdmin' } ? 'active'"><a href="categorieAdmin">Categories</a></li>
+        
+        <li th:class="${selectedMenu == 'resultatsAdmin' } ? 'active'"><a href="resultatsAdmin">Résultats admin</a></li>
+        
+        <li th:class="${selectedMenu == 'inscriptionsAdmin' } ? 'active'"><a href="inscriptionAdmin">Inscriptions admin</a></li>
+        
+        <li th:class="${selectedMenu == 'contactAdmin' } ? 'active'"><a href="contactAdmin">Contact admin</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li th:class="${selectedMenu == 'signup' } ? 'active'"><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li> -->
+        <li th:class="${selectedMenu == 'connexion' } ? 'active'"><a href="connexion"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+    <div class="row head">
+        <div class="col-sm-12 col-md-12">
+           
+            <h1>Entente Maritime Athlétique 62</h1>
+        </div>
+        
+        
+        
+    </div>
+</div>
+<footer th:fragment="footer(footer)" class="footer">
+            <div class="container">
+                <p> Hello world ! </p>
+                <p class="reference">marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme marquise athletisme</p>
+            </div>
+        </footer>
+
+
+	</body>
+</html>

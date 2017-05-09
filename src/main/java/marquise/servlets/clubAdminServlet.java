@@ -1,6 +1,7 @@
 package marquise.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -9,6 +10,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -31,6 +33,14 @@ public class clubAdminServlet extends AbstractGenericServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		PrintWriter out = resp.getWriter();
+		HttpSession session=req.getSession(false);
+		
+		if(session != null){}
+		else{
+			resp.sendRedirect("connexion");
+			out.println("Veuillez entre un mot de passe correct");
+		}
 		
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
@@ -39,6 +49,7 @@ public class clubAdminServlet extends AbstractGenericServlet {
 		resp.setCharacterEncoding("UTF-8");
 
 		templateEngine.process("admin/clubAdmin", context, resp.getWriter());
+		resp.setCharacterEncoding("UTF-8");
 	}
 	
 	@Override
