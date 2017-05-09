@@ -88,6 +88,23 @@ public class UtilisateurDaoImpl implements UtilisateurDao {
 		
 	}
 
+	@Override
+	public Utilisateur getUtilisateurByNom(String nom) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
+			try(PreparedStatement statement = connection.prepareStatement("SELECT * FROM jyz1vhfvffbmzqa3.utilisateur WHERE nom = ?")) {
+				statement.setString(1, nom);
+				try (ResultSet resultSet = statement.executeQuery()) {
+					if(resultSet.next()) {
+						return new Utilisateur(resultSet.getInt("utilisateur_id"), resultSet.getString("nom"), resultSet.getString("prenom"));
+					}
+				}
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
 	
 	
 	

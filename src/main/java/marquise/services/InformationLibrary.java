@@ -59,6 +59,9 @@ public class InformationLibrary {
 	public Utilisateur getUtilisateur(Integer id) {
 		return utilisateurDao.getUtilisateur(id);
 	}
+	public Utilisateur getUtilisateurByNom(String nom){
+		return utilisateurDao.getUtilisateurByNom(nom);
+	}
 
 	public Utilisateur addUtilisateur(String nom, String prenom) {
 		return utilisateurDao.addUtilisateur(nom, prenom);
