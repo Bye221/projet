@@ -17,40 +17,8 @@
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
   
-<nav class="navbar navbar-inverse">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>                        
-      </button>
-      <a class="active navbar-brand" href="index">Acceuil</a>
-    </div>
-    <div class="navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="club.html">Club</a></li>
-        
-        <li><a href="staff">Staff</a></li>
-        
-        <li><a href="cours">Cours et Stages</a></li>
-        
-        <li><a href="calendrier">Caledrier</a></li>
-        
-        <li><a href="categorie">Categories</a></li>
-        
-        <li><a href="resultats">Résultats</a></li>
-        
-        <li><a href="inscription">Inscriptions</a></li>
-        
-        <li><a href="contact">Contact</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </div>
+<nav class="navbar navbar-inverse" th:insert="~{admin/commonAdmin ::entete('admin')}">
+  
 </nav>
 <div class="container-fluid">
     <div class="row head">

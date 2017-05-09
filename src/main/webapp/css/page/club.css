@@ -1,5 +1,9 @@
 @import "../global/global.css";
 
+.article{
+	padding : 25px;
+}
+
 .article-texte{
 	min-height : 300px;
 	

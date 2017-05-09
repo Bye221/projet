@@ -1,6 +1,7 @@
 package marquise.servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
@@ -33,13 +34,18 @@ public class adminServlet extends AbstractGenericServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 <<<<<<< HEAD
+<<<<<<< HEAD
 		resp.setCharacterEncoding("UTF-8");
 =======
+=======
+		PrintWriter out = resp.getWriter();
+>>>>>>> louis-come
 		HttpSession session=req.getSession(false);
 		
 		if(session != null){}
 		else{
 			resp.sendRedirect("connexion");
+			out.println("Veuillez entre un mot de passe correct");
 		}
 		
 >>>>>>> louis-come
@@ -47,7 +53,7 @@ public class adminServlet extends AbstractGenericServlet {
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
-		resp.setCharacterEncoding("UTF-8");
+		
 		
 		context.setVariable("utilisateurs", InformationLibrary.getInstance().listUtilisateurs());
 		
@@ -57,7 +63,7 @@ public class adminServlet extends AbstractGenericServlet {
 		}
 
 		templateEngine.process("admin/admin", context, resp.getWriter());
-		
+		resp.setCharacterEncoding("UTF-8");
 	}
 	
 	@Override
