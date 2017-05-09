@@ -27,30 +27,8 @@
       </button>
       <a class="navbar-brand" href="index.html">Acceuil</a>
     </div>
-    <div class="collapse navbar-collapse" id="myNavbar">
-      <ul class="nav navbar-nav">
-        <li><a href="club.html">Club</a></li>
-        
-        <li><a href="staff.html">Staff</a></li>
-        
-        <li><a href="cours.html">Cours et Stages</a></li>
-        
-        <li><a href="calendrier.html">Caledrier</a></li>
-        
-        <li><a href="categorie.html">Categories</a></li>
-        
-        <li><a href="resultats.html">Résultats</a></li>
-        
-        <li class="active"><a href="inscription.html">Inscriptions</a></li>
-        
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      </ul>
-    </div>
-  </div>
+    <nav class="navbar navbar-inverse" th:insert="~{users/common ::entete('inscription')}">
+  
 </nav>
          <div class="container-fluid">
             <div class="row head">

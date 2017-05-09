@@ -14,7 +14,7 @@ import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
 
-@WebServlet("/google")
+@WebServlet("/googlecd8a073674b9ee3f.html")
 public class googleServlet extends AbstractGenericServlet {
 
 	/**
