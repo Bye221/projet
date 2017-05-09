@@ -39,7 +39,7 @@ public class ArticleDaoImpl implements ArticleDao {
 				}
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
 		}
 		
