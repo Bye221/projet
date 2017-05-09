@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -31,7 +32,17 @@ public class adminServlet extends AbstractGenericServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+<<<<<<< HEAD
 		resp.setCharacterEncoding("UTF-8");
+=======
+		HttpSession session=req.getSession(false);
+		
+		if(session != null){}
+		else{
+			resp.sendRedirect("connexion");
+		}
+		
+>>>>>>> louis-come
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
@@ -46,6 +57,7 @@ public class adminServlet extends AbstractGenericServlet {
 		}
 
 		templateEngine.process("admin/admin", context, resp.getWriter());
+		
 	}
 	
 	@Override
