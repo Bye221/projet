@@ -8,6 +8,8 @@ public interface UtilisateurDao {
 	public List<Utilisateur> listUtilisateurs();
 	
 	public Utilisateur getUtilisateur(Integer id);
+	
+	public Utilisateur getUtilisateurByNom(String nom);
 
 	public Utilisateur addUtilisateur(String nom, String prenom);
 	
