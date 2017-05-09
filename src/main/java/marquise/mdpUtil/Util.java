@@ -86,7 +86,7 @@ public class Util {
 	// Génération des mots de passe de nos utilisateurs
 	public static void main(String[] args) {
 		try {
-			System.out.println(String.format("login1=%s", Util.genererMotDePasse("louis")));
+			System.out.println(String.format("mdp1=%s", Util.genererMotDePasse("mdp1")));
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
