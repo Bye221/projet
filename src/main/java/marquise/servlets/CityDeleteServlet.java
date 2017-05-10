@@ -10,7 +10,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import fr.hei.devweb.cityexplorer.services.CityService;
+import marquise.services.InformationLibrary;
+
+
 
 @WebServlet("/deletecity")
 public class CityDeleteServlet extends AbstractGenericServlet2 {
@@ -19,17 +21,15 @@ public class CityDeleteServlet extends AbstractGenericServlet2 {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String confirm = req.getParameter("confirm");
 		Integer idCity = Integer.parseInt(req.getParameter("id"));
-		if("true".equals(confirm)) {
-			CityService.getInstance().deleteCity(idCity);
+		////	InformationLibrary.getInstance().deleteCity(idCity);
 			resp.sendRedirect("home2");
-		} else {
-			TemplateEngine templateEngine = this.createTemplateEngine(req);
+		//} else {
+		//	TemplateEngine templateEngine = this.createTemplateEngine(req);
 			
-			WebContext context = new WebContext(req, resp, req.getServletContext());			
-			context.setVariable("city", CityService.getInstance().getCity(idCity));
+			//context.setVariable("city", InformationLibrary.getInstance().getCity(idCity));
 			
-			templateEngine.process("confirmdelete", context, resp.getWriter());
-		}
+			//templateEngine.process("confirmdelete", context, resp.getWriter());
+		//}
 	}
 
 	
