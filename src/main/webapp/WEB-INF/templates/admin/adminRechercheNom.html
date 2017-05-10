@@ -46,55 +46,17 @@
                     <input type="submit" class="btn btn-default" value="Filter">
                 </form>
                 <div th:each="idUtil : ${idUtils}">
+                
                 <p>[[${idUtil.nom}]]</p>
                 <p>[[${idUtil.prenom}]]</p>
                 
                 </div>
                 
             </div>
-            <div class="block-test2">
-               <h2 class="titre-section-admin">Rechercher des informations sur un licencié du club par son id </h2>
-                <form class="form-inline" method="post">
-                    <div class="form-group">
-                        <label for="idInput">Id</label>
-                        <input class="form-control" id="identifiantInformation" name="identifiantInformation">
-                        
-                    </div>
-                    <input type="submit" class="btn btn-default" value="Rechercher">
-                </form>
-                <div th:each="idInfo : ${idInfos}">
-                <p>[[${idInfos.sexe}]]</p>
-               
-                
-                </div>
-            </div>
+            
             
         </div>
         <div class="col-md-6">
-            <div class="block-test1">
-                              <h2 class="titre-section-admin">Recherche l'id d'un utilisateur par son nom de famille</h2>
-               <form method="post" class="form-horizontal">
-                   <div class="form-group">
-                       <label for="title" class="col-sm-2 control-label">Nom de famille : </label>
-                       <div class="col-sm-10">
-                           <input type="text" class="form-control" name="nomUtilisateur" id="nomUtilisateur">
-                       </div>
-                   </div>
-                   
-                   <div class="form-group">
-                       <div class="col-sm-offset-2 col-sm-10">
-                           <input class="btn btn-primary" type="submit" value="Rechercher">
-                       </div>
-                   </div>
-               </form>
-               <div th:each="idNom : ${idNoms}">
-                <p>[[${idNom.id}]]</p>
-                <p>[[${idNom.nom}]]</p>
-                <p>[[${idNom.prenom}]]</p>
-                
-                </div>
-                
-            </div>
             <div class="block-test2">
                <h2 class="titre-section-admin">Liste de tout les inscrits au club: </h2>
                <table class="liste-inscrits">
@@ -129,15 +91,9 @@
         </p>
     </div>
 </footer>
- 
-    
-    
-    
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="bootstrap/js/photo-gallery.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
+        
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
 </html>
