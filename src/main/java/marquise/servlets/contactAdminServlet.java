@@ -19,81 +19,39 @@ import marquise.projos.Article;
 import marquise.projos.Utilisateur;
 import marquise.services.InformationLibrary;
 
-@WebServlet("/admin")
-public class adminServlet extends AbstractGenericServlet {
-	
-	private int idRecherche;
-	private int idInformation;
-	private String nom;
+@WebServlet("/contactAdmin")
+public class contactAdminServlet extends AbstractGenericServlet {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -4835451077585731550L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
-		resp.setCharacterEncoding("UTF-8");
-=======
-=======
 		PrintWriter out = resp.getWriter();
->>>>>>> louis-come
 		HttpSession session=req.getSession(false);
-		
+		resp.setCharacterEncoding("UTF-8");
 		if(session != null){}
 		else{
 			resp.sendRedirect("connexion");
 			out.println("Veuillez entre un mot de passe correct");
 		}
 		
->>>>>>> louis-come
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
+				
+		context.setVariable("contacts", InformationLibrary.getInstance().listCommentaires());
 		
-		
-		
-		context.setVariable("utilisateurs", InformationLibrary.getInstance().listUtilisateurs());
-		
-		context.setVariable("idNoms", InformationLibrary.getInstance().getUtilisateurByNom(nom));
-		
-		
-		//if(idRecherche != 0){
-		
-			context.setVariable("idUtils", InformationLibrary.getInstance().getUtilisateur(idRecherche));
-		//}
-
-		templateEngine.process("admin/admin", context, resp.getWriter());
 		resp.setCharacterEncoding("UTF-8");
+		
+		
+		
+
+		templateEngine.process("admin/contactAdmin", context, resp.getWriter());
+		
 	}
 	
-	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
-		
-		
-		
-		if (idRecherche != 0){
-			
-			idRecherche = Integer.parseInt(req.getParameter("identifiant"));
-			
-		} else {
-		
-		if (nom != ""){
-			
-			
-			nom = req.getParameter("nomUtilisateur");
-		}}
-		
-		//idRecherche = Integer.parseInt(req.getParameter("identifiant"));
-		
-		
-		resp.sendRedirect("admin");
 	
-	}
 	
 	
 

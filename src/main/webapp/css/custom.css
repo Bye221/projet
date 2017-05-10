@@ -1,0 +1,247 @@
+body {
+	background-color:#F7F7F7;
+}
+
+#mainHeader {
+	background-color:#D8D1C9;
+	position:fixed;
+	top:0;
+	bottom:0;
+	left:15px;
+	box-shadow: 10px 0px 0px #F7F0E8;
+    color: white;
+    width:150px;
+}
+
+#mainHeader h1 {
+	background-color:#F7F0E8;
+	padding:20px 5px;	
+    color: steelblue;
+    font-weight: bold;
+}
+
+#mainHeader nav a {
+	background-color: #E2DCD7;
+}
+
+#mainHeader nav a:hover {
+	background-color: #F7F0E8;
+}
+
+#mainContent {
+	margin-left:180px;
+}
+
+/* COMMON STYLES */
+
+.citybox {	
+	height:200px;
+	background-color:white;
+	margin:20px;
+	box-shadow: 0 0 5px grey;
+	position:relative;
+	padding:5px 135px 5px 5px;
+}
+
+.citybox .cityPhoto {
+	position:absolute;
+	top:0;
+	right:0;
+}
+
+.citybox .cityPhoto img {
+	width:130px;
+	height:200px;
+}
+
+.citybox h3 {
+	background-color:lightgrey;
+	margin:0;
+	padding:5px;
+}
+
+/* CITY LIST STYLES */
+.citylist {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.citylist .citybox {
+	width:400px;
+	min-width:400px;
+	transition: all .2s ease-in-out;
+}
+
+.citylist .citybox:hover {
+	transform: scale(1.1);
+}
+
+.citylist .citybox p {
+	margin:10px 0;
+}
+
+.citylist .citybox .actionbar {
+	position: absolute;
+    bottom: 15px;
+    left: 20px;
+}
+
+.cityfilters {
+	background-color:white;
+	margin:20px;
+	box-shadow: 0 0 5px grey;
+	padding:5px 135px 5px 5px;
+}
+
+.cityfilters h3 {
+	display: inline-block;
+    margin: 0;
+    padding: 10px;
+    border-right: solid 1px lightgray;
+}
+
+.cityfilters form {
+	display: inline-block;
+    padding: 5px;
+}
+
+/* CITY DETAIL STYLES */
+
+.citydetail .citybox {
+	min-width:820px;
+}
+
+.citydetail .cityinfos {
+	width:300px;
+}
+
+
+.citydetail .cityinfos p {
+	margin: 5px;
+}
+
+.citydetail .cityinfos p {
+	margin: 5px;
+}
+
+.citydetail .cityinfos .citylike {
+	position:absolute;
+	bottom:20px;
+	left:100px;
+	z-index:10;
+}
+
+.citydetail .cityspotlights {
+	position:absolute;
+	top:60px;
+	width:100%;
+	text-align:center;
+	padding-left:310px;
+	padding-right:150px;
+	z-index:5;
+}
+
+
+.citydetail .cityspotlights .btn {
+	font-size:4em;
+	padding: 15px;
+	width: 90px;
+}
+
+.citydetail .cityspotlights .btn-restaurant {
+	background-color:#E0C08C;
+	color:#7A694D;
+}
+
+.citydetail .cityspotlights .btn-restaurant:hover {
+	background-color: #CEB182;
+}
+
+.citydetail .cityspotlights .btn-bar {
+	background-color:#95AAE5;
+	color:#647296;
+}
+
+.citydetail .cityspotlights .btn-bar:hover {
+	background-color: #8B9ED3;
+}
+
+.citydetail .cityspotlights .btn-music {
+	background-color:#C2E29A;
+	color:#7D9363;
+}
+
+.citydetail .cityspotlights .btn-music:hover {
+	background-color: #B8D392;
+}
+
+.citydetail .cityspotlights .btn-culture {
+	background-color:#BF84CE;
+	color:#6F4C77;
+}
+
+.citydetail .cityspotlights .btn-culture:hover {
+	background-color: #A977B7;
+}
+
+.citydetail .commentbox {
+	background-color:white;
+	margin:5px auto;
+	box-shadow: 0 0 5px grey;
+	padding:5px;
+	width:80%
+}
+
+.citydetail .commentbox h4 {
+	background-color:lightgrey;
+	margin:0;
+	padding:5px;
+}
+
+.citydetail .commentbox .commenttext {
+	margin:0;
+	padding:5px;
+}
+
+#newcomment form {
+	height:0;
+	overflow:hidden;
+	padding: 0;
+	transition: all 0.5s ease-in-out;
+}
+
+#newcomment .btn-open {
+	display:inline;
+}
+
+#newcomment .btn-close {
+	display:none;
+}
+
+#newcomment.opened form{
+	height:inherit;
+	padding:10px 10px 0;
+}
+
+#newcomment.opened .btn-open {
+	display:none;
+}
+
+#newcomment.opened .btn-close {
+	display:inline;
+}
+
+/* ADD A CITY STYLES */
+.cityadd .citybox {
+	padding:5px;
+	height: inherit;
+}
+
+.cityadd .citybox form {
+	padding:10px;
+}
+
+.cityadd .citybox p.alert {
+	margin:10px 100px;
+}
+
