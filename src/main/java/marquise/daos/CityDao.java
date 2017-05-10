@@ -58,8 +58,6 @@ public class CityDao {
 			statement.setString(1, newCity.getName());
 			statement.setString(2, newCity.getSummary());
 			statement.setString(3, picturePath);
-			
-
 			statement.executeUpdate();
 		} catch (SQLException e) {
 			throw new CityExplorerRuntimeException("Error when getting cities", e);

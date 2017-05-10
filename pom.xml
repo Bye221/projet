@@ -80,6 +80,34 @@
  			<version>4.12</version>
  			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.containers</groupId>
+			<artifactId>jersey-container-servlet</artifactId>
+			<version>2.23.2</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.5</version>
+		</dependency>
+		
+		<dependency>
+	      		<groupId>com.sun.jersey</groupId>
+	      		<artifactId>jersey-core</artifactId>
+	      		<version>1.19.3</version>
+	    	</dependency>
+	    	<dependency>
+	      		<groupId>com.sun.jersey</groupId>
+	      		<artifactId>jersey-client</artifactId>
+	      		<version>1.19.3</version>
+	    	</dependency>
+	    	<dependency>
+	      		<groupId>com.sun.jersey.contribs</groupId>
+	      		<artifactId>jersey-multipart</artifactId>
+	      		<version>1.19.3</version>
+		</dependency>
+		
 		
 		
 
