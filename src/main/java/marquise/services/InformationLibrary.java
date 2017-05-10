@@ -134,6 +134,11 @@ public class InformationLibrary {
 		
 		
 	}
+	
+	public Path getPicturePatch(Integer cityId){
+		return Paths.get(cityDao.getPicturePath(cityId));
+		
+	}
 
 	
 }

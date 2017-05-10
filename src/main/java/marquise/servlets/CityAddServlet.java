@@ -52,7 +52,7 @@ public class CityAddServlet extends AbstractGenericServlet2 {
 		
 		try {
 			InformationLibrary.getInstance().addCity(newCity, cityPicture);
-			resp.sendRedirect("home");
+			resp.sendRedirect("home2");
 		} catch (IllegalArgumentException|IOException e) {
 			req.getSession().setAttribute("cityCreationError", e.getMessage());
 			req.getSession().setAttribute("cityCreationData", newCity);

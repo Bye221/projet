@@ -65,5 +65,19 @@ public class CityDao {
 			throw new CityExplorerRuntimeException("Error when getting cities", e);
 		}
 	}
+	public String getPicturePath(Integer id) {
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
+				PreparedStatement statement = connection.prepareStatement("SELECT picture FROM city WHERE id = ?")) {
+			statement.setInt(1, id);
+			try (ResultSet resultSet = statement.executeQuery()) {
+				if (resultSet.next()) {
+					return resultSet.getString("picture");
+				}
+			}
+		} catch (SQLException e) {
+			throw new CityExplorerRuntimeException("Error when getting cities", e);
+		}
+		return null;
+	}
 
 }
