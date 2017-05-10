@@ -17,9 +17,9 @@ public class CityDaoTestCase extends AbstractDaoTestCase {
 
 	@Override
 	public void insertDataSet(Statement statement) throws Exception {
-		statement.executeUpdate("INSERT INTO city(id, name, summary) VALUES(1, 'City 1', 'Summary 1')");
-		statement.executeUpdate("INSERT INTO city(id, name, summary) VALUES(2, 'City 2', 'Summary 2')");
-		statement.executeUpdate("INSERT INTO city(id, name, summary) VALUES(3, 'City 3', 'Summary 3')");
+		statement.executeUpdate("INSERT INTO city(id, name, summary, picture) VALUES(1, 'City 1', 'Summary 1', '/path/to/image1.png')");
+		statement.executeUpdate("INSERT INTO city(id, name, summary, picture) VALUES(2, 'City 2', 'Summary 2', '/path/to/image2.png')");
+		statement.executeUpdate("INSERT INTO city(id, name, summary, picture) VALUES(3, 'City 3', 'Summary 3', '/path/to/image3.png')");
 	}
 
 	@Test
@@ -69,6 +69,15 @@ public class CityDaoTestCase extends AbstractDaoTestCase {
 			Assertions.assertThat(resultSet.next()).isFalse();
 			
 		}
+	}
+	
+	@Test
+	public void shouldGetPicturePath() throws Exception {
+		// WHEN
+		String picturePath = cityDao.getPicturePath(1);
+		// THEN
+		Assertions.assertThat(picturePath).isEqualTo("/path/to/image1.png");
+		
 	}
 	
 
