@@ -9,8 +9,8 @@
 
         <title> Bienvenue sur le site du club d'athletisme de Marquise </title>
 
-        <link href="../../bootstrap/css/bootstrap.min.css" rel="stylesheet">
-        <link href="../../css/page/staff.css" rel="stylesheet">
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/page/staff.css" rel="stylesheet">
 
 
     </head>
@@ -18,41 +18,9 @@
 
     <body data-spy="scroll" data-target=".navbar" data-offset="50">
 
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>                        
-                    </button>
-                    <a class="navbar-brand" href="index.html">Acceuil</a>
-                </div>
-                <div class="navbar-collapse" id="myNavbar">
-                    <ul class="nav navbar-nav">
-                        <li><a href="club.html">Club</a></li>
-
-                        <li class="active"><a href="staff.html">Staff</a></li>
-
-                        <li><a href="cours.html">Cours et Stages</a></li>
-
-                        <li><a href="calendrier.html">Caledrier</a></li>
-
-                        <li><a href="categorie.html">Categories</a></li>
-
-                        <li><a href="resultats.html">Résultats</a></li>
-
-                        <li><a href="inscription.html">Inscriptions</a></li>
-
-                        <li><a href="contact.html">Contact</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
-                        <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+        <nav class="navbar navbar-inverse" th:insert="~{admin/commonAdmin ::entete('equipeAdmin')}">
+  
+</nav>
         <div class="container-fluid">
             <div class="row head">
                 <div class="col-sm-12 col-md-12">
@@ -71,7 +39,7 @@
                     <h2>Voici les entraineurs et animateurs du club</h2>
                     <div class="row">
                         <div class="col-sm-4 col-md-4 photo1">
-                            <img src="../../img/fredmahe.jpg" class="photos">
+                            <img src="img/fredmahe.jpg" class="photos">
                             <h4>Fred Mahé coach du club</h4>
                             <p>Brevet d’Etat d’Educateur Sportif 1er degré mention athlétisme,
                                 Professeur d’EPS, responsable section Athlé (6ème et 5ème) au collège St Martin de Marquise.
@@ -84,7 +52,7 @@
 
                         </div>
                         <div class="col-sm-4 col-md-4 photo1">
-                            <img src="../../img/freddolle.jpg" class="photos">
+                            <img src="img/freddolle.jpg" class="photos">
                             <h4>Fred Dollé</h4>
                             <p>Professeur d’EPS.
                                 Entraineur à partir des catégories Benjamins (le samedi).
@@ -94,7 +62,7 @@
 
                         </div>
                         <div class="col-sm-4 col-md-4 photo1">
-                            <img src="../../img/laetitiadolle.jpg" class="photos">
+                            <img src="img/laetitiadolle.jpg" class="photos">
                             <h4>Laetitia Dollé</h4>
                             <p>Professeur d’EPS.
                                 Entraineur de Lancers pour les catégories Cadets et au-dessus.
@@ -105,19 +73,19 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-4 col-md-4 photo1">
-                            <img src="../../img/manonribet.jpg" class="photos">
+                            <img src="img/manonribet.jpg" class="photos">
                             <h4>Manon Ribet</h4>
                             <p>Animatrice des groupes Poussins et Baby (mercredi)</p>
 
                         </div>
                         <div class="col-sm-4 col-md-4 photo1">
-                            <img src="../../img/anthonyeveraere.jpg" class="photos">
+                            <img src="img/anthonyeveraere.jpg" class="photos">
                             <h4>Anthony Everaere</h4>
                             <p>Animateurs groupes Poussins et Eveil (mercredi)</p>
 
                         </div>
                         <div class="col-sm-4 col-md-4 photo1">
-                            <img src="../../img/floriangrare.jpg" class="photos">
+                            <img src="img/floriangrare.jpg" class="photos">
                             <h4>Florian Grare</h4>
                             <p>Animateurs groupes Poussins et Eveil (mercredi)</p>
 
@@ -125,7 +93,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-offset-4 col-sm-offset-4 col-sm-4 col-md-4 photo1">
-                            <img src="../../img/davidkoether.jpg" class="photos">
+                            <img src="img/davidkoether.jpg" class="photos">
                             <h4>David Koether</h4>
                             <p>Diplômes d’animateur Fédéral et de moniteur Régional (FFA) en Athlétisme
 
@@ -156,10 +124,10 @@
 
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="../bootstrap/js/photo-gallery.js"></script>
+        <script src="bootstrap/js/photo-gallery.js"></script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
     </body>
 </html>

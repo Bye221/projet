@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title> Bienvenue sur le site du club d'athletisme de Marquise </title>
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/page/cours.css" rel="stylesheet"> </head>
+
+    <body data-spy="scroll" data-target=".navbar" data-offset="50">
+       <nav class="navbar navbar-inverse" th:insert="~{admin/commonAdmin ::entete('coursAdmin')}">
+  
+</nav>
+        <div class="container-fluid">
+            <div class="row head">
+                <div class="col-sm-12 col-md-12">
+                    <h1>Entente Maritime Athlétique 62</h1> </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row section1">
+                <!-- 2 colonnes de largeur 4,   -->
+                <div class="col-md-4">
+
+                    <div class="grid">
+
+                        <figure class="effect-dexter">
+
+                            <img src="img/marathon.jpg" alt="image de coureurs">
+
+                            <figcaption>
+
+                                <h2>Preparation au<span> Semi-Marathon</span></h2>
+                                <p>Information sur la preparation </p>
+
+                            </figcaption>
+
+                        </figure>
+                    </div>
+                    
+                    <div class="grid">
+                       
+                        <figure class="effect-dexter">
+                            <img src="img/marathon.jpg" alt="image de coureurs">
+                            <figcaption>
+                                <h2>Strange<span> Dexter</span></h2>
+                                <p>Dexter is a strange style</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="grid">
+                        <figure class="effect-dexter"> <img src="img/marathon.jpg" alt="image de coureurs">
+                            <figcaption>
+                                <h2>Strange<span> Dexter</span></h2>
+                                <p>Dexter is a strange style</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    <div class="grid">
+
+                        <figure class="effect-dexter">
+
+                            <img src="img/marathon.jpg" alt="image de coureurs">
+
+                            <figcaption>
+
+                                <h2>Strange<span> Dexter</span></h2>
+                                <p>Dexter is a strange style</p>
+
+                            </figcaption>
+
+                        </figure>
+                    </div>
+                    <div class="grid">
+                        <figure class="effect-dexter"> <img src="img/marathon.jpg" alt="image de coureurs">
+                            <figcaption>
+                                <h2>Strange<span> Dexter</span></h2>
+                                <p>Dexter is a strange style</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                    <div class="grid">
+                        <figure class="effect-dexter"> <img src="img/marathon.jpg" alt="image de coureurs">
+                            <figcaption>
+                                <h2>Strange<span> Dexter</span></h2>
+                                <p>Dexter is a strange style</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-3 col-md-offset-1">
+                    <!-- Formulaire d'inscription à la newsletter -->
+                    <h1> Restez informés !</h1>
+                    <form class="inscription">
+                        <p> Inscrivez vous à la newsletter</p>
+                        <input class="email-news" id="email" placeholder="Email" type="email">
+                        <p> J'accepte de recevoir regulierement des informations de la part du club</p>
+                        <input id="ok" type="checkbox">
+                        <button type="submit">Valider</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <footer class="footer">
+            <div class="container">
+                <p> Hello world ! </p>
+            </div>
+        </footer>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="bootstrap/js/photo-gallery.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+        <script src="bootstrap/js/bootstrap.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#marche").click(function () {
+                    $("#cours1").slideDown("slow");
+                });
+            });
+        </script>
+    </body>
+
+</html>
