@@ -87,6 +87,7 @@ public class Util {
 	public static void main(String[] args) {
 		try {
 			System.out.println(String.format("mdp1=%s", Util.genererMotDePasse("mdp1")));
+			System.out.println(String.format("mdp2=%s", Util.genererMotDePasse("mdp2")));
 		} catch (NoSuchAlgorithmException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

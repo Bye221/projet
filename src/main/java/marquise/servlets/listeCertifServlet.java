@@ -2,11 +2,13 @@ package marquise.servlets;
 
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
@@ -15,13 +17,22 @@ import marquise.services.InformationLibrary;
 
 
 
-@WebServlet("/home2")
-public class HomeServlet extends AbstractGenericServlet2 {
+@WebServlet("/certificatsAdmin")
+public class listeCertifServlet extends AbstractGenericServlet2 {
 
 	private static final long serialVersionUID = 5402133218271984030L;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setCharacterEncoding("UTF-8");
+		PrintWriter out = resp.getWriter();
+		HttpSession session=req.getSession(false);
+		
+		if(session != null){}
+		else{
+			resp.sendRedirect("connexion");
+			out.println("Veuillez entre un mot de passe correct");
+		}
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, getServletContext());
@@ -33,7 +44,7 @@ public class HomeServlet extends AbstractGenericServlet2 {
 		
 		//context.setVariable("countryFilterSelected", countryFilter);
 		
-		templateEngine.process("home", context, resp.getWriter());
+		templateEngine.process("admin/certificatsAdmin", context, resp.getWriter());
 	}
 
 	@Override
@@ -42,7 +53,7 @@ public class HomeServlet extends AbstractGenericServlet2 {
 		
 		
 		
-		resp.sendRedirect("home2");
+		resp.sendRedirect("certificatsAdmin");
 		
 	}
 

@@ -40,7 +40,7 @@ public class CityDetailServlet extends AbstractGenericServlet2 {
 			context.setVariable("commentCreation", new Comment());
 		}*/
 		
-		templateEngine.process("imagedetail", context, resp.getWriter());
+		templateEngine.process("connectedUsers/imagedetail", context, resp.getWriter());
 	}
 
 	@Override
