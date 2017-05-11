@@ -29,13 +29,17 @@ public class connexionServlet extends AbstractGenericServlet {
 	private static final long serialVersionUID = 1L;
 	
 	private Map<String, String> utilisateursAutorises;
+
+	private Map<String, String> visiteursAutorises;
 	
 	
 
 	@Override
 	public void init() throws ServletException {
 		utilisateursAutorises = new HashMap<>();
-		utilisateursAutorises.put("login1@hei.fr", "6bd107f44b7f9e87f3fcaa733c5c8f2205aa65e11494e2bf:676cd37b4e095adce9d717698ace6c080815a95e27c59ef1");
+		visiteursAutorises = new HashMap<>();
+		utilisateursAutorises.put("login1@hei.fr", "221a94b764a91dd304666e469cbf5c9a8b18dc7ae1297cca:2392b5bdec3ceeac1d028e56bd7232f0c87312a5c2f88bff");
+		visiteursAutorises.put("login2@hei.fr", "c3ad03c4e273eec0cdc803f39c80d992f7d5a813d0427d8c:e4078d426a2115d646d3a323e986ca2fec17e3705ed5f603");
 		//utilisateursAutorises.put(récupérer login,mot de passe crypter)
 
 	}
@@ -62,7 +66,12 @@ public class connexionServlet extends AbstractGenericServlet {
 				HttpSession session = req.getSession();
 				session.setAttribute("name",identifiantSaisi );
                          resp.sendRedirect("admin");				
-			}else{
+			}else if(visiteursAutorises.containsKey(identifiantSaisi) && Util.validerMotDePasse(motDePasseSaisi, visiteursAutorises.get(identifiantSaisi))){
+				HttpSession session = req.getSession();
+				session.setAttribute("name",identifiantSaisi );
+                         resp.sendRedirect("addimage");	
+			} else
+			{
 				resp.sendRedirect("connexion");
 			}
 		} catch (NoSuchAlgorithmException | InvalidKeySpecException e) {

@@ -24,6 +24,7 @@ public class ImageAddServlet extends AbstractGenericServlet2 {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		resp.setCharacterEncoding("UTF-8");
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, getServletContext());
@@ -37,7 +38,7 @@ public class ImageAddServlet extends AbstractGenericServlet2 {
 			context.setVariable("image", new Image(null, null, null));
 		}
 		context.setVariable("countries", context);
-		templateEngine.process("imageadd", context, resp.getWriter());
+		templateEngine.process("connectedUsers/imageadd", context, resp.getWriter());
 	}
 
 	@Override
@@ -53,7 +54,7 @@ public class ImageAddServlet extends AbstractGenericServlet2 {
 		
 		try {
 			InformationLibrary.getInstance().addImage(newImage, is);
-			resp.sendRedirect("home2");
+			resp.sendRedirect("certificatsAdmin");
 		} catch (IllegalArgumentException|IOException e) {
 			req.getSession().setAttribute("imageCreationError", e.getMessage());
 			req.getSession().setAttribute("imageCreationData", newImage);

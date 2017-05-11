@@ -3,13 +3,18 @@
 <head>
 <meta charset="utf-8">
 <title>City Explorer</title>
-<link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+ <link href="css/page/inscription.css" rel="stylesheet">
 <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
-<link rel="stylesheet" href="css/custom.css">
+<link rel="stylesheet" href="css/page/custom.css">
 
 </head>
 <body>
-	<header th:replace="~{common::header}"></header>
+<nav class="navbar navbar-inverse" th:insert="~{connectedUsers/common :: entete('addimage')}">
+  
+</nav>
+	
 
 	<div id="mainContent" class="container-fluid">
 		<section class="cityadd">
@@ -18,15 +23,15 @@
 				<p class="alert alert-danger" role="alert" th:if="${errorMessage != null}" th:text="${errorMessage}"></p>
 				<form method="post" class="form-horizontal" enctype="multipart/form-data">
 					<div class="form-group">
-						<label for="inputName" class="col-sm-2 control-label">Name</label>
+						<label for="inputName" class="col-sm-2 control-label">Nom et Prénom</label>
 						<div class="col-sm-4">
-							<input type="text" class="form-control" name="name" id="inputName" placeholder="Name" th:value="${image.name}">
+							<input type="text" class="form-control" name="name" id="inputName" placeholder="Nom Prénom" th:value="${image.name}">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="inputSummary" class="col-sm-2 control-label">Summary</label>
+						<label for="inputSummary" class="col-sm-2 control-label">Avez vous des remarques particulieres à faire ?</label>
 						<div class="col-sm-10">
-							<textarea class="form-control" name="summary" id="inputSummary" placeholder="Summary" maxlength="150" th:value="${image.summary}">[[${image.summary}]]</textarea>
+							<textarea class="form-control" name="summary" id="inputSummary" placeholder="Remarques" maxlength="150" th:value="${image.summary}">[[${image.summary}]]</textarea>
 						</div>
 					</div>
 					<div class="form-group">
@@ -38,7 +43,7 @@
 					
 					<div class="form-group">
 				    	<div class="col-sm-offset-2 col-sm-10">
-				      		<button type="submit" class="btn btn-primary">Add the image</button>
+				      		<button type="submit" class="btn btn-primary">Envoyer le certificat</button>
 				    	</div>
 				  	</div>
 				</form>
