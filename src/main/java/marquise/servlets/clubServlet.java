@@ -1,6 +1,8 @@
 package marquise.servlets;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,6 +15,8 @@ import org.thymeleaf.context.WebContext;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ServletContextTemplateResolver;
 
+import marquise.projos.Article;
+import marquise.projos.CommentaireArticle;
 import marquise.services.InformationLibrary;
 
 
@@ -38,6 +42,20 @@ public class clubServlet extends AbstractGenericServlet {
 
 		templateEngine.process("users/club", context, resp.getWriter());
 	}
+
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		String pseudo = req.getParameter("pseudo");
+		String texte =req.getParameter("texte");
+		
+		CommentaireArticle newCommentaireArticle = new CommentaireArticle(null, texte, texte);
+		CommentaireArticle addedCommentaireArticle =InformationLibrary.getInstance().addCommentaireArticle(pseudo, texte);
+	
+		resp.sendRedirect("club");
+	}
+	
+	
 	
 	
 

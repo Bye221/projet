@@ -11,6 +11,7 @@ import java.util.List;
 import javax.servlet.http.Part;
 
 import marquise.daos.ArticleDao;
+import marquise.daos.CommentaireArticleDao;
 import marquise.daos.ImageDao;
 import marquise.daos.CommentaireDao;
 import marquise.daos.ElementsSiteDao;
@@ -18,6 +19,7 @@ import marquise.daos.InformationDao;
 import marquise.daos.UtilisateurDao;
 import marquise.daos.IdentifiantDao;
 import marquise.daos.impl.ArticleDaoImpl;
+import marquise.daos.impl.CommentaireArticleDaoImpl;
 import marquise.daos.impl.CommentaireDaoImpl;
 import marquise.daos.impl.InformationDaoImpl;
 import marquise.daos.impl.UtilisateurDaoImpl;
@@ -25,6 +27,7 @@ import marquise.daos.impl.IdentifiantDaoImpl;
 import marquise.projos.Article;
 import marquise.projos.Image;
 import marquise.projos.Commentaire;
+import marquise.projos.CommentaireArticle;
 import marquise.projos.ElementsSite;
 import marquise.projos.Identifiant;
 import marquise.projos.Information;
@@ -33,7 +36,7 @@ import marquise.projos.Identifiant;
 
 public class InformationLibrary {
 	
-	
+	// Library qui permet d'exploiter les methodes dans les sevlets et d'afficher les données avec thymeleaf
 	private static class InformationLibraryHolder{
 		private final static InformationLibrary instance = new InformationLibrary();
 		
@@ -42,6 +45,7 @@ public class InformationLibrary {
 	public static InformationLibrary getInstance(){
 		return InformationLibraryHolder.instance;
 	}
+	// Definition de toutes les methodes utilisées ici 
 	
 	private InformationDao informationDao = new InformationDaoImpl();
 	private UtilisateurDao utilisateurDao = new UtilisateurDaoImpl();
@@ -51,11 +55,13 @@ public class InformationLibrary {
 	private ImageDao imageDao = new ImageDao();
 	private static final String PICTURE_MAIN_DIRECTORY = "/Users/louiscauvray/git/projet/src/main/resources";
 	private ElementsSiteDao elementsSiteDao = new ElementsSiteDao();
+	private CommentaireArticleDao commentaireArticleDao = new  CommentaireArticleDaoImpl();
+	
 
 	private InformationLibrary() {
 	}
 
-	public List<Information> listFilms() {
+	public List<Information> listInformations() {
 		return informationDao.listInformations();
 	}
 
@@ -102,6 +108,26 @@ public class InformationLibrary {
 	public Identifiant getIdentifiant(String login, String motDePasse){
 		return identifiantDao.getIdentifiant(login, motDePasse);
 		
+	}
+
+	
+	//Methode qui permet de voir tout les commentaires des articles du site
+	public List<CommentaireArticle> listCommentairesArticles(){
+		return commentaireArticleDao.listCommentairesArticles();
+		
+	}
+	
+	//Methode qui permet d'ajouter un commentaire
+	public CommentaireArticle addCommentaireArticle(String pseudo, String commentaire){
+		return commentaireArticleDao.addCommentaireArticle(pseudo, commentaire);
+		
+	}
+	
+	
+	//Methode pour supprimer un commentaire
+	
+	public void deleteCommentaireArticle(int id) {
+		commentaireArticleDao.deleteCommentaireArticle(id);
 	}
 	
 	//Methode pour appeler les image et les chemins des images
