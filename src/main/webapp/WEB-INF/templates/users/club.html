@@ -67,9 +67,23 @@
                         </div>
                         <h4 th:text="${article.title}"></h4>
                         <p th:text="${article.texte}"></p>
+                        <form  class="form-horizontal" method="post">
+                                       <div class="form-group">
+                                           <label id="pseudo">pseudo</label>
+                                           <input class="pseudo-com" type="text" name="pseudo">
+                                       </div>
+                                       <div class="form-group">
+                                           <label id="texte">commentaire</label>
+                                           <input class="form-control" name="texte" type="text">
+                                       </div>
+                                       <input type="submit" class="btn btn-danger" value="Commenter">
+                                        
+                                    </form> 
                         <hr>
                     </div> 
+                    
                 </div>
+                
                      
 	</div>
 </div>

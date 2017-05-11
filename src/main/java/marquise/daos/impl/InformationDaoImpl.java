@@ -15,6 +15,9 @@ import marquise.projos.Utilisateur;
 
 public class InformationDaoImpl implements InformationDao {
 
+	
+	//Ressortir toutes les informations necessaire pour un utilisateur 
+	// Modification à effectuer dans la BDD et la methode : changer la clée de jointure, remplacer par une clé nom auto incrementée
 	@Override
 	public List<Information> listInformations() {
 		
