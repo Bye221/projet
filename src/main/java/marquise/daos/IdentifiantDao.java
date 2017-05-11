@@ -7,7 +7,7 @@ import marquise.projos.Identifiant;
 
 public interface IdentifiantDao {
 	
-	public List<Identifiant> listIdentifiants();
+	public List<Identifiant> listIdentifiants(); // Liste des identifiant en base de donnée
 
 	public Identifiant addIdentifiant(String login,	String motDePasse);
 	

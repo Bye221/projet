@@ -15,7 +15,7 @@ public abstract class AbstractDaoTestCase {
 	        Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
 	        Statement statement = connection.createStatement()){
 			//statement.executeUpdate("DELETE FROM comment");
-			statement.executeUpdate("DELETE FROM city");
+			statement.executeUpdate("DELETE FROM image");
 	        
 	        this.insertDataSet(statement);
 		}

@@ -26,23 +26,25 @@
 			</form>
 		</section>
 		<section class="citylist">
-			<article class="citybox" th:each="city : ${cities}">
+			<article class="citybox" th:each="image : ${images}">
 				<h3>
-					[[${city.name}]] 
-					<a th:href="'deletecity?id='+${city.id}" class="btn btn-xs btn-danger pull-right"> 
+					[[${image.name}]] 
+					<a th:href="'deleteimage?id='+${image.id}" class="btn btn-xs btn-danger pull-right"> 
 						<i class="fa fa-times" aria-hidden="true"></i>
 					</a>
 				</h3>
-				<p th:text="${city.summary}" class="summary"></p>
+				<p th:text="${image.summary}" class="summary"></p>
 				<div class="btn-toolbar actionbar" role="toolbar">
 					<div class="btn-group" role="group">
-						<a th:href="'detail?id='+${city.id}" class="btn btn-primary"><i
+						<a th:href="'detail?id='+${image.id}" class="btn btn-primary"><i
 							class="fa fa-eye" aria-hidden="true"></i> See details</a>
 					</div>
 										
 				</div>
 				<aside class="cityPhoto">
-					<img th:src="'citypicture?id='+${city.id}" th:alt="'Vignette '+${city.name}">
+					<img th:src="'imagepicture?id='+${image.id}" th:alt="'Vignette '+${image.name}">
+					
+					
 				</aside>
 			</article>
 		</section>
