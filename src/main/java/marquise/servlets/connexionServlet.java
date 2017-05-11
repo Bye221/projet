@@ -38,8 +38,8 @@ public class connexionServlet extends AbstractGenericServlet {
 	public void init() throws ServletException {
 		utilisateursAutorises = new HashMap<>();
 		visiteursAutorises = new HashMap<>();
-		utilisateursAutorises.put("login1@hei.fr", "221a94b764a91dd304666e469cbf5c9a8b18dc7ae1297cca:2392b5bdec3ceeac1d028e56bd7232f0c87312a5c2f88bff");
-		visiteursAutorises.put("login2@hei.fr", "c3ad03c4e273eec0cdc803f39c80d992f7d5a813d0427d8c:e4078d426a2115d646d3a323e986ca2fec17e3705ed5f603");
+		utilisateursAutorises.put("login1@hei.fr", "56091ee47ac9eea454fef713a894cbea49223a8796cc3775:9c7d053b7afc496255c131591ff45a11d95ef23bf14b8b59");
+		visiteursAutorises.put("login2@hei.fr", "ab439e9b72770c25d78562c8f0eda0cd0dd432e4df5c1ea3:762e1d76fd7b0f168cde2282f01d9a49693b0b112f535cda");
 		//utilisateursAutorises.put(récupérer login,mot de passe crypter)
 
 	}
