@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head> 
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    
+    <title> Bienvenue sur le site du club d'athletisme de MArquise </title>
+    
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/page/inscription.css" rel="stylesheet">
+    
+</head>
+
+
+<body>
+  
+
+    <nav class="navbar navbar-inverse" th:insert="~{admin/commonAdmin ::entete('inscriptionAdmin')}">
+  
+</nav>
+         <div class="container-fluid">
+            <div class="row head">
+                <div class="col-sm-12 col-md-12">
+                    <h1>Entente Maritime Athlétique 62</h1> </div>
+            </div>
+        </div>
+  
+<div class="container-fluid">
+ <div class="formulaire-box">
+  <h3 class="titre-formulaire">Formulaire d'inscription</h3>
+  
+  
+  <form class="formulaire-perso">
+
+     <fieldset>
+        <legend>
+            Entrez vos informations ici
+        </legend>
+        <ol>
+            <li>
+                <label for="nom">Nom</label>
+                <input id="nom" name="nom" type="text" placeholder="votre nom de famille"><br />
+            </li>
+            <li>
+                <label for="prenom">Prenom</label>
+                <input id="prenom" name="prenom" type="text" placeholder="votre prenom">
+            </li>
+            <li>
+                <label for="email">Email</label>
+                <input id="email" name="email" type="email" placeholder="votre email">
+            </li>
+        </ol>
+         
+     </fieldset>
+     <fieldset>
+    <button type=submit>Envoyer</button>
+  </fieldset>
+      
+  </form>
+</div>
+   </div>
+   
+   <footer class="footer">
+    <div class="container">
+        <p>
+            Hello world !
+        </p>
+    </div>
+</footer>
+</body>
+</html>

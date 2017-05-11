@@ -32,7 +32,7 @@ public class clubAdminServlet extends AbstractGenericServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		resp.setCharacterEncoding("UTF-8");
 		PrintWriter out = resp.getWriter();
 		HttpSession session=req.getSession(false);
 		
@@ -46,7 +46,7 @@ public class clubAdminServlet extends AbstractGenericServlet {
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
-		resp.setCharacterEncoding("UTF-8");
+		
 
 		templateEngine.process("admin/clubAdmin", context, resp.getWriter());
 		resp.setCharacterEncoding("UTF-8");
