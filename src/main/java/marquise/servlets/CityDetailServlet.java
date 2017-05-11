@@ -25,10 +25,10 @@ public class CityDetailServlet extends AbstractGenericServlet2 {
 
 		WebContext context = new WebContext(req, resp, getServletContext());
 		
-		Integer idCity = Integer.parseInt(req.getParameter("id"));
-		context.setVariable("city", InformationLibrary.getInstance().getCity(idCity));		
+		Integer idImage = Integer.parseInt(req.getParameter("id"));
+		context.setVariable("image", InformationLibrary.getInstance().getImage(idImage));		
 		//context.setVariable("comments", InformationLibrary.getInstance().listCommentsByCity(idCity));
-		context.setVariable("comments", InformationLibrary.getInstance().listAllCities());
+		context.setVariable("comments", InformationLibrary.getInstance().listAllImages());
 		
 		/*if(req.getSession().getAttribute("commentCreationError") != null) {
 			context.setVariable("commentCreationErrorMessage", req.getSession().getAttribute("commentCreationError"));
@@ -40,7 +40,7 @@ public class CityDetailServlet extends AbstractGenericServlet2 {
 			context.setVariable("commentCreation", new Comment());
 		}*/
 		
-		templateEngine.process("citydetail", context, resp.getWriter());
+		templateEngine.process("imagedetail", context, resp.getWriter());
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package marquise.services;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -10,8 +11,9 @@ import java.util.List;
 import javax.servlet.http.Part;
 
 import marquise.daos.ArticleDao;
-import marquise.daos.CityDao;
+import marquise.daos.ImageDao;
 import marquise.daos.CommentaireDao;
+import marquise.daos.ElementsSiteDao;
 import marquise.daos.InformationDao;
 import marquise.daos.UtilisateurDao;
 import marquise.daos.IdentifiantDao;
@@ -21,8 +23,9 @@ import marquise.daos.impl.InformationDaoImpl;
 import marquise.daos.impl.UtilisateurDaoImpl;
 import marquise.daos.impl.IdentifiantDaoImpl;
 import marquise.projos.Article;
-import marquise.projos.City;
+import marquise.projos.Image;
 import marquise.projos.Commentaire;
+import marquise.projos.ElementsSite;
 import marquise.projos.Identifiant;
 import marquise.projos.Information;
 import marquise.projos.Utilisateur;
@@ -45,8 +48,9 @@ public class InformationLibrary {
 	private CommentaireDao commentaireDao = new CommentaireDaoImpl();
 	private ArticleDao articleDao = new ArticleDaoImpl();
 	private IdentifiantDao identifiantDao = new IdentifiantDaoImpl();
-	private CityDao cityDao = new CityDao();
-	private static final String PICTURE_MAIN_DIRECTORY = "/Users/louiscauvray/Pictures";
+	private ImageDao imageDao = new ImageDao();
+	private static final String PICTURE_MAIN_DIRECTORY = "/Users/louiscauvray/git/projet/src/main/resources";
+	private ElementsSiteDao elementsSiteDao = new ElementsSiteDao();
 
 	private InformationLibrary() {
 	}
@@ -100,48 +104,50 @@ public class InformationLibrary {
 		
 	}
 	
-	public List<City> listAllCities() {
+	//Methode pour appeler les image et les chemins des images
+	
+	public List<Image> listAllImages() {
 		
-			return cityDao.listCities();
+			return imageDao.listImages();
 	}
 	
-	public City getCity(Integer id) {
+	public Image getImage(Integer id) {
 		if(id == null) {
-			throw new IllegalArgumentException("City id must be provided.");
+			throw new IllegalArgumentException("Image id must be provided.");
 		}
-		return cityDao.getCity(id);
+		return imageDao.getImage(id);
 	}
 	
-	public void addCity(City newCity, Part picture) throws IOException {
-		if(newCity == null){
-			throw new IllegalArgumentException("A city must be provided.");
+	public void addImage(Image newImage, InputStream is) throws IOException {
+		if(newImage == null){
+			throw new IllegalArgumentException("An image must be provided.");
 		}
-		if(newCity.getName() == null || "".equals(newCity.getName())) {
-			throw new IllegalArgumentException("A city must have a name.");
+		if(newImage.getName() == null || "".equals(newImage.getName())) {
+			throw new IllegalArgumentException("An image must have a name.");
 		}
-		if(newCity.getSummary() == null || "".equals(newCity.getSummary())) {
-			throw new IllegalArgumentException("A city must have a summary.");
+		if(newImage.getSummary() == null || "".equals(newImage.getSummary())) {
+			throw new IllegalArgumentException("An image must have a summary.");
 		}
-		if(picture == null){
-			throw new IllegalArgumentException("A city must have a picture.");
+		if(is == null){
+			throw new IllegalArgumentException("An image must contain a picture.");
 		}
 		
-		Path picturePath = Paths.get(PICTURE_MAIN_DIRECTORY, picture.getSubmittedFileName());
+		//Path picturePath = Paths.get(PICTURE_MAIN_DIRECTORY, picture.getSubmittedFileName());
 		
-		cityDao.addCity(newCity, picturePath.toString());
+		imageDao.addImage(newImage, is);
 		
 		
-		Files.copy(picture.getInputStream(), picturePath);
+		//Files.copy(picture.getInputStream(), picturePath);
 		
 		
 	}
 	
-	public Path getPicturePatch(Integer cityId) {
-		String picturePathString = cityDao.getPicturePath(cityId);
+	public Path getPicturePatch(Integer imageId) {
+		String picturePathString = imageDao.getPicturePath(imageId);
 		if(picturePathString == null) {
 			return getDefaultPicturePath();
 		} else {
-			Path picturePath = Paths.get(cityDao.getPicturePath(cityId));
+			Path picturePath = Paths.get(imageDao.getPicturePath(imageId));
 			if(Files.exists(picturePath)) {
 				return picturePath;
 			} else {
@@ -151,6 +157,23 @@ public class InformationLibrary {
 		
 	}
 	
+	public InputStream getPicture(Integer i){
+		InputStream is =  imageDao.getPicture(i);
+		try {
+			if(is == null || is.available() == 0){
+				return getDefaultPicture();
+			}else {
+				return is;
+			}
+		} catch (IOException e) {
+			return getDefaultPicture();
+		}
+	}
+	
+	private InputStream getDefaultPicture() {
+		return this.getClass().getClassLoader().getResourceAsStream("city-no-photo.png");
+	}
+
 	private Path getDefaultPicturePath() {
 		try {
 			return Paths.get(this.getClass().getClassLoader().getResource("city-no-photo.png").toURI());
@@ -158,4 +181,17 @@ public class InformationLibrary {
 			return null;
 		}
 	}
+	
+	// ElementsSite Dao
+		public void modifierElementTexte(String idElement, String contenuElement) {
+			elementsSiteDao.modifierElementTexte(idElement, contenuElement);
+		}
+		
+		public void modifierElementImage(String idElement, String contenuElement, String cheminElement) {
+			elementsSiteDao.modifierElementImage(idElement, contenuElement, cheminElement);
+		}
+		
+		public ElementsSite getElementById(String id) {
+			return elementsSiteDao.getElementById(id) ;
+		}
 }

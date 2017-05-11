@@ -1,6 +1,7 @@
 package marquise.servlets;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
@@ -12,12 +13,12 @@ import javax.servlet.http.Part;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import marquise.projos.City;
+import marquise.projos.Image;
 import marquise.services.InformationLibrary;
 
-@WebServlet("/addcity")
+@WebServlet("/addimage")
 @MultipartConfig
-public class CityAddServlet extends AbstractGenericServlet2 {
+public class ImageAddServlet extends AbstractGenericServlet2 {
 
 	private static final long serialVersionUID = -3497793006266174453L;
 
@@ -26,17 +27,17 @@ public class CityAddServlet extends AbstractGenericServlet2 {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, getServletContext());
-		if(req.getSession().getAttribute("cityCreationError") != null) {
-			context.setVariable("errorMessage", req.getSession().getAttribute("cityCreationError"));
-			context.setVariable("city", (City) req.getSession().getAttribute("cityCreationData"));
+		if(req.getSession().getAttribute("imageCreationError") != null) {
+			context.setVariable("errorMessage", req.getSession().getAttribute("imageCreationError"));
+			context.setVariable("image", (Image) req.getSession().getAttribute("imageCreationData"));
 
-			req.getSession().removeAttribute("cityCreationError");
-			req.getSession().removeAttribute("cityCreationData");
+			req.getSession().removeAttribute("imageCreationError");
+			req.getSession().removeAttribute("imageCreationData");
 		} else {
-			context.setVariable("city", new City(null, null, null));
+			context.setVariable("image", new Image(null, null, null));
 		}
 		context.setVariable("countries", context);
-		templateEngine.process("cityadd", context, resp.getWriter());
+		templateEngine.process("imageadd", context, resp.getWriter());
 	}
 
 	@Override
@@ -46,17 +47,17 @@ public class CityAddServlet extends AbstractGenericServlet2 {
 		
 		
 		
-		Part cityPicture = req.getPart("picture");
-		City newCity = new City(null, name, summary);
-		
+		Part imagePicture = req.getPart("picture");
+		Image newImage = new Image(null, name, summary);
+		InputStream is  = imagePicture.getInputStream();
 		
 		try {
-			InformationLibrary.getInstance().addCity(newCity, cityPicture);
+			InformationLibrary.getInstance().addImage(newImage, is);
 			resp.sendRedirect("home2");
 		} catch (IllegalArgumentException|IOException e) {
-			req.getSession().setAttribute("cityCreationError", e.getMessage());
-			req.getSession().setAttribute("cityCreationData", newCity);
-			resp.sendRedirect("addcity");
+			req.getSession().setAttribute("imageCreationError", e.getMessage());
+			req.getSession().setAttribute("imageCreationData", newImage);
+			resp.sendRedirect("addimage");
 		} 
 
 	}

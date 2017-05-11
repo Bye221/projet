@@ -1,6 +1,7 @@
 package marquise.servlets;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
@@ -9,19 +10,22 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.io.IOUtils;
+
 import marquise.services.InformationLibrary;
 
 
 
-@WebServlet("/citypicture")
+@WebServlet("/imagepicture")
 public class CityPictureServlet extends AbstractGenericServlet2 {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Integer cityId = Integer.parseInt(req.getParameter("id"));
-		Path picturePath = InformationLibrary.getInstance().getPicturePatch(cityId);
+		Integer imageId = Integer.parseInt(req.getParameter("id"));
+		//Path picturePath = InformationLibrary.getInstance().getPicturePatch(imageId);
+		InputStream is = InformationLibrary.getInstance().getPicture(imageId);
 		
-		Files.copy(picturePath, resp.getOutputStream());
+		IOUtils.copy(is, resp.getOutputStream());
 	}
 
 	

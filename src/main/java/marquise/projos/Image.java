@@ -1,13 +1,13 @@
 package marquise.projos;
 
-public class City {
+public class Image {
 	
 	private Integer id;
 	private String name;
 	private String summary;
 	
 	
-	public City(Integer id, String name, String summary) {
+	public Image(Integer id, String name, String summary) {
 		super();
 		this.id = id;
 		this.name = name;

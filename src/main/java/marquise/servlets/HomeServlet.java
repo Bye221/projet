@@ -27,7 +27,7 @@ public class HomeServlet extends AbstractGenericServlet2 {
 		WebContext context = new WebContext(req, resp, getServletContext());
 		//Country countryFilter = (Country) req.getSession().getAttribute("countryFilter");
 		
-		context.setVariable("cities", InformationLibrary.getInstance().listAllCities());
+		context.setVariable("images", InformationLibrary.getInstance().listAllImages());
 		//context.setVariable("cities", CityService.getInstance().listAllCities(countryFilter));
 		//context.setVariable("countries", Country.values());
 		
