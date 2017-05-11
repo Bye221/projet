@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Bienvenue sur le site du club d'athletisme de Marquise </title>
+    
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/page/categorie.css" rel="stylesheet">
+    </head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+      <nav class="navbar navbar-inverse" th:insert="~{admin/commonAdmin ::entete('categorieAdmin')}">
+  
+</nav>
+    <!-- Il y a 2 colonnes de 4 cases, une colonne vide puis les 3 colonnes pour la newsletter, les descriptions apparaissent au survol de la sourie 
+ La class categorie1 a servie au debut pour definir la taille des cases !-->
+    <div class="container-fluid">
+        <div class="row head">
+            <div class="col-sm-12 col-md-12">
+                <h1>Entente Maritime Athlétique 62</h1> </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row section1">
+            <div class="col-md-4">
+                <div class="categorie2">
+                    <h2>Baby athlé</h2> </div>
+                <div class="categorie2">
+                    <h2>Eveil</h2>
+                    <p>les séances Eveils ont lieu de 13h30 à 15h</p>
+                </div>
+                <div class="categorie2">
+                    <h2>Benjamin(e)s</h2>
+                    <p>Vous trouverez ici les informations concernant cette catégorie d’athlète … Les entraînements ont lieu les Mercredis de 13h30 à 15h et les Samedis de 14h à 16h à la salle de sports du Collège Saint-Martin à Marquise Les compétitions auront lieu tout au long de l’année scolaire, le plus souvent les Samedis et/ou les Dimanches (les dates et horaires concernant ces évènements seront communiqués en temps et en heure)</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="categorie2">
+                    <h2>Poussin(e)s</h2>
+                    <p class="description-categorie">Les entraînements ont lieu les Mercredis de 13h30 à 15h et les Samedis de 14h à 16h à la salle de sports du Collège Saint-Martin à Marquise Les compétitions auront lieu tout au long de l’année scolaire, le plus souvent les Samedis et/ou les Dimanches (les dates et horaires concernant ces évènements seront communiqués en temps et en heure)</p>
+                </div>
+                <div class="categorie2">
+                    <h2>Minimes</h2> </div>
+                <div class="categorie2">
+                    <h2>Cad / Jun /Sen</h2> </div>
+            </div>
+            <div class="col-md-3 col-md-offset-1">
+                <!-- Formulaire d'inscription à la newsletter -->
+                <h1> Restez informés !</h1>
+                <form class="inscription">
+                    <p> Inscrivez vous à la newsletter</p>
+                    <input class="email-news" id="email" placeholder="Email" type="email">
+                    <p> J'accepte de recevoir regulierement des informations de la part du club</p>
+                    <input id="ok" type="checkbox">
+                    <button type="submit">Valider</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p> Hello world ! </p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="bootstrap/js/photo-gallery.js"></script>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
