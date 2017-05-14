@@ -46,6 +46,8 @@ body {
 .footer {
     background-color: #636564;
     color: white;
+    position: fixed;
+    
     
 }
 

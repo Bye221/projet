@@ -1,7 +1,5 @@
 package marquise.projos;
 
-import java.time.LocalDate;
-
 public class Commentaire {
 	
 	private Integer id;
