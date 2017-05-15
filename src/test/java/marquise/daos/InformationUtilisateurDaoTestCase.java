@@ -6,6 +6,7 @@ import static org.assertj.core.api.Assertions.tuple;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.List;
@@ -113,6 +114,47 @@ public class InformationUtilisateurDaoTestCase {
 			}
 		}
 	}
+	
+	@Test
+	public void shouldUpdateInformationUtilisateur() throws Exception {
+		// WHEN
+		InformationUtilisateur informationUtilisateur = informationUtilisateurDao.updateInformationUtilisateur(3, "Auvray", "Louis-Come", "sexe", LocalDate.of(2016, 11, 16), 99, "numSecu", "adresse");
+		// THEN
+		
+		assertThat(informationUtilisateur.getId()).isNotNull();
+		assertThat(informationUtilisateur.getNom()).isEqualTo("Auvray");
+		assertThat(informationUtilisateur.getPrenom()).isEqualTo("Louis-Come");
+		assertThat(informationUtilisateur.getSexe()).isEqualTo("sexe");
+		assertThat(informationUtilisateur.getDate()).isEqualTo(LocalDate.of(2016, 11, 16));
+		assertThat(informationUtilisateur.getTarif()).isEqualTo(99);
+		assertThat(informationUtilisateur.getNumSecu()).isEqualTo("numSecu");
+		assertThat(informationUtilisateur.getAdresse()).isEqualTo("adresse");
+		
+		
+			
+
+
+		
+
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection();
+				PreparedStatement stmt = connection.prepareStatement("SELECT * FROM informationutil WHERE idinformationUtil = ?")) {
+			stmt.setInt(1, informationUtilisateur.getId());
+			try (ResultSet rs = stmt.executeQuery()) {
+				assertThat(rs.next()).isTrue();
+				assertThat(rs.getInt("idinformationUtil")).isEqualTo(informationUtilisateur.getId());
+				assertThat(rs.getString("nom")).isEqualTo(informationUtilisateur.getNom());
+				assertThat(rs.getString("prenom")).isEqualTo(informationUtilisateur.getPrenom());
+				assertThat(rs.getString("sexe")).isEqualTo(informationUtilisateur.getSexe());
+				assertThat(rs.getDate("dateNaissance").toLocalDate()).isEqualTo(LocalDate.of(2016, 11, 16));
+				assertThat(rs.getInt("prix")).isEqualTo(informationUtilisateur.getTarif());
+				assertThat(rs.getString("numSecu")).isEqualTo(informationUtilisateur.getNumSecu());
+				assertThat(rs.getString("adresse")).isEqualTo(informationUtilisateur.getAdresse());	
+				assertThat(rs.next()).isFalse();
+			}
+		}
+	}
+	
+	
 	
 	
 

@@ -13,6 +13,7 @@ import java.util.List;
 import marquise.daos.InformationUtilisateurDao;
 
 import marquise.projos.InformationUtilisateur;
+import marquise.projos.Utilisateur;
 
 
 
@@ -80,15 +81,21 @@ public class InformationUtilisateurDaoImpl implements InformationUtilisateurDao 
 
 	@Override
 	public void deleteInformationUtilisateur(Integer id) {
-		// TODO Auto-generated method stub
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
+			try(PreparedStatement statement = connection.prepareStatement("DELETE * FROM jyz1vhfvffbmzqa3.informationutil WHERE idinformationUtil = ? ;")) {
+				statement.setInt(1, id);
+				statement.executeUpdate();
+				statement.close();
+				
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
 		
 	}
 
-	@Override
-	public InformationUtilisateur updateInformationUtilisateur(String nom, String prenom) {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 
 	@Override
 	public InformationUtilisateur getInformationUtilisateurByName(String nom) {
@@ -131,6 +138,7 @@ public class InformationUtilisateurDaoImpl implements InformationUtilisateurDao 
 				statement.setString(7, adresse);
 				statement.executeUpdate();
 				
+				
 				try (ResultSet resultSet = statement.getGeneratedKeys()) {
 					if(resultSet.next()) {
 						return new InformationUtilisateur(resultSet.getInt(1), nom, prenom, sexe, date, tarif, numSecu, adresse);
@@ -138,6 +146,35 @@ public class InformationUtilisateurDaoImpl implements InformationUtilisateurDao 
 				}
 			}
 		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+
+	@Override
+	public InformationUtilisateur updateInformationUtilisateur(Integer id, String nom, String prenom, String sexe,
+			LocalDate date, Integer tarif, String numSecu, String adresse) {
+		
+		try (Connection connection = DataSourceProvider.getInstance().getDataSource().getConnection()) {
+			try(PreparedStatement statement = connection.prepareStatement("update jyz1vhfvffbmzqa3.informationutil set nom = ? ,  prenom = ? , sexe = ?, dateNaissance = ?, prix = ?, numSecu = ?, adresse = ? where idinformationUtil = ?;")) {
+				//statement.setInt(8, id);
+				statement.setString(1, nom);
+				statement.setString(2, prenom);
+				statement.setString(3, sexe);	
+				statement.setDate(4, Date.valueOf(date));
+				statement.setInt(5, tarif);
+				statement.setString(6, numSecu);
+				statement.setString(7, adresse);
+				statement.setInt(8, id);
+				statement.executeUpdate();
+
+				if(statement.getUpdateCount() > 0) {
+						System.out.println("Update done with sucess ! ");
+						return new InformationUtilisateur(id, nom, prenom, sexe, date, tarif, numSecu, adresse);
+				}
+			}
+		}catch (SQLException e) {
+			System.err.println("An occured into the query ! with "+id + nom + prenom + sexe + date + tarif + numSecu + adresse);
 			e.printStackTrace();
 		}
 		return null;
