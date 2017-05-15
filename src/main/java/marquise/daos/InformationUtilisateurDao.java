@@ -33,7 +33,15 @@ public interface InformationUtilisateurDao {
 	public void deleteInformationUtilisateur(Integer id);
 	
 	//Met à jour un utilisateur et ses informations
-	public InformationUtilisateur updateInformationUtilisateur(String nom, String prenom);
+	public InformationUtilisateur updateInformationUtilisateur(
+			Integer id,
+			String nom,
+			String prenom,
+			String sexe,
+			LocalDate date,
+			Integer tarif,
+			String numSecu,
+			String adresse);
 	
 
 }
