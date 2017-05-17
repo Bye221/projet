@@ -17,9 +17,11 @@
       </button>
      <div th:class="${selectedMenu == 'admin' } ? 'active'"> <a class="active navbar-brand" href="admin">Acceuil admin</a></div>
     </div>
-    <div class="navbar-collapse" id="myNavbar">
+    <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav">
         <li th:class="${selectedMenu == 'clubAdmin' } ? 'active'"><a href="clubAdmin">Club admin</a></li>
+        
+        <li th:class="${selectedMenu == 'ajoutAdmin' } ? 'active'"><a href="ajoutAdmin">Ajouter membre</a></li>
         
         <li th:class="${selectedMenu == 'adminRechercheNom' } ? 'active'"><a href="adminRechercheNom">Rchercher un nom</a></li>
         

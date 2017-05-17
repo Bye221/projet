@@ -16,12 +16,14 @@ import marquise.daos.ImageDao;
 import marquise.daos.CommentaireDao;
 import marquise.daos.ElementsSiteDao;
 import marquise.daos.InformationDao;
+import marquise.daos.InformationUtilisateurDao;
 import marquise.daos.UtilisateurDao;
 import marquise.daos.IdentifiantDao;
 import marquise.daos.impl.ArticleDaoImpl;
 import marquise.daos.impl.CommentaireArticleDaoImpl;
 import marquise.daos.impl.CommentaireDaoImpl;
 import marquise.daos.impl.InformationDaoImpl;
+import marquise.daos.impl.InformationUtilisateurDaoImpl;
 import marquise.daos.impl.UtilisateurDaoImpl;
 import marquise.daos.impl.IdentifiantDaoImpl;
 import marquise.projos.Article;
@@ -31,6 +33,7 @@ import marquise.projos.CommentaireArticle;
 import marquise.projos.ElementsSite;
 import marquise.projos.Identifiant;
 import marquise.projos.Information;
+import marquise.projos.InformationUtilisateur;
 import marquise.projos.Utilisateur;
 import marquise.projos.Identifiant;
 
@@ -56,6 +59,7 @@ public class InformationLibrary {
 	private static final String PICTURE_MAIN_DIRECTORY = "/Users/louiscauvray/git/projet/src/main/resources";
 	private ElementsSiteDao elementsSiteDao = new ElementsSiteDao();
 	private CommentaireArticleDao commentaireArticleDao = new  CommentaireArticleDaoImpl();
+	private InformationUtilisateurDao informationUtilisateurDao = new InformationUtilisateurDaoImpl();
 	
 
 	private InformationLibrary() {
@@ -220,4 +224,52 @@ public class InformationLibrary {
 		public ElementsSite getElementById(String id) {
 			return elementsSiteDao.getElementById(id) ;
 		}
+		
+		//Liste des info et des utilisateurs
+		
+		public List<InformationUtilisateur> listInformationsUtilisateurs(){
+			return informationUtilisateurDao.listInformationsUtilisateurs();
+			
+		}
+		
+		// mettre à jour les informations et les utilisateurs
+		
+		public InformationUtilisateur updateInformationUtilisateur(
+				Integer id,
+				String nom,
+				String prenom,
+				String sexe,
+				LocalDate date,
+				Integer tarif,
+				String numSecu,
+				String adresse
+				){
+			return informationUtilisateurDao.updateInformationUtilisateur(id, nom, prenom, sexe, date, tarif, numSecu, adresse);
+			
+		}
+		
+		//Rechercher toute les infos via un nom de famille
+		
+		public InformationUtilisateur getInformationUtilisateurByName(
+				String nom
+				){
+					return informationUtilisateurDao.getInformationUtilisateurByName(nom);
+			
+		}
+		
+		public InformationUtilisateur addInformationUtilisateur(
+				
+				String nom,
+				String prenom,
+				String sexe,
+				LocalDate date,
+				Integer tarif,
+				String numSecu,
+				String adresse){
+					return informationUtilisateurDao.addInformationUtilisateur(nom, prenom, sexe, date, tarif, numSecu, adresse);
+			
+		}
+		
+		
+
 }

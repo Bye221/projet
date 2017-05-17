@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Bienvenue sur le site du club d'athletisme de Marquise </title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/page/indexAdmin.css" rel="stylesheet"> </head>
+    <link href="css/page/contact.css" rel="stylesheet">
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <nav class="navbar navbar-inverse" th:insert="~{admin/commonAdmin ::entete('ajoutAdmin')}"> </nav>
+    
+    
+    <div class="container-fluid">
+            <div class="row head">
+                <div class="col-sm-12 col-md-12">
+                    <h1>Entente Maritime Athlétique 62</h1> </div>
+            </div>
+            <div class="row section-contact">
+            <div class="entete">
+                <h2>Ajouter un membre du club</h2>
+                <p>Remplissez le formulaire ci dessous</p>
+            </div>
+            <div class="formulaire">
+                <form method="post">
+                    <div class="form-group ">
+                       <label for="email">Nom : 
+                       </label><br />
+                        <input class="entreTexte" type="text" name="nom" id="nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom :</label><br />
+                        <input class="entreTexte" type="text" name="prenom" id="prenom">
+                    </div>
+                    <div class="form-group">
+                        <label for="sexe">Sexe :</label><br />
+                        <input class="entreTexte" type="text" name="sexe" id="sexe">
+                    </div>
+                    <div class="form-group">
+                        <label for="releaseDate">Date de naissance :</label><br />
+                        <input class="entreTexte" type="date" name="releaseDate" id="releaseDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="tarif">Tarif à payer :</label><br />
+                        <input class="entreTexte" type="text" name="tarif" id="tarif">
+                    </div>
+                    <div class="form-group ">
+                            <label class="control-label " for="message"> Adresse </label>
+                            <textarea class="form-control" cols="40" id="message" name="message" rows="10"></textarea>
+                        </div>
+                    <button name="submit" type="submit" class="btn bouton-contact">Valider</button>
+                </form>
+            </div>
+            </div>
+            
+        </div>
+    <footer class="footer">
+        <div class="container">
+            <p> Hello world ! </p>
+        </div>
+    </footer>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="bootstrap/js/photo-gallery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
