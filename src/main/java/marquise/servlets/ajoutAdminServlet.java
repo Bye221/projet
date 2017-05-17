@@ -15,16 +15,11 @@ import javax.servlet.http.HttpSession;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
-import marquise.projos.Article;
-import marquise.projos.Utilisateur;
 import marquise.services.InformationLibrary;
 
-@WebServlet("/adminazerty")
-public class adminServlet extends AbstractGenericServlet {
-	
-	private int idRecherche;
-	private int idInformation;
-	private String nom;
+@WebServlet("/ajoutAdmin")
+public class ajoutAdminServlet extends AbstractGenericServlet {
+
 
 	/**
 	 * 
@@ -34,63 +29,37 @@ public class adminServlet extends AbstractGenericServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
-		resp.setCharacterEncoding("UTF-8");
-=======
-=======
 		PrintWriter out = resp.getWriter();
->>>>>>> louis-come
 		HttpSession session=req.getSession(false);
-		
+		resp.setCharacterEncoding("UTF-8");
 		if(session != null){}
 		else{
 			resp.sendRedirect("connexion");
 			out.println("Veuillez entre un mot de passe correct");
 		}
-		
->>>>>>> louis-come
+		resp.setCharacterEncoding("UTF-8");
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
-		
-		
-		context.setVariable("utilisateurs", InformationLibrary.getInstance().listUtilisateurs());
-		
-		context.setVariable("idNoms", InformationLibrary.getInstance().getUtilisateurByNom(nom));
-		
-		
-		//if(idRecherche != 0){
-		
-			context.setVariable("idUtils", InformationLibrary.getInstance().getUtilisateur(idRecherche));
-		//}
-
-		templateEngine.process("admin/admin", context, resp.getWriter());
 		resp.setCharacterEncoding("UTF-8");
+
+		templateEngine.process("admin/ajoutAdmin", context, resp.getWriter());
+	
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
+		Integer tarif = 10;
+		String releaseDateAsString = req.getParameter("releaseDate");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate releaseDate = LocalDate.parse(releaseDateAsString, formatter);
+		String nom = req.getParameter("nom");
+		InformationLibrary.getInstance().addInformationUtilisateur(nom, nom, nom, releaseDate, tarif, nom, nom);
 		
-		
-		if (idRecherche != 0){
-			
-			idRecherche = Integer.parseInt(req.getParameter("identifiant"));
-			
-		} else {
-		
-		if (nom != ""){
-			
-			
-			nom = req.getParameter("nomUtilisateur");
-		}}
-		
-		//idRecherche = Integer.parseInt(req.getParameter("identifiant"));
-		
-		
+		resp.setCharacterEncoding("UTF-8");
 		resp.sendRedirect("admin");
 	
 	}

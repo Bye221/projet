@@ -45,3 +45,7 @@ body {
     color: #fff;
     background-color: #009688;
 }
+
+.panel-heading {
+    min-height: 40px;
+}

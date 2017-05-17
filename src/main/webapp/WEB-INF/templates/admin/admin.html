@@ -1,143 +1,151 @@
 <!DOCTYPE html>
 <html lang="fr">
 
-<head> 
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    
     <title> Bienvenue sur le site du club d'athletisme de Marquise </title>
-    
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/page/indexAdmin.css" rel="stylesheet">
-    
-</head>
-
+    <link href="css/page/indexAdmin.css" rel="stylesheet"> </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-  
-<nav class="navbar navbar-inverse" th:insert="~{admin/commonAdmin ::entete('admin')}">
-  
-</nav>
-<div class="container-fluid">
-    <div class="row head">
-        <div class="col-sm-12 col-md-12">
+    <nav class="navbar navbar-inverse" th:insert="~{admin/commonAdmin ::entete('admin')}"> </nav>
+    <div class="container-fluid">
+        <div class="row head">
+            <div class="col-sm-12 col-md-12">
+                <h1>Entente Maritime Athlétique 62</h1> </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row section1">
+            <div class="col-md-12">
+                <div class="block-test1">
+                    <h2 class="titre-section-admin">Rechercher un licencié par son nom dans la liste de tout les inscrits au club: </h2>
+                    <form class="form-inline" method="post">
+                        <div class="form-group">
+                            <label for="idInput">Nom</label>
+                            <input class="form-control" id="nom" name="nom"> </div>
+                        <input type="submit" class="btn btn-default" value="Filter" name="chercher">
+                         		
+
+                        
+                    </form>
+                    
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>id</th>
+                                <th>Nom</th>
+                                <th>Prénom</th>
+                                <th>Sexe</th>
+                                <th>Date de naissance</th>
+                                <th>Tarif à payer</th>
+                                <th>Numéro de sécu</th>
+                                <th>Adresse</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="nomUtil : ${nom}">
+                                <td>[[${nomUtil.id}]]</td>
+                                <td>[[${nomUtil.nom}]]</td>
+                                <td>[[${nomUtil.prenom}]]</td>
+                                <td>[[${nomUtil.sexe}]]</td>
+                                <td>[[${#temporals.format(nomUtil.date, 'd MMMM yyyy')}]]</td>
+                                <td>[[${nomUtil.tarif}]]</td>
+                                <td>[[${nomUtil.numSecu}]]</td>
+                                <td>[[${nomUtil.adresse}]]</td>
+                               
+                                
+                            </tr>
+                        </tbody>
+                    </table>
            
-            <h1>Entente Maritime Athlétique 62</h1>
-        </div>
-        
-        
-        
-    </div>
-</div>
-
-<div class="container-fluid">
-    <div class="row section1">
-        <div class="col-md-6">
-            <div class="block-test1">
-                <h2 class="titre-section-admin">Rechercher un licencié par son id dans la liste de tout les inscrits au club: </h2>
-                <form class="form-inline" method="post">
-                    <div class="form-group">
-                        <label for="idInput">Id</label>
-                        <input class="form-control" id="identifiant" name="identifiant">
-                        
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="block-test1">
+                    <h2 class="titre-section-admin">Liste de tout les licencié </h2>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <div class="col-xs-1 col-sm-1 col-md-1">Identifiant</div>
+                            <div class="col-xs-1 col-sm-1 col-md-1">Nom</div>
+                            <div class="col-xs-1 col-sm-1 col-md-1">Prénom</div>
+                            <div class="col-xs-1 col-sm-1 col-md-1">Sexe</div>
+                            <div class="col-xs-2 col-sm-2 col-md-2">Date de naissance</div>
+                            <div class="col-xs-1 col-sm-1 col-md-1">Tarif en €</div>
+                            <div class="col-xs-1 col-sm-1 col-md-1">N° de sécu</div>
+                            <div class="col-xs-2 col-sm-2 col-md-2">Adresse</div>
+                        </div>
+                        <div class="panel-body">
+                            <div class="row utilisateur" th:each="utilisateur : ${utilisateurs}">
+                                <div class="col-xs-1 col-sm-1 col-md-1" th:text="${utilisateur.id}"></div>
+                                <div class="col-xs-1 col-sm-1 col-md-1" th:text="${utilisateur.nom}"></div>
+                                <div class="col-xs-1 col-sm-1 col-md-1" th:text="${utilisateur.prenom}"></div>
+                                <div class="col-xs-1 col-sm-1 col-md-1" th:text="${utilisateur.sexe}"></div>
+                                <div class="col-xs-2 col-sm-2 col-md-2" th:text="${utilisateur.date}"></div>
+                                <div class="col-xs-1 col-sm-1 col-md-1" th:text="${utilisateur.tarif}"></div>
+                                <div class="col-xs-1 col-sm-1 col-md-1" th:text="${utilisateur.numSecu}"></div>
+                                <div class="col-xs-2 col-sm-2 col-md-2" th:text="${utilisateur.adresse}"></div>
+                            </div>
+                        </div>
                     </div>
-                    <input type="submit" class="btn btn-default" value="Filter">
-                </form>
-                <div th:each="idUtil : ${idUtils}">
-                <p>[[${idUtil.nom}]]</p>
-                <p>[[${idUtil.prenom}]]</p>
-                
-                </div>
-                
-            </div>
-            <div class="block-test2">
-               <h2 class="titre-section-admin">Rechercher des informations sur un licencié du club par son id </h2>
-                <form class="form-inline" method="post">
-                    <div class="form-group">
-                        <label for="idInput">Id</label>
-                        <input class="form-control" id="identifiantInformation" name="identifiantInformation">
-                        
-                    </div>
-                    <input type="submit" class="btn btn-default" value="Rechercher">
-                </form>
-                <div th:each="idInfo : ${idInfos}">
-                <p>[[${idInfos.sexe}]]</p>
-               
-                
                 </div>
             </div>
-            
-        </div>
-        <div class="col-md-6">
-            <div class="block-test1">
-                              <h2 class="titre-section-admin">Recherche l'id d'un utilisateur par son nom de famille</h2>
-               <form method="post" class="form-horizontal">
-                   <div class="form-group">
-                       <label for="title" class="col-sm-2 control-label">Nom de famille : </label>
-                       <div class="col-sm-10">
-                           <input type="text" class="form-control" name="nomUtilisateur" id="nomUtilisateur">
-                       </div>
-                   </div>
-                   
-                   <div class="form-group">
-                       <div class="col-sm-offset-2 col-sm-10">
-                           <input class="btn btn-primary" type="submit" value="Rechercher">
-                       </div>
-                   </div>
-               </form>
-               <div th:each="idNom : ${idNoms}">
-                <p>[[${idNom.id}]]</p>
-                <p>[[${idNom.nom}]]</p>
-                <p>[[${idNom.prenom}]]</p>
-                
-                </div>
-                
-            </div>
-            <div class="block-test2">
-               <h2 class="titre-section-admin">Liste de tout les inscrits au club: </h2>
-               <table class="liste-inscrits">
-               <tr>
-               <td>id</td>
-               <td>nom</td>
-               <td>prenom</td>
-               </tr>
-               
-               <div class="utilisateur" th:each="utilisateur : ${utilisateurs}">
-               
-               
-               <tr>
-               <td th:text="${utilisateur.id}"></td>
-               <td th:text="${utilisateur.nom}"></td>
-               <td th:text="${utilisateur.prenom}"></td>
-               </tr>
-               </table>
-                </div>
-                
-            </div>
-
-            
         </div>
     </div>
-
-
-<footer class="footer">
-    <div class="container">
-        <p>
-            Hello world !
-        </p>
+    <div class="bootstrap-iso">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xs-12">
+                    <form method="post">
+                        <div class="form-group ">
+                            <label class="control-label requiredField" for="id"> id <span class="asteriskField">
+                                        *
+                                    </span> </label>
+                            <input class="form-control" id="id" name="id" placeholder="id" type="text" /> </div>
+                        <div class="form-group ">
+                            <label class="control-label " for="nom"> Nom </label>
+                            <input class="form-control" id="nom" name="nom" placeholder="nom" type="text" /> </div>
+                        <div class="form-group ">
+                            <label class="control-label " for="prenom"> Pr&eacute;nom </label>
+                            <input class="form-control" id="prenom" name="prenom" placeholder="pr&eacute;nom" type="text" /> </div>
+                        <div class="form-group ">
+                            <label class="control-label " for="sexe"> Sexe </label>
+                            <input class="form-control" id="sexe" name="sexe" placeholder="sexe" type="text" /> </div>
+                        <div class="form-group ">
+                            <label class="control-label " for="dateNaissance"> Date de naissance </label>
+                            <input class="form-control" id="dateNaissance" name="dateNaissance" placeholder="MM/DD/YYYY" type="text" /> </div>
+                        <div class="form-group ">
+                            <label class="control-label " for="prix"> Prix </label>
+                            <input class="form-control" id="prix" name="prix" placeholder="prix" type="text" /> </div>
+                        <div class="form-group ">
+                            <label class="control-label " for="numSecu"> Num&eacute;ro de s&eacute;curit&eacute; sociale </label>
+                            <input class="form-control" id="numSecu" name="numSecu" placeholder="n&deg; s&eacute;cu" type="text" /> </div>
+                        <div class="form-group ">
+                            <label class="control-label " for="message"> Adresse </label>
+                            <textarea class="form-control" cols="40" id="message" name="message" rows="10"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                                <button class="btn btn-success " name="submit" type="submit"> Submit </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</footer>
- 
-    
-    
-    
+    <footer class="footer">
+        <div class="container">
+            <p> Hello world ! </p>
+        </div>
+    </footer>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-        <script src="bootstrap/js/photo-gallery.js"></script>
-
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script src="bootstrap/js/photo-gallery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>

@@ -19,8 +19,8 @@ import marquise.projos.Article;
 import marquise.projos.Utilisateur;
 import marquise.services.InformationLibrary;
 
-@WebServlet("/adminazerty")
-public class adminServlet extends AbstractGenericServlet {
+@WebServlet("/recherche")
+public class rechercheServlet extends AbstractGenericServlet {
 	
 	private int idRecherche;
 	private int idInformation;
@@ -34,13 +34,7 @@ public class adminServlet extends AbstractGenericServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-<<<<<<< HEAD
-<<<<<<< HEAD
-		resp.setCharacterEncoding("UTF-8");
-=======
-=======
 		PrintWriter out = resp.getWriter();
->>>>>>> louis-come
 		HttpSession session=req.getSession(false);
 		
 		if(session != null){}
@@ -49,16 +43,17 @@ public class adminServlet extends AbstractGenericServlet {
 			out.println("Veuillez entre un mot de passe correct");
 		}
 		
->>>>>>> louis-come
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
 		
 		
-		context.setVariable("utilisateurs", InformationLibrary.getInstance().listUtilisateurs());
+		context.setVariable("utilisateurs", InformationLibrary.getInstance().listInformationsUtilisateurs());
 		
-		context.setVariable("idNoms", InformationLibrary.getInstance().getUtilisateurByNom(nom));
+		context.setVariable("nom", InformationLibrary.getInstance().getInformationUtilisateurByName(nom));
+		
+		//context.setVariable("idNoms", InformationLibrary.getInstance().getUtilisateurByNom(nom));
 		
 		
 		//if(idRecherche != 0){
@@ -74,7 +69,12 @@ public class adminServlet extends AbstractGenericServlet {
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
 		
-		
+		Integer tarif = 5;
+		String nomAjout = req.getParameter("nomAjout");
+		String prenomAjout = req.getParameter("prenomAjout");
+		String releaseDateAsString = req.getParameter("releaseDate");
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+		LocalDate releaseDate = LocalDate.parse(releaseDateAsString, formatter);
 		
 		if (idRecherche != 0){
 			
@@ -87,11 +87,19 @@ public class adminServlet extends AbstractGenericServlet {
 			
 			nom = req.getParameter("nomUtilisateur");
 		}}
+		if(req.getParameter("nom") != null){
+			if(nom != ""){
+				nom = req.getParameter("nom");
+			}
+		} 
 		
-		//idRecherche = Integer.parseInt(req.getParameter("identifiant"));
 		
 		
 		resp.sendRedirect("admin");
+		
+		
+		
+		
 	
 	}
 	
