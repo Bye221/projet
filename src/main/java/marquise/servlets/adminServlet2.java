@@ -51,13 +51,10 @@ public class adminServlet2 extends AbstractGenericServlet {
 		
 		context.setVariable("nom", InformationLibrary.getInstance().getInformationUtilisateurByName(nom));
 		
-		//context.setVariable("idNoms", InformationLibrary.getInstance().getUtilisateurByNom(nom));
-		
-		
-		//if(idRecherche != 0){
-		
+		if(idRecherche != 0){
+			
 			context.setVariable("idUtils", InformationLibrary.getInstance().getUtilisateur(idRecherche));
-		//}
+		}
 
 		templateEngine.process("admin/admin", context, resp.getWriter());
 		resp.setCharacterEncoding("UTF-8");
@@ -66,24 +63,12 @@ public class adminServlet2 extends AbstractGenericServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		
-		/*Integer tarif = 5;
-		String nomAjout = req.getParameter("nomAjout");
-		String prenomAjout = req.getParameter("prenomAjout");
-		String releaseDateAsString = req.getParameter("releaseDate");
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate releaseDate = LocalDate.parse(releaseDateAsString, formatter);*/
-		
-		
+		nom = req.getParameter("nom");
 
+		InformationLibrary.getInstance().getInformationUtilisateurByName(nom);
 		
-		
-		//InformationLibrary.getInstance().addInformationUtilisateur(nomAjout, prenomAjout, nomAjout, releaseDate, tarif, nomAjout, prenomAjout);
 		
 		resp.sendRedirect("admin");
-		//idRecherche = Integer.parseInt(req.getParameter("identifiant"));
-		
-		
 		
 	
 	}

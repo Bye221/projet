@@ -17,15 +17,15 @@ import org.thymeleaf.context.WebContext;
 
 import marquise.services.InformationLibrary;
 
-@WebServlet("/ajoutAdmin")
-public class ajoutAdminServlet extends AbstractGenericServlet {
+@WebServlet("/updateAdmin")
+public class updateAdminServlet extends AbstractGenericServlet {
 
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -4835451077585731550L;
-	Integer tarif;
+	Integer id;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -42,17 +42,20 @@ public class ajoutAdminServlet extends AbstractGenericServlet {
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
+		//id = Integer.parseInt(req.getParameter("id"));
 		
 		resp.setCharacterEncoding("UTF-8");
 
-		templateEngine.process("admin/ajoutAdmin", context, resp.getWriter());
+		templateEngine.process("admin/updateAdmin", context, resp.getWriter());
 	
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
-		tarif = Integer.parseInt(req.getParameter("tarif"));
+		Integer tarif;
+		id = Integer.parseInt(req.getParameter("id"));
+		tarif = Integer.parseInt(req.getParameter("prix"));
 		String releaseDateAsString = req.getParameter("releaseDate");
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 		LocalDate releaseDate = LocalDate.parse(releaseDateAsString, formatter);
@@ -61,7 +64,7 @@ public class ajoutAdminServlet extends AbstractGenericServlet {
 		String adresse = req.getParameter("adresse");
 		String sexe = req.getParameter("sexe");
 		String numSecu = req.getParameter("numSecu");
-		InformationLibrary.getInstance().addInformationUtilisateur(nom, prenom, sexe, releaseDate, tarif, numSecu, adresse);
+		InformationLibrary.getInstance().updateInformationUtilisateur(id, nom, prenom, sexe, releaseDate, tarif, numSecu, adresse);
 		
 		resp.setCharacterEncoding("UTF-8");
 		resp.sendRedirect("admin");
