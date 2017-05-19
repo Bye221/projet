@@ -15,59 +15,73 @@ import javax.servlet.http.HttpSession;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.WebContext;
 
+import marquise.projos.Article;
+import marquise.projos.Utilisateur;
 import marquise.services.InformationLibrary;
 
-@WebServlet("/updateAdmin")
-public class updateAdminServlet extends AbstractGenericServlet {
-
+@WebServlet("/supprimerAdmin")
+public class supprimerAdminServlet extends AbstractGenericServlet {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 4232466095821465892L;
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4835451077585731550L;
-	Integer id;
+	
+	
+
+	
+
+	
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
+		resp.setCharacterEncoding("UTF-8");
 		PrintWriter out = resp.getWriter();
 		HttpSession session=req.getSession(false);
-		resp.setCharacterEncoding("UTF-8");
+		
 		if(session != null){}
 		else{
 			resp.sendRedirect("connexion");
 			out.println("Veuillez entre un mot de passe correct");
 		}
-		resp.setCharacterEncoding("UTF-8");
+		String confirm = req.getParameter("comfirm");
+		String nom = req.getParameter("nom");
+		Integer idUser = Integer.parseInt(req.getParameter("id"));
+		
+		if("true".equals(confirm)){
+			
+			InformationLibrary.getInstance().deleteInformationUtilisateur(idUser);
+			resp.sendRedirect("admin");
+		}else{
+		
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
-		resp.setCharacterEncoding("UTF-8");
+		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
-		//id = Integer.parseInt(req.getParameter("id"));
 		
 		
-		resp.setCharacterEncoding("UTF-8");
-		templateEngine.process("admin/updateAdmin", context, resp.getWriter());
-	
+		context.setVariable("nomUtil", InformationLibrary.getInstance().getInformationUtilisateurByName(nom));
+		
+
+		templateEngine.process("admin/supprimerAdmin", context, resp.getWriter());
+		}
+		
 	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		resp.setCharacterEncoding("UTF-8");
-		Integer tarif;
-		id = Integer.parseInt(req.getParameter("id"));
-		tarif = Integer.parseInt(req.getParameter("prix"));
-		String releaseDateAsString = req.getParameter("releaseDate");
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-		LocalDate releaseDate = LocalDate.parse(releaseDateAsString, formatter);
-		String nom = req.getParameter("nom");
-		String prenom = req.getParameter("prenom");
-		String adresse = req.getParameter("adresse");
-		String sexe = req.getParameter("sexe");
-		String numSecu = req.getParameter("numSecu");
-		InformationLibrary.getInstance().updateInformationUtilisateur(id, nom, prenom, sexe, releaseDate, tarif, numSecu, adresse);
+		
+		/*nom = req.getParameter("nom");
+
+		InformationLibrary.getInstance().getInformationUtilisateurByName(nom);*/
 		
 		
 		resp.sendRedirect("admin");
+		
 	
 	}
 	

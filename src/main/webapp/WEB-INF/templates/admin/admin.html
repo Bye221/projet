@@ -17,7 +17,7 @@
                 <h1>Entente Maritime Athlétique 62</h1> </div>
         </div>
     </div>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row section1">
             <div class="col-md-12">
                 <div class="block-test1">
@@ -43,6 +43,7 @@
                                 <th>Tarif à payer</th>
                                 <th>Numéro de sécu</th>
                                 <th>Adresse</th>
+                                <th>Supprimer</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -55,6 +56,10 @@
                                 <td>[[${nomUtil.tarif}]]</td>
                                 <td>[[${nomUtil.numSecu}]]</td>
                                 <td>[[${nomUtil.adresse}]]</td>
+                                <td>
+                                <a th:href= "'supprimerAdmin?nom='+${nomUtil.nom}" class="btn btn-danger ">
+                                <i class="fa fa-times" aria-hidden="true"></i>
+                                </a></td>
                                
                                 
                             </tr>
@@ -65,7 +70,7 @@
             </div>
             <div class="col-md-12">
                 <div class="block-test1">
-                    <h2 class="titre-section-admin">Liste de tout les licencié </h2>
+                    <h2 class="titre-section-admin">Liste de tout les licenciés </h2>
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             <div class="col-xs-1 col-sm-1 col-md-1">Identifiant</div>
@@ -93,13 +98,15 @@
                 </div>
             </div>
         </div>
+        
     </div>
-    
     <footer class="footer">
-        <div class="container">
+        <div class="container-fluid">
             <p> Hello world ! </p>
         </div>
     </footer>
+    
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="bootstrap/js/photo-gallery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

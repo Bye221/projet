@@ -22,18 +22,20 @@ import marquise.services.InformationLibrary;
 @WebServlet("/admin")
 public class adminServlet2 extends AbstractGenericServlet {
 	
-	private int idRecherche;
-	private int idInformation;
-	private String nom;
-
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = -4835451077585731550L;
+	private static final long serialVersionUID = 1130146518940644874L;
+	private int idRecherche;
+	private int idInformation;
+	private int idUser;
+	private String nom;
+
+	
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		resp.setCharacterEncoding("UTF-8");
 		PrintWriter out = resp.getWriter();
 		HttpSession session=req.getSession(false);
 		
@@ -49,6 +51,7 @@ public class adminServlet2 extends AbstractGenericServlet {
 		
 		context.setVariable("utilisateurs", InformationLibrary.getInstance().listInformationsUtilisateurs());
 		
+		
 		context.setVariable("nom", InformationLibrary.getInstance().getInformationUtilisateurByName(nom));
 		
 		if(idRecherche != 0){
@@ -57,7 +60,7 @@ public class adminServlet2 extends AbstractGenericServlet {
 		}
 
 		templateEngine.process("admin/admin", context, resp.getWriter());
-		resp.setCharacterEncoding("UTF-8");
+		
 	}
 	
 	@Override

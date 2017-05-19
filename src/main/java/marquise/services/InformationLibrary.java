@@ -257,6 +257,8 @@ public class InformationLibrary {
 			
 		}
 		
+		//Rajouter des informations à un utilisateur créé !
+		
 		public InformationUtilisateur addInformationUtilisateur(
 				
 				String nom,
@@ -268,6 +270,15 @@ public class InformationLibrary {
 				String adresse){
 					return informationUtilisateurDao.addInformationUtilisateur(nom, prenom, sexe, date, tarif, numSecu, adresse);
 			
+		}
+		
+		//Supprimer un utilisatateur
+		
+		public void deleteInformationUtilisateur(Integer id){
+			if(id == null){
+				throw new IllegalArgumentException("Il faut fournir un id");
+			}
+			informationUtilisateurDao.deleteInformationUtilisateur(id);
 		}
 		
 		
