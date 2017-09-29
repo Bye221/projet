@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title> Bienvenue sur le site du club d'athletisme de Marquise </title>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/page/indexAdmin.css" rel="stylesheet"> </head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+    <nav class="navbar navbar-inverse" th:insert="~{admin/commonAdmin ::entete('admin')}"> </nav>
+    <div class="container-fluid">
+        <div class="row head">
+            <div class="col-sm-12 col-md-12">
+                <h1>Entente Maritime Athlétique 62</h1> </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row section1">
+            <div class="col-md-12">
+                
+                    <h2 class="titre-section-admin">Supprimer l'utilisateur : <strong th:text="${nomUtil.prenom}"></strong> <strong th:text="${nomUtil.nom}"></strong><strong th:text="${nomUtil.id}"></strong> ?</h2>
+                    <div>
+                                <a href="'supprimerAdmin?confirm=true&id='+${nomUtil.id}" class="btn btn-danger " name="submit" type="submit"> Supprimer ! </a>
+                                <a href="admin" class="btn" name="submit" type="submit">Annuler</a>
+                                
+                            </div>
+                    
+                    
+           
+                
+            </div>
+            
+        </div>
+        
+    </div>
+    <footer class="footer">
+        <div class="container-fluid">
+            <p> Hello world ! </p>
+        </div>
+    </footer>
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="bootstrap/js/photo-gallery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

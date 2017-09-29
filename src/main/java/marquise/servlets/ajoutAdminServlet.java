@@ -21,30 +21,28 @@ import marquise.services.InformationLibrary;
 public class ajoutAdminServlet extends AbstractGenericServlet {
 
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4835451077585731550L;
+	
+	private static final long serialVersionUID = -510595116912171226L;
+
+	
 	Integer tarif;
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		
+		resp.setCharacterEncoding("UTF-8");
 		PrintWriter out = resp.getWriter();
 		HttpSession session=req.getSession(false);
-		resp.setCharacterEncoding("UTF-8");
+		
 		if(session != null){}
 		else{
 			resp.sendRedirect("connexion");
 			out.println("Veuillez entre un mot de passe correct");
 		}
-		resp.setCharacterEncoding("UTF-8");
+		
 		TemplateEngine templateEngine = this.createTemplateEngine(req);
 		
 		WebContext context = new WebContext(req, resp, req.getServletContext());
 		
-		resp.setCharacterEncoding("UTF-8");
-
 		templateEngine.process("admin/ajoutAdmin", context, resp.getWriter());
 	
 	}
@@ -62,8 +60,7 @@ public class ajoutAdminServlet extends AbstractGenericServlet {
 		String sexe = req.getParameter("sexe");
 		String numSecu = req.getParameter("numSecu");
 		InformationLibrary.getInstance().addInformationUtilisateur(nom, prenom, sexe, releaseDate, tarif, numSecu, adresse);
-		
-		resp.setCharacterEncoding("UTF-8");
+	
 		resp.sendRedirect("admin");
 	
 	}

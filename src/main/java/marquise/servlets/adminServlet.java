@@ -33,12 +33,16 @@ public class adminServlet extends AbstractGenericServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+<<<<<<< HEAD
 		
 <<<<<<< HEAD
 <<<<<<< HEAD
 		resp.setCharacterEncoding("UTF-8");
 =======
 =======
+=======
+		resp.setCharacterEncoding("UTF-8");
+>>>>>>> louis-come
 		PrintWriter out = resp.getWriter();
 >>>>>>> louis-come
 		HttpSession session=req.getSession(false);
